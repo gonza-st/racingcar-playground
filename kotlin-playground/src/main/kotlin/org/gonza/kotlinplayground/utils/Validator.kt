@@ -1,5 +1,7 @@
 package org.gonza.kotlinplayground.utils
 
+import org.gonza.kotlinplayground.config.RacingConstants
+
 class Validator {
     fun stringLengthValidate(target: String, length: Int) {
         if (target.length > length) {
@@ -7,6 +9,10 @@ class Validator {
         }
 
         return
+    }
+
+    fun isGreaterThanThreshold(target: Int): Boolean {
+        return target >= RacingConstants.RANDOM_NUMBER_THRESHOLD
     }
 
 }
