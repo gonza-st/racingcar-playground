@@ -2,8 +2,7 @@ package org.gonza.javaplayground.car;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
     @Test
@@ -16,10 +15,14 @@ class CarTest {
     }
 
     @Test
-    void Car는_name이_5자를_초과할_수_있다() {
-        String name = "123456";
+    void Car는_name이_5자를_초과할_수_없다() {
+        String oneLengthName = "1";
+        String fiveLengthName = "12345";
+        String sixLengthName = "123456";
 
-        assertThrows(IllegalArgumentException.class, () -> new Car(name));
+        assertDoesNotThrow(() -> new Car(oneLengthName));
+        assertDoesNotThrow(() -> new Car(fiveLengthName));
+        assertThrows(IllegalArgumentException.class, () -> new Car(sixLengthName));
     }
 
     @Test
