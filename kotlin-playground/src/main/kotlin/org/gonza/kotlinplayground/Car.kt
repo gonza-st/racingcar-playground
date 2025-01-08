@@ -2,7 +2,7 @@ package org.gonza.kotlinplayground
 
 class Car(
     val name: String,
-    val location: Int
+    val location: Int = 0
 ){
     init {
         require(name.isNotBlank()) { "이름은 비어있을 수 없다" }
