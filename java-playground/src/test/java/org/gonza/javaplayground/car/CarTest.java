@@ -31,4 +31,14 @@ class CarTest {
 
         assertEquals(car.getPosition(), 0);
     }
+
+    @Test
+    void Car는_한_칸_이동할_수_있다() {
+        Car car = new Car("name");
+        assertEquals(car.getPosition(), 0);
+
+        car.move();
+
+        assertEquals(car.getPosition(), 1);
+    }
 }

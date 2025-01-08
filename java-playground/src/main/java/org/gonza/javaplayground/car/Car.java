@@ -2,6 +2,7 @@ package org.gonza.javaplayground.car;
 
 public class Car {
     private final String name;
+    private int position = 0;
 
     public Car(String name) {
         validateName(name);
@@ -19,6 +20,10 @@ public class Car {
     }
 
     public int getPosition() {
-        return 0;
+        return this.position;
+    }
+
+    public void move() {
+        this.position += 1;
     }
 }
