@@ -13,17 +13,17 @@ public class Car {
         return this.name;
     }
 
-    private void validateName(String name) {
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("Car name must not exceed 5 characters");
-        }
-    }
-
     public int getPosition() {
         return this.position;
     }
 
     public void move() {
-        this.position += 1;
+        this.position++;
+    }
+
+    private void validateName(String name) {
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("Car name must not exceed 5 characters");
+        }
     }
 }
