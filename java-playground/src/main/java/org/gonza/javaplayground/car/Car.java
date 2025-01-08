@@ -17,4 +17,8 @@ public class Car {
             throw new IllegalArgumentException("Car name must not exceed 5 characters");
         }
     }
+
+    public int getPosition() {
+        return 0;
+    }
 }
