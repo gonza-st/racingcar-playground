@@ -1,4 +1,5 @@
 import org.gonza.javaplayground.RacingGame;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
@@ -10,7 +11,7 @@ public class RacingGameTest {
     @Test
     public void contextLoads() {
     }
-    
+
     @Test
     public void should_decrease_one_count_by_every_race() throws NoSuchFieldException, IllegalAccessException {
         Integer racingCount = 3;
@@ -23,21 +24,6 @@ public class RacingGameTest {
         racingGame.race();
         Integer afterRaceCount = getRacingCount(racingGame);
         assertEquals(afterRaceCount, initialCount - 1);
-    }
-
-    @Test
-    public void should_contain_car_names_as_private_string_type() throws NoSuchFieldException {
-        Field field = getPrivateField("carNames");
-
-        assertTrue(Modifier.isPrivate(field.getModifiers()));
-        assertEquals(String.class, field.getType());
-    }
-
-    @Test
-    public void should_contain_race_count_as_private_Integer_type() throws NoSuchFieldException {
-        Field field = getPrivateField("racingCount");
-        assertTrue(Modifier.isPrivate(field.getModifiers()));
-        assertEquals(Integer.class, field.getType());
     }
 
     @Test
@@ -66,6 +52,24 @@ public class RacingGameTest {
 
         Integer assignedRacingCount = getRacingCount(game);
         assertEquals(assignedRacingCount, racingCount);
+    }
+
+    @Nested
+    class StructureTest {
+        @Test
+        public void should_contain_car_names_as_private_string_type() throws NoSuchFieldException {
+            Field field = getPrivateField("carNames");
+
+            assertTrue(Modifier.isPrivate(field.getModifiers()));
+            assertEquals(String.class, field.getType());
+        }
+
+        @Test
+        public void should_contain_race_count_as_private_Integer_type() throws NoSuchFieldException {
+            Field field = getPrivateField("racingCount");
+            assertTrue(Modifier.isPrivate(field.getModifiers()));
+            assertEquals(Integer.class, field.getType());
+        }
     }
 
     private Integer getRacingCount(RacingGame game) throws NoSuchFieldException, IllegalAccessException {
