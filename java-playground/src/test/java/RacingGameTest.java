@@ -1,7 +1,10 @@
 
 import org.gonza.javaplayground.RacingGame;
+import org.gonza.javaplayground.rule.GameRule;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -9,13 +12,22 @@ import java.lang.reflect.Modifier;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RacingGameTest {
+    @Mock
+    private GameRule gameRule;
+
+    private RacingGame game;
+
+    @BeforeEach
+    public void setUp() throws Exception {
+        this.game = new RacingGame(gameRule);
+    }
+
     @Test
     public void contextLoads() {
     }
 
     @Test
     public void should_be_able_to_start_game() throws NoSuchFieldException, IllegalAccessException {
-        RacingGame game = new RacingGame();
         Boolean initialIsPlaying = getIsPlaying(game);
         assertFalse(initialIsPlaying);
 
@@ -27,7 +39,6 @@ public class RacingGameTest {
 
     @Test
     public void should_be_able_to_finish_game() throws NoSuchFieldException, IllegalAccessException {
-        RacingGame game = new RacingGame();
         game.startGame();
 
         Boolean initialIsPlaying = getIsPlaying(game);
@@ -41,7 +52,6 @@ public class RacingGameTest {
 
     @Test
     public void should_be_false_when_instance_initialized() throws NoSuchFieldException, IllegalAccessException {
-        RacingGame game = new RacingGame();
         Boolean isPlayingField = getIsPlaying(game);
         assertFalse(isPlayingField);
     }
@@ -49,21 +59,18 @@ public class RacingGameTest {
     @Test
     public void should_decrease_one_count_by_every_race() throws NoSuchFieldException, IllegalAccessException {
         Integer racingCount = 3;
-        RacingGame racingGame = new RacingGame();
-        racingGame.assignRacingCount(racingCount);
+        game.assignRacingCount(racingCount);
 
-        Integer initialCount = getRacingCount(racingGame);
+        Integer initialCount = getRacingCount(game);
         assertEquals(racingCount, initialCount);
 
-        racingGame.race();
-        Integer afterRaceCount = getRacingCount(racingGame);
+        game.race();
+        Integer afterRaceCount = getRacingCount(game);
         assertEquals(afterRaceCount, initialCount - 1);
     }
 
     @Test
     public void should_assign_racing_count() throws NoSuchFieldException, IllegalAccessException {
-        RacingGame game = new RacingGame();
-
         Integer initRacingCount = getRacingCount(game);
         assertNull(initRacingCount);
 
@@ -78,8 +85,6 @@ public class RacingGameTest {
     class AssignCarNameTest {
         @Test
         public void should_assign_carName() throws NoSuchFieldException, IllegalAccessException {
-            RacingGame game = new RacingGame();
-
             String initCarName = getCarNames(game);
             assertNull(initCarName);
 
@@ -114,6 +119,17 @@ public class RacingGameTest {
             assertTrue(Modifier.isPrivate(field.getModifiers()));
             assertEquals(Boolean.class, field.getType());
         }
+
+        @Test
+        public void should_contain_rule_as_private_Rule_type() throws NoSuchFieldException {
+            Field field = getPrivateField("rule");
+            assertTrue(Modifier.isPrivate(field.getModifiers()));
+            assertEquals(GameRule.class, field.getType());
+        }
+    }
+
+    private GameRule getGameRule(RacingGame game) throws NoSuchFieldException, IllegalAccessException {
+        return (GameRule) game.getClass().getDeclaredField("rule").get(game);
     }
 
     private Boolean getIsPlaying(RacingGame game) throws NoSuchFieldException, IllegalAccessException {

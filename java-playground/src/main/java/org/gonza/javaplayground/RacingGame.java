@@ -1,14 +1,19 @@
 package org.gonza.javaplayground;
 
+import org.gonza.javaplayground.rule.GameRule;
+
 public class RacingGame {
+    private GameRule rule;
+
     private Boolean isPlaying;
 
     private String carNames;
 
     private Integer racingCount;
 
-    public RacingGame() {
+    public RacingGame(GameRule rule) {
         this.isPlaying = false;
+        this.rule = rule;
     }
 
     public void startGame() {
