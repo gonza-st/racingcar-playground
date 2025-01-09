@@ -36,4 +36,27 @@ class CarsTest {
 
         assertThrows(IllegalArgumentException.class, () -> cars.convertToCar(names));
     }
+
+    @Test
+    void Cars의_Car는_숫자_4_이상이면_이동한다() {
+        cars.convertToCar(List.of("test1"));
+
+        cars.moveBy(List.of(4));
+
+        assertEquals(1, getHighestPosition(cars));
+    }
+
+    @Test
+    void Cars의_Car는_숫자_4_미만이면_이동하지_않는다() {
+        cars.convertToCar(List.of("test1"));
+        assertEquals(0, getHighestPosition(cars));
+
+        cars.moveBy(List.of(3));
+
+        assertEquals(0, getHighestPosition(cars));
+    }
+
+    private int getHighestPosition(Cars cars) {
+        return cars.highestPositionsCar().getFirst().getPosition();
+    }
 }

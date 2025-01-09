@@ -13,5 +13,7 @@
 > Car의 생성 및 움직임에 대해 컨트롤할 수 있다. 또한, 정보를 얻어오는 역할도 가능하다.
 
 - [x] Cars는 여러 대의 Car를 가질 수 있다.
-- [ ] Cars는 각 Car의 이름과 Position을 가져올 수 있다.
-- [ ] Cars는 제일 높은 Position의 Car들을 가져올 수 있다.
+- [x] Cars는 각 Car의 이름과 Position을 가져올 수 있다.
+- [x] Cars는 숫자에 따라 Car를 move할 수 있다.
+  - comment) 위 요구사항 구현 시 보폭이 너무 컸다.
+- [x] Cars는 제일 높은 Position의 Car들을 가져올 수 있다.
