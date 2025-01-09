@@ -11,8 +11,28 @@ class Validator {
         return
     }
 
-    fun isGreaterThanThreshold(target: Int): Boolean {
-        return target >= RacingConstants.RANDOM_NUMBER_THRESHOLD
+    fun isNumberGreaterThanThreshold(target: Int, threshold: Int): Boolean {
+        return target >= threshold
+    }
+
+    fun validateBlank(target: String) {
+        if (target.isBlank()) {
+            throw IllegalArgumentException("문자열이 빈 값입니다.")
+        }
+
+        return
+    }
+
+    fun validateDelimiter(target: String) {
+        val trimmedString = target.trim()
+        val invalidString = trimmedString.filter { char ->
+            char.toString().matches(RacingConstants.INPUT_REGEX.toRegex()) &&
+                    char.toString() != RacingConstants.INPUT_DELIMITER
+        }
+
+        if (invalidString.isNotBlank()) {
+            throw IllegalArgumentException("구분자는 ','만 허용됩니다.")
+        }
     }
 
 }

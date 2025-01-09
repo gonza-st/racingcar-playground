@@ -30,7 +30,7 @@ class ValidatorTest {
         val validator = Validator()
         val target = 9
 
-        val result = validator.isGreaterThanThreshold(target)
+        val result = validator.isNumberGreaterThanThreshold(target = target, threshold = RacingConstants.RANDOM_NUMBER_THRESHOLD)
 
         assertTrue(result)
     }
@@ -40,8 +40,32 @@ class ValidatorTest {
         val validator = Validator()
         val target = 3
 
-        val result = validator.isGreaterThanThreshold(target)
+        val result = validator.isNumberGreaterThanThreshold(target = target, threshold = RacingConstants.RANDOM_NUMBER_THRESHOLD)
 
         assertFalse(result)
+    }
+
+    @Test
+    fun `입력한 값이 없다면 예외가 발생한다`() {
+        val emptyString = ""
+        val validator = Validator()
+
+        assertThrows<IllegalArgumentException> { validator.validateBlank(emptyString) }
+    }
+
+    @Test
+    fun `입력값의 구분자가 쉼표인 경우 정상적으로 동작한다`() {
+        val validString = "아반떼,봉고,포르쉐"
+        val validator = Validator()
+
+        assertDoesNotThrow { validator.validateDelimiter(validString) }
+    }
+
+    @Test
+    fun `입력값의 구분자가 이상한 경우 예외가 발생한다`() {
+        val invalidString = "아반떼.봉고.포르쉐"
+        val validator = Validator()
+
+        assertThrows<IllegalArgumentException> { validator.validateDelimiter(invalidString) }
     }
 }

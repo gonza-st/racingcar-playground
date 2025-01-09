@@ -1,5 +1,6 @@
 package org.gonza.kotlinplayground
 
+import org.gonza.kotlinplayground.config.RacingConstants
 import org.gonza.kotlinplayground.domain.Car
 import org.gonza.kotlinplayground.utils.Validator
 import org.junit.jupiter.api.Test
@@ -38,9 +39,32 @@ class CarTest {
     fun `자동차가 움직일 경우 거리가 1씩 증가한다`() {
         val validator = Validator()
         val car = Car(name = "아반떼", validator = validator)
-        val expectedDistance = 1
+        val count = 100
 
-        car.move()
+        repeat(count) {
+            car.move()
+        }
+
+        assertEquals(count, car.distance)
+    }
+
+    @Test
+    fun `기준값 이상일 경우만 전진한다`() {
+        val randomNumberList = listOf(4, 5, 6, 7, 1)
+        val expectedDistance = randomNumberList.count { it >= RacingConstants.RANDOM_NUMBER_THRESHOLD }
+        val validator = Validator()
+        val car = Car(name = "벤스", validator = validator)
+
+        randomNumberList.forEach { number ->
+            val isMoveable = validator.isNumberGreaterThanThreshold(
+                target = number,
+                threshold = RacingConstants.RANDOM_NUMBER_THRESHOLD
+            )
+
+            if (isMoveable) {
+                car.move()
+            }
+        }
 
         assertEquals(expectedDistance, car.distance)
     }
