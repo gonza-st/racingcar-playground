@@ -1,3 +1,4 @@
+
 import org.gonza.javaplayground.RacingGame;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -60,20 +61,6 @@ public class RacingGameTest {
     }
 
     @Test
-    public void should_assign_carName() throws NoSuchFieldException, IllegalAccessException {
-        RacingGame game = new RacingGame();
-
-        String initCarName = getCarNames(game);
-        assertNull(initCarName);
-
-        String carNames = "pobi,crong,honux";
-        game.assignCarName(carNames);
-
-        String assignedCarName = getCarNames(game);
-        assertEquals(assignedCarName, carNames);
-    }
-
-    @Test
     public void should_assign_racing_count() throws NoSuchFieldException, IllegalAccessException {
         RacingGame game = new RacingGame();
 
@@ -85,6 +72,23 @@ public class RacingGameTest {
 
         Integer assignedRacingCount = getRacingCount(game);
         assertEquals(assignedRacingCount, racingCount);
+    }
+
+    @Nested
+    class AssignCarNameTest {
+        @Test
+        public void should_assign_carName() throws NoSuchFieldException, IllegalAccessException {
+            RacingGame game = new RacingGame();
+
+            String initCarName = getCarNames(game);
+            assertNull(initCarName);
+
+            String carNames = "pobi,crong,honux";
+            game.assignCarName(carNames);
+
+            String assignedCarName = getCarNames(game);
+            assertEquals(assignedCarName, carNames);
+        }
     }
 
     @Nested
