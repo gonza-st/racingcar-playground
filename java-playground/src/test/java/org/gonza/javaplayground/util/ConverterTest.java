@@ -3,14 +3,12 @@ package org.gonza.javaplayground.util;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class SeparatorTest {
+public class ConverterTest {
 
     @Test
     @DisplayName("쉼표로 구분을 할 수 있다.")
@@ -38,25 +36,4 @@ public class SeparatorTest {
                 .hasMessageContaining("구분자가 올바르지 않습니다.");
     }
 
-    private class Converter {
-
-        public static final String COMMAS = ",";
-        public static final int NUMBER_WHEN_NOT_SEPARATED = 1;
-
-        public Converter() {
-            throw new IllegalStateException("유틸리티 클래스 입니다.");
-        }
-
-        public static List<String> separatedByCommas(String input) {
-            ArrayList<String> arrayList = new ArrayList<>();
-            String[] separatedInputList = input.split(COMMAS);
-            if (separatedInputList.length == NUMBER_WHEN_NOT_SEPARATED) {
-                throw new IllegalArgumentException("구분자가 올바르지 않습니다.");
-            }
-
-            arrayList.addAll(Arrays.asList(separatedInputList));
-
-            return arrayList;
-        }
-    }
 }
