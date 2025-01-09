@@ -13,6 +13,13 @@ public class RacingGameTest {
     }
 
     @Test
+    public void should_be_false_when_instance_initialized() throws NoSuchFieldException, IllegalAccessException {
+        RacingGame game = new RacingGame();
+        Boolean isPlayingField = getIsPlaying(game);
+        assertFalse(isPlayingField);
+    }
+
+    @Test
     public void should_decrease_one_count_by_every_race() throws NoSuchFieldException, IllegalAccessException {
         Integer racingCount = 3;
         RacingGame racingGame = new RacingGame();
@@ -70,6 +77,17 @@ public class RacingGameTest {
             assertTrue(Modifier.isPrivate(field.getModifiers()));
             assertEquals(Integer.class, field.getType());
         }
+
+        @Test
+        public void should_contain_isPlaying_as_private_Boolean_type() throws NoSuchFieldException {
+            Field field = getPrivateField("isPlaying");
+            assertTrue(Modifier.isPrivate(field.getModifiers()));
+            assertEquals(Boolean.class, field.getType());
+        }
+    }
+
+    private Boolean getIsPlaying(RacingGame game) throws NoSuchFieldException, IllegalAccessException {
+        return (Boolean) getPrivateField("isPlaying").get(game);
     }
 
     private Integer getRacingCount(RacingGame game) throws NoSuchFieldException, IllegalAccessException {
