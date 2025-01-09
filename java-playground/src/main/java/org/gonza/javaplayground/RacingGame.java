@@ -12,4 +12,10 @@ public class RacingGame {
     public void assignRacingCount(Integer racingCount) {
         this.racingCount = racingCount;
     }
+
+    public void race() {
+        this.racingCount--;
+    }
+
+
 }

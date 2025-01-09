@@ -10,6 +10,20 @@ public class RacingGameTest {
     @Test
     public void contextLoads() {
     }
+    
+    @Test
+    public void should_decrease_one_count_by_every_race() throws NoSuchFieldException, IllegalAccessException {
+        Integer racingCount = 3;
+        RacingGame racingGame = new RacingGame();
+        racingGame.assignRacingCount(racingCount);
+
+        Integer initialCount = getRacingCount(racingGame);
+        assertEquals(racingCount, initialCount);
+
+        racingGame.race();
+        Integer afterRaceCount = getRacingCount(racingGame);
+        assertEquals(afterRaceCount, initialCount - 1);
+    }
 
     @Test
     public void should_contain_car_names_as_private_string_type() throws NoSuchFieldException {
