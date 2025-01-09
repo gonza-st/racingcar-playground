@@ -8,7 +8,7 @@ class RacingCars(
         val farthestCarList = carList.filter { it.getPosition() == farthestPosition }
 
         return farthestCarList.map {
-            Car(it.getPosition())
+            Car(it.getName(), it.getPosition())
         }
     }
 }
