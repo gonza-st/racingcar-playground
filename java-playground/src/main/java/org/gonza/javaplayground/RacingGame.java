@@ -10,7 +10,15 @@ public class RacingGame {
     public RacingGame() {
         this.isPlaying = false;
     }
-    
+
+    public void startGame() {
+        this.isPlaying = true;
+    }
+
+    public Boolean finishGame() {
+        return this.isPlaying = false;
+    }
+
     public void assignCarName(String carName) {
         this.carNames = carName;
     }

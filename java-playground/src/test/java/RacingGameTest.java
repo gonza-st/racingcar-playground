@@ -13,6 +13,32 @@ public class RacingGameTest {
     }
 
     @Test
+    public void should_be_able_to_start_game() throws NoSuchFieldException, IllegalAccessException {
+        RacingGame game = new RacingGame();
+        Boolean initialIsPlaying = getIsPlaying(game);
+        assertFalse(initialIsPlaying);
+
+        game.startGame();
+
+        Boolean startedIsPlaying = getIsPlaying(game);
+        assertTrue(startedIsPlaying);
+    }
+
+    @Test
+    public void should_be_able_to_finish_game() throws NoSuchFieldException, IllegalAccessException {
+        RacingGame game = new RacingGame();
+        game.startGame();
+
+        Boolean initialIsPlaying = getIsPlaying(game);
+        assertTrue(initialIsPlaying);
+
+        game.finishGame();
+
+        Boolean finishedIsPlaying = getIsPlaying(game);
+        assertFalse(finishedIsPlaying);
+    }
+
+    @Test
     public void should_be_false_when_instance_initialized() throws NoSuchFieldException, IllegalAccessException {
         RacingGame game = new RacingGame();
         Boolean isPlayingField = getIsPlaying(game);
