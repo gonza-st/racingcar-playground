@@ -1,4 +1,4 @@
-package org.gonza.kotlinplayground.domain
+package org.gonza.kotlinplayground.domain.car
 
 class Car(
     private val name: String,
