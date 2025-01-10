@@ -5,17 +5,21 @@ import java.util.List;
 
 public class Cars {
     public static final int MOVE_CONDITION = 4;
-    private final List<Car> carList = new ArrayList<>();
+
+    private List<Car> carList = new ArrayList<>();
+
+    public Cars(List<String> names) {
+        this.carList = convertToCar(names);
+    }
 
     public int countCars() {
         return this.carList.size();
     }
 
-    public void convertToCar(List<String> names) {
-        names.forEach(carName -> {
-            Car car = new Car(carName);
-            this.carList.add(car);
-        });
+    private List<Car> convertToCar(List<String> names) {
+        return names.stream()
+            .map(Car::new)
+            .toList();
     }
 
     // FIXME: 로직 개선 필요
