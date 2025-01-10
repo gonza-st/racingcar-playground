@@ -28,22 +28,17 @@ class CarsTest {
     void Cars의_Car는_숫자_4_이상이면_이동한다() {
         Cars cars = new Cars(List.of("test1"));
 
-        cars.moveBy(List.of(4));
+        RaceResult result = cars.race(List.of(4));
 
-        assertEquals(1, getHighestPosition(cars));
+        assertEquals(1, result.highestPosition());
     }
 
     @Test
     void Cars의_Car는_숫자_4_미만이면_이동하지_않는다() {
         Cars cars = new Cars(List.of("test1"));
-        assertEquals(0, getHighestPosition(cars));
 
-        cars.moveBy(List.of(3));
+        RaceResult result = cars.race(List.of(3));
 
-        assertEquals(0, getHighestPosition(cars));
-    }
-
-    private int getHighestPosition(Cars cars) {
-        return cars.highestPositionsCar().getFirst().getPosition();
+        assertEquals(0, result.highestPosition());
     }
 }

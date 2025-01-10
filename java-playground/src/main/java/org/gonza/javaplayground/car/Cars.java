@@ -47,4 +47,14 @@ public class Cars {
             car.move();
         }
     }
+
+    public RaceResult race(List<Integer> numbers) {
+        RaceResult raceResult = new RaceResult();
+
+        numbers.forEach(number -> {
+            // raceResult
+        });
+
+        return raceResult;
+    }
 }
