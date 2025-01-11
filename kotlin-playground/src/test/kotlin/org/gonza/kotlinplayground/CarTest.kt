@@ -2,6 +2,7 @@ package org.gonza.kotlinplayground
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import kotlin.test.assertEquals
 
 class CarTest {
     @Test
@@ -22,12 +23,9 @@ class CarTest {
     }
 
     @Test
-    fun `자동차의 위치는 음수일 수 없다`(){
-        assertThrows<IllegalArgumentException> {
-            Car(
-                name = Fixture.name,
-                location = -1
-            )
-        }
+    fun `자동차의 처음 위치는 0 일 수 있다`(){
+        val actual = Car(Fixture.name)
+
+        assertEquals(actual.location ,Fixture.location)
     }
 }
