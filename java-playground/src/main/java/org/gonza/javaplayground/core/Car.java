@@ -17,4 +17,7 @@ class Car {
         return position;
     }
 
+    public void forward(int randomNumber) {
+        position.increase(randomNumber);
+    }
 }
