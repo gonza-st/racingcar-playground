@@ -1,30 +1,20 @@
 package org.gonza.javaplayground.core;
 
-import org.springframework.util.Assert;
-
 class Car {
-    private String name;
+    private Nickname nickname;
     private Position position;
 
-    public Car(String name, Position position) {
-        validateName(name);
-        this.name = name;
+    public Car(Nickname nickname, Position position) {
+        this.nickname = nickname;
         this.position = position;
     }
 
-    public String getName() {
-        return name;
+    public Nickname getNickName() {
+        return nickname;
     }
 
     public Position getPosition() {
         return position;
-    }
-
-    private static void validateName(String name) {
-        Assert.hasText(name, "이름은 필수입니다.");
-        if (name.length() > 5) {
-            throw new IllegalArgumentException("이름은 5자 이하여야 합니다.");
-        }
     }
 
 }
