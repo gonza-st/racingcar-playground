@@ -15,14 +15,14 @@ public class PositionTest {
     }
 
     @Test
-    @DisplayName("부여받은 랜덤 숫자가 기준 숫자보다 크면 1칸 전진한다.")
-    void moveForwardSuccessTest() throws Exception {
+    @DisplayName("자동차가 전진하면 포지션이 증가한다.")
+    void increaseSuccessTest() throws Exception {
 
         Position position1 = new Position();
         Position position2 = new Position();
 
-        position1.moveForward(5);
-        position2.moveForward(3);
+        position1.increase(5);
+        position2.increase(3);
 
         assertThat(position1.getDistance()).isEqualTo(1);
         assertThat(position2.getDistance()).isEqualTo(0);

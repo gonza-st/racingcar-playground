@@ -12,7 +12,7 @@ class Position {
         return distance;
     }
 
-    public void moveForward(int number) {
+    public void increase(int number) {
         if (number >= CONDITION_MINIMUM_NUMBER_FOR_MOVING_FORWARD) {
             this.distance++;
         }
