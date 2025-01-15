@@ -2,7 +2,9 @@ package org.gonza.kotlinplayground
 
 import org.assertj.core.api.Assertions.*
 import org.gonza.kotlinplayground.domain.car.exception.EmptyOrNullableCarNameException
+import org.gonza.kotlinplayground.domain.car.exception.InvalidTryCountException
 import org.gonza.kotlinplayground.vo.CarNameByInput
+import org.gonza.kotlinplayground.vo.TryCountByInput
 import org.junit.jupiter.api.Test
 
 class RacingCarGameTest {
@@ -31,5 +33,19 @@ class RacingCarGameTest {
 
         assertThat(racingCarGame1.getCarNameList()).hasSize(expectedCount)
         assertThat(racingCarGame2.getCarNameList()).hasSize(expectedCount)
+    }
+
+    @Test
+    fun `차량 경주 게임의 횟수를 입력하지 않는다면 예외가 발생한다`() {
+        val tryCountNull = TryCountByInput(null)
+        val tryCountEmptyString = TryCountByInput("")
+
+        assertThatThrownBy {
+            RacingCarGame(tryCountNull)
+        }.isInstanceOf(InvalidTryCountException::class.java)
+
+        assertThatThrownBy {
+            RacingCarGame(tryCountEmptyString)
+        }.isInstanceOf(InvalidTryCountException::class.java)
     }
 }
