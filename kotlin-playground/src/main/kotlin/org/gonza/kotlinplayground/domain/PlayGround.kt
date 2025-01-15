@@ -9,4 +9,6 @@ fun main() {
 
     output.printInputCarNameList()
     val carName = input.read()
+    output.printTryCount()
+    val tryCount = input.read()
 }
