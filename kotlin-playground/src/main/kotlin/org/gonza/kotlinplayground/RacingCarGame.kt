@@ -17,7 +17,7 @@ class RacingCarGame(
 
     private val carNameList: List<String>
 
-    private val tryCount: String
+    private val tryCount: Int
 
     init {
         val validatedCarNameString = getValidatedCarNameString(carNameByInput.value)
@@ -36,11 +36,15 @@ class RacingCarGame(
         return carNameList
     }
 
-    private fun getValidatedTryCountString(tryCount: String?): String {
+    private fun getValidatedTryCountString(tryCount: String?): Int {
         if (tryCount.isNullOrEmpty()) {
             throw InvalidTryCountException()
         }
-        return tryCount
+        return try {
+            tryCount.toInt()
+        } catch (e: NumberFormatException) {
+            throw InvalidTryCountException()
+        }
     }
 
     private fun getCarNameByInput(carName: String): List<String> {

@@ -48,4 +48,13 @@ class RacingCarGameTest {
             RacingCarGame(tryCountEmptyString)
         }.isInstanceOf(InvalidTryCountException::class.java)
     }
+
+    @Test
+    fun `차량 경주 게임의 횟수를 정수값이 아닌 알맞지 않은 값을 입력한다면 예외가 발생한다`() {
+        val invalidTryCount = TryCountByInput("ddd")
+
+        assertThatThrownBy {
+            RacingCarGame(invalidTryCount)
+        }.isInstanceOf(InvalidTryCountException::class.java)
+    }
 }
