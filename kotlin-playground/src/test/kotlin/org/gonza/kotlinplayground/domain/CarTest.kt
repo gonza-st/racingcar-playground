@@ -12,4 +12,11 @@ class CarTest {
 
         assertDoesNotThrow { Car(name) }
     }
+
+    @Test
+    fun `이름이 5자를 초과할 수 없다` () {
+        val name = "longerthanfive"
+
+        assertThrows<Exception> { Car(name) }
+    }
 }
