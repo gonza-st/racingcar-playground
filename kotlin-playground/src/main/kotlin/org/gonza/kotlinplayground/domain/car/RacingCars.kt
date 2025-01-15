@@ -19,6 +19,19 @@ class RacingCars(
         }
     }
 
+    fun move(moveStrategy: MoveStrategy): List<Car> {
+        val movedCarList = carList.map { moveCar(it, moveStrategy) }
+        return movedCarList.map {
+            Car(it.getName(), it.getPosition())
+        }
+    }
+
+    private fun moveCar(car: Car, strategy: MoveStrategy): Car {
+        if (!strategy.canMove()) return car
+
+        return car.move()
+    }
+
     private fun validateDuplicatedCarName() {
         val distinctCarList = carList.distinctBy { it.getName() }
 
