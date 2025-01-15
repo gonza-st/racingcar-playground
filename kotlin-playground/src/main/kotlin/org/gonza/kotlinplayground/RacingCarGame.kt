@@ -1,17 +1,21 @@
 package org.gonza.kotlinplayground
 
-import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.exception.EmptyOrNullableCarNameException
+import org.gonza.kotlinplayground.vo.CarNameByInput
+import org.gonza.kotlinplayground.vo.TryCountByInput
 
 class RacingCarGame(
-    carName: String?,
+    carNameByInput: CarNameByInput,
+    tryCountByInput: TryCountByInput
 ) {
+    constructor(carNameByInput: CarNameByInput) : this(carNameByInput, TryCountByInput("1"))
+
     private val splitKeyword = ","
 
     private val carNameList: List<String>
 
     init {
-        val validatedCarNameString = getValidatedCarNameString(carName)
+        val validatedCarNameString = getValidatedCarNameString(carNameByInput.value)
         carNameList = getCarNameByInput(validatedCarNameString)
     }
 

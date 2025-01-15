@@ -1,7 +1,7 @@
 package org.gonza.kotlinplayground
 
-import org.gonza.kotlinplayground.domain.ui.InputView
-import org.gonza.kotlinplayground.domain.ui.OutputView
+import org.gonza.kotlinplayground.ui.InputView
+import org.gonza.kotlinplayground.ui.OutputView
 
 fun main() {
     val output = OutputView()

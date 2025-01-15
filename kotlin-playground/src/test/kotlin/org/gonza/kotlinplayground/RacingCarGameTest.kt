@@ -2,13 +2,14 @@ package org.gonza.kotlinplayground
 
 import org.assertj.core.api.Assertions.*
 import org.gonza.kotlinplayground.domain.car.exception.EmptyOrNullableCarNameException
+import org.gonza.kotlinplayground.vo.CarNameByInput
 import org.junit.jupiter.api.Test
 
 class RacingCarGameTest {
     @Test
     fun `차량 이름을 아무것도 입력하지 않는다면 예외가 발생한다`() {
-        val carNameString = null
-        val carNameEmptyString = ""
+        val carNameString = CarNameByInput(null)
+        val carNameEmptyString = CarNameByInput("")
 
         assertThatThrownBy {
             RacingCarGame(carNameString)
@@ -21,8 +22,8 @@ class RacingCarGameTest {
 
     @Test
     fun `차량 이름을 쉼표를 기준으로 분리할 수 있다`() {
-        val carNameList = "이,명,규"
-        val carNameListWithSpace = "이,  명,  규"
+        val carNameList = CarNameByInput("이,명,규")
+        val carNameListWithSpace = CarNameByInput("이,  명,  규")
         val expectedCount = 3
 
         val racingCarGame1 = RacingCarGame(carNameList)
