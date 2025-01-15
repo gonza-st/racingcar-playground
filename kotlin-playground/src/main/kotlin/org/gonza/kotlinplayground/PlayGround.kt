@@ -1,4 +1,4 @@
-package org.gonza.kotlinplayground.domain
+package org.gonza.kotlinplayground
 
 import org.gonza.kotlinplayground.domain.ui.InputView
 import org.gonza.kotlinplayground.domain.ui.OutputView
