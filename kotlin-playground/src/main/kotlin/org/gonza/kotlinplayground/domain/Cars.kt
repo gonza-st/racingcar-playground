@@ -1,17 +1,17 @@
 package org.gonza.kotlinplayground.domain
 
 class Cars(private val cars: List<Car>) {
-    var tryCount: Int = 0
-    private set
-
     fun size() = cars.size
 
-    fun moveAll(count: Int) {
-        while (tryCount < count) {
-            increaseCount()
-            cars.all { it.move() }
-        }
+    fun moveAll(): List<Car> {
+        cars.forEach { it.move() }
+        return cars
     }
 
-    private fun increaseCount() = tryCount++
+    fun findWinner(): List<Car> {
+        val groupedByDistance = cars.groupBy { it.distance }
+        val winner = groupedByDistance.maxBy { it.key }.value
+
+        return winner
+    }
 }

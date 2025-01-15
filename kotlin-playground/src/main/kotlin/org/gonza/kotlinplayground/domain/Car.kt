@@ -1,20 +1,32 @@
 package org.gonza.kotlinplayground.domain
 
 import org.gonza.kotlinplayground.config.RacingConstants
+import org.gonza.kotlinplayground.utils.NumberGenerator
 import org.gonza.kotlinplayground.utils.Validator
 
 class Car(
     val name: String,
-    validator: Validator,
+    private val validator: Validator,
+    private val generator: NumberGenerator,
 ) {
     init {
-        validator.stringLengthValidate(name, RacingConstants.DEFAULT_CAR_NAME_LENGTH)
+        validator.stringLengthValidate(target = name, length = RacingConstants.DEFAULT_CAR_NAME_LENGTH)
     }
 
     var distance: Int = 0
         private set
 
     fun move() {
-        distance++
+        if (isMoveable()) {
+            distance++
+        }
+    }
+
+    private fun isMoveable(): Boolean {
+        val number = generator.generate()
+        return validator.isNumberGreaterThanThreshold(
+            target = number,
+            threshold = RacingConstants.RANDOM_NUMBER_THRESHOLD
+        )
     }
 }
