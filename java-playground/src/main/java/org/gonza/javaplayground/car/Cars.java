@@ -22,8 +22,7 @@ public class Cars {
             .toList();
     }
 
-    // FIXME: 로직 개선 필요
-    public List<Car> highestPositionsCar() {
+    private List<Car> highestPositionsCar() {
         int highestPosition = this.carList.stream()
                 .map(Car::getPosition)
                 .sorted()
@@ -34,14 +33,6 @@ public class Cars {
                 .toList();
     }
 
-    public void moveBy(List<Integer> numbers) {
-        for (int i = 0; i < carList.size(); i++) {
-            Car car = carList.get(i);
-            int number = numbers.get(i);
-            moveByNumberCondition(number, car);
-        }
-    }
-
     private static void moveByNumberCondition(int number, Car car) {
         if (number >= MOVE_CONDITION) {
             car.move();
@@ -49,12 +40,12 @@ public class Cars {
     }
 
     public RaceResult race(List<Integer> numbers) {
-        RaceResult raceResult = new RaceResult();
+        for (int i = 0; i < numbers.size(); i++) {
+            moveByNumberCondition(numbers.get(i), carList.get(i));
+        }
 
-        numbers.forEach(number -> {
-            // raceResult
-        });
+        List<Car> highestPositionsCarList = highestPositionsCar();
 
-        return raceResult;
+        return new RaceResult(highestPositionsCarList);
     }
 }
