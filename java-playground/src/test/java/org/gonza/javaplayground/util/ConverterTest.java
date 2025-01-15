@@ -2,6 +2,8 @@ package org.gonza.javaplayground.util;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -26,10 +28,11 @@ public class ConverterTest {
     }
 
     @DisplayName("쉼표로 구분되지 않을 경우 예외가 터진다.")
-    @Test
-    void separatedByCommasFailTest_invalidSeparator() throws Exception {
+    @ParameterizedTest
+    @ValueSource(strings = {"|", ".", "-", "a", "%"})
+    void separatedByCommasFailTest_invalidSeparator(String invalidData) throws Exception {
 
-        String invalidInputData = "lee|hong|seob";
+        String invalidInputData = "lee" + invalidData + "hong" + invalidData + "seob";
 
         assertThatThrownBy(() -> Converter.separatedByCommas(invalidInputData))
                 .isInstanceOf(IllegalArgumentException.class)
