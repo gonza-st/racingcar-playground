@@ -30,17 +30,16 @@ class Race(
     private fun addHistory(): Cars = Cars(copyCarList())
 
     private fun copyCarList(): List<Car> {
-        val copiedCarList: List<Car> =
-            this.carList.map { car ->
-                Car(
-                    name = car.name,
-                    position = Position(car.position()),
-                    numberGenerator = car.numberGenerator,
-                )
-            }
-
+        val copiedCarList: List<Car> = this.carList.map { car -> copyCar(car) }
         return copiedCarList
     }
+
+    private fun copyCar(car: Car) =
+        Car(
+            name = car.name,
+            position = Position(car.position()),
+            numberGenerator = car.numberGenerator,
+        )
 
     internal fun proceed(): List<Car> {
         this.carList.forEach { it.move() }
