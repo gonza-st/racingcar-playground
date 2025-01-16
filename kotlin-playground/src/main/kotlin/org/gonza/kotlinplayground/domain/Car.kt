@@ -1,4 +1,4 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.domain
 
 private const val MOVE_NUMBER = 4
 

@@ -1,5 +1,9 @@
 package org.gonza.kotlinplayground
 
+import org.gonza.kotlinplayground.domain.Race
+import org.gonza.kotlinplayground.domain.RandomNumberGenerator
+import org.gonza.kotlinplayground.view.InputView
+import org.gonza.kotlinplayground.view.OutputView
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 

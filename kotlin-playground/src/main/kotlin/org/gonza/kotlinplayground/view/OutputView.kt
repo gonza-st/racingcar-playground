@@ -1,4 +1,6 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.view
+
+import org.gonza.kotlinplayground.domain.Cars
 
 class OutputView {
     fun roundPosition(raceResult: List<Cars>) {

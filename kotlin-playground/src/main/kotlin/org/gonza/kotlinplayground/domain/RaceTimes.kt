@@ -1,4 +1,4 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.domain
 
 class RaceTimes(
     private val value: Int,

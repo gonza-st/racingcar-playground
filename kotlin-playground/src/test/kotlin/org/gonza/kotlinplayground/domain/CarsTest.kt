@@ -1,6 +1,7 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.domain
 
 import org.assertj.core.api.Assertions
+import org.gonza.kotlinplayground.fixture.TestFixture
 import org.junit.jupiter.api.Test
 
 class CarsTest {

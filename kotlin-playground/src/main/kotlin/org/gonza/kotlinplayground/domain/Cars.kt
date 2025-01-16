@@ -1,4 +1,4 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.domain
 
 private const val POSITION_DELIMITER = "-"
 private const val NAME_DELIMITER = ", "
