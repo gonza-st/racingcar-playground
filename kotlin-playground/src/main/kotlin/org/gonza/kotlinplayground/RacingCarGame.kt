@@ -9,10 +9,6 @@ class RacingCarGame(
     carNameByInput: CarNameByInput,
     tryCountByInput: TryCountByInput
 ) {
-    constructor(carNameByInput: CarNameByInput) : this(carNameByInput, TryCountByInput("1"))
-
-    constructor(tryCountByInput: TryCountByInput) : this(CarNameByInput("Temp"), tryCountByInput)
-
     private val splitKeyword = ","
 
     private val carNameList: List<String>
