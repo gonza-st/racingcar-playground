@@ -31,7 +31,7 @@ class CarTest {
 
         val checkedNumber = car.checkNumber()
 
-        val expectedNumber = 4L
+        val expectedNumber = 4
 
         Assertions.assertThat(checkedNumber).isEqualTo(expectedNumber)
     }
