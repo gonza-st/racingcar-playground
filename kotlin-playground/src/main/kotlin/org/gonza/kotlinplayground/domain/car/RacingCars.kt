@@ -14,16 +14,12 @@ class RacingCars(
         val farthestPosition = carList.maxOf { it.getPosition() }
         val farthestCarList = carList.filter { it.getPosition() == farthestPosition }
 
-        return farthestCarList.map {
-            Car(it.getName(), it.getPosition())
-        }
+        return farthestCarList.getCarList()
     }
 
     fun move(moveStrategy: MoveStrategy): List<Car> {
         val movedCarList = carList.map { moveCar(it, moveStrategy) }
-        return movedCarList.map {
-            Car(it.getName(), it.getPosition())
-        }
+        return movedCarList.getCarList()
     }
 
     private fun moveCar(car: Car, strategy: MoveStrategy): Car {
@@ -39,4 +35,6 @@ class RacingCars(
             throw DuplicatedCarNameException()
         }
     }
+
+    private fun List<Car>.getCarList() = this.map { Car(it.getName(), it.getPosition()) }
 }
