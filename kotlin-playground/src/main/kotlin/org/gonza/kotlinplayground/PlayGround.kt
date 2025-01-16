@@ -19,13 +19,12 @@ private fun getValidatedCarName(
     validator: RacingCarGameValidator
 ): String {
     while (true) {
-        try {
-            output.printInputCarNameList()
-            val carNameByInput = input.read()
-            return validator.getValidatedCarName(carNameByInput)
-        } catch (e: EmptyOrNullableCarNameException) {
-            output.printCarNameError()
-        }
+        return getValidatedTemplate(
+            outputMessage = output::printInputCarNameList,
+            inputMessage = input::read,
+            errorMessage = output::printCarNameError,
+            validator = validator::getValidatedCarName
+        )
     }
 }
 
@@ -35,12 +34,26 @@ private fun getValidatedTryCount(
     validator: RacingCarGameValidator
 ): Int {
     while (true) {
-        try {
-            output.printTryCount()
-            val tryCountByInput = input.read()
-            return validator.getValidatedTryCountString(tryCountByInput)
-        } catch (e: EmptyOrNullableCarNameException) {
-            output.printTryCount()
-        }
+        return getValidatedTemplate(
+            outputMessage = output::printTryCount,
+            inputMessage = input::read,
+            errorMessage = output::printTryCountError,
+            validator = validator::getValidatedTryCountString
+        )
+    }
+}
+
+private fun <T> getValidatedTemplate(
+    outputMessage: () -> Unit,
+    inputMessage: () -> String?,
+    errorMessage: () -> Unit,
+    validator: (String?) -> T,
+): T {
+    try {
+        outputMessage()
+        val inputValue = inputMessage()
+        return validator(inputValue)
+    } catch (e: Exception) {
+        errorMessage()
     }
 }
