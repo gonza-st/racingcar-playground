@@ -1,6 +1,6 @@
 package org.gonza.javaplayground.core;
 
-class Nickname {
+public class Nickname {
 
     public static final int MAX_NAME_LENGTH = 5;
     private final String name;

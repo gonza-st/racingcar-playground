@@ -1,6 +1,6 @@
 package org.gonza.javaplayground.core;
 
-class Car {
+public class Car {
     private Nickname nickname;
     private Position position;
 

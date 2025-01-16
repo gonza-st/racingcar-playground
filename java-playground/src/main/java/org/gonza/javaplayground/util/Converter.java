@@ -3,7 +3,7 @@ package org.gonza.javaplayground.util;
 import java.util.Arrays;
 import java.util.List;
 
-class Converter {
+public class Converter {
 
     public static final String COMMAS = ",";
     public static final int NUMBER_WHEN_NOT_SEPARATED = 1;
@@ -14,10 +14,6 @@ class Converter {
 
     public static List<String> separatedByCommas(String input) {
         String[] separatedInputList = input.split(COMMAS);
-
-        if (separatedInputList.length == NUMBER_WHEN_NOT_SEPARATED) {
-            throw new IllegalArgumentException("구분자가 올바르지 않습니다.");
-        }
 
         return Arrays.asList(separatedInputList);
     }
