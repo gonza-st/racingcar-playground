@@ -1,10 +1,8 @@
 package org.gonza.kotlinplayground.domain
 
-import org.gonza.kotlinplayground.ui.PrintView
-
-class Ranking(
-    val cars: Cars,
-    private val printView: PrintView,
-) {
-
+class Ranking {
+    fun rank(carList: List<Car>): List<String> {
+        val movement = carList.map { car -> "${car.name} : ${"-".repeat(car.distance)}" }
+        return movement
+    }
 }

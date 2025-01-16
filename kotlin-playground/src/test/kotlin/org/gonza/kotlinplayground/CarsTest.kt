@@ -35,7 +35,7 @@ class CarsTest {
         val count = 10
 
         repeat(count) {
-            cars.moveAll(count)
+            cars.moveAll()
         }
 
         assertEquals(expectedCarList, cars.findWinner())
