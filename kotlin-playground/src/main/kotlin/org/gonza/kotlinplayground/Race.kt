@@ -17,16 +17,7 @@ class Race(
     fun run() {
         while (this.raceTimes.isNotZero()) {
             this.proceed()
-            val currentCars =
-                Cars(
-                    this.carList.map { car ->
-                        Car(
-                            name = car.name,
-                            position = Position(car.position()),
-                            numberGenerator = car.numberGenerator,
-                        )
-                    },
-                )
+            val currentCars = addHistory()
             this.raceResult.add(currentCars)
             this.raceTimes = this.raceTimes.decrease()
         }
@@ -35,6 +26,21 @@ class Race(
     fun timesEqualTo(expectedValue: Int): Boolean = this.raceTimes.equal(expectedValue)
 
     fun raceResult(): List<Cars> = this.raceResult
+
+    private fun addHistory(): Cars = Cars(copyCarList())
+
+    private fun copyCarList(): List<Car> {
+        val copiedCarList: List<Car> =
+            this.carList.map { car ->
+                Car(
+                    name = car.name,
+                    position = Position(car.position()),
+                    numberGenerator = car.numberGenerator,
+                )
+            }
+
+        return copiedCarList
+    }
 
     internal fun proceed(): List<Car> {
         this.carList.forEach { it.move() }
