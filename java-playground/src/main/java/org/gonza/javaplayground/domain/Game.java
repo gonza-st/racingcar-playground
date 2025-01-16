@@ -66,7 +66,7 @@ public class Game {
     }
 
     private static void randomMoveCar(Car car) {
-        Integer random = Random.between(1, 10);
+        Integer random = Random.between(0, 9);
         if (Car.isPossibleMovingForward(random)) {
             car.moveForward();
         }
