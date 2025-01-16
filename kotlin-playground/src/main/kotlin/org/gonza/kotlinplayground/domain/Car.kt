@@ -7,7 +7,7 @@ class Car(
     var position: Position,
     val numberGenerator: NumberGenerator,
 ) {
-    constructor(name: String, numberGenerator: NumberGenerator) : this(name, Position(0), numberGenerator)
+    constructor(name: String, numberGenerator: NumberGenerator) : this(name, Position.init(), numberGenerator)
 
     fun move() {
         if (isMovable()) {
