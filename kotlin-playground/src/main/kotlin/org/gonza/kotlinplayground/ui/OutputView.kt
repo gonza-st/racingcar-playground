@@ -20,4 +20,6 @@ interface OutputView {
     fun printInvalidCarNameLengthError()
 
     fun printTryCountError()
+
+    fun println()
 }

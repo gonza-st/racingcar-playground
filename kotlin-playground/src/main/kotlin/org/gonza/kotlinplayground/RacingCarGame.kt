@@ -1,6 +1,5 @@
 package org.gonza.kotlinplayground
 
-import org.gonza.kotlinplayground.RacingCarGame.CarNameParser.SPLIT_KEYWORD
 import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.domain.car.RacingCars

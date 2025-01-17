@@ -12,19 +12,15 @@ class TestOutputViewFixture : OutputView {
     }
 
     override fun printCarName(carName: String) {
-        TODO("Not yet implemented")
     }
 
     override fun printMovement(count: Int) {
-        TODO("Not yet implemented")
     }
 
     override fun printResultMessage() {
-        TODO("Not yet implemented")
     }
 
     override fun printWinnerMessage(winner: String) {
-        TODO("Not yet implemented")
     }
 
     override fun printEmptyOrNullCarNameError() {
@@ -41,5 +37,8 @@ class TestOutputViewFixture : OutputView {
 
     override fun printTryCountError() {
         printErrorCount++
+    }
+
+    override fun println() {
     }
 }

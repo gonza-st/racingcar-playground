@@ -40,4 +40,8 @@ class OutputViewImpl : OutputView {
     override fun printTryCountError() {
         println("시도 횟수를 잘 못 입력하였습니다.")
     }
+
+    override fun println() {
+        kotlin.io.println()
+    }
 }

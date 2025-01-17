@@ -1,5 +1,6 @@
 package org.gonza.kotlinplayground
 
+import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.*
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.ui.InputView
@@ -89,9 +90,9 @@ class RacingCarGameRunnerTest {
 
         assertDoesNotThrow { nullNameRacingCarGameRunner.run() }
         assertDoesNotThrow { emptyNameRacingCarGameRunner.run() }
-        assertThat(outputView.printErrorCount > 0)
-        assertThat(nullTestInputView.callCount > 1)
-        assertThat(emptyTestInputView.callCount > 1)
+        assertThat(outputView.printErrorCount).isGreaterThan(0)
+        assertThat(nullTestInputView.callCount).isGreaterThan(1)
+        assertThat(emptyTestInputView.callCount).isGreaterThan(1)
     }
 
     @Test
