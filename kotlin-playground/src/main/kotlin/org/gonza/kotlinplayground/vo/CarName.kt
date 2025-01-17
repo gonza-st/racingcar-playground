@@ -1,5 +1,5 @@
 package org.gonza.kotlinplayground.vo
 
-data class CarNameByInput(
+data class CarName(
     val value: String
 )

@@ -1,5 +1,5 @@
 package org.gonza.kotlinplayground.vo
 
-data class TryCountByInput(
+data class TryCount(
     val value: Int
 )

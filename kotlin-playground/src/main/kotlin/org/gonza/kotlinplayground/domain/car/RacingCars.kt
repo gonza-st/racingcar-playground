@@ -5,7 +5,6 @@ import org.gonza.kotlinplayground.domain.car.exception.DuplicatedCarNameExceptio
 class RacingCars(
     private val carList: List<Car>
 ) {
-
     init {
         validateDuplicatedCarName()
     }
