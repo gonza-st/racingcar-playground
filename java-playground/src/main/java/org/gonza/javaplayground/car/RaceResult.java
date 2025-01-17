@@ -9,7 +9,7 @@ public class RaceResult {
 		this.carList = carList;
 	}
 
-	public int getHighestPosition() {
+	private int getHighestPosition() {
 		return this.carList.stream()
 				.map(Car::getPosition)
 				.sorted()
