@@ -2,6 +2,8 @@ package org.gonza.kotlinplayground
 
 import org.gonza.kotlinplayground.ui.InputView
 import org.gonza.kotlinplayground.ui.OutputView
+import org.gonza.kotlinplayground.vo.CarNameByInput
+import org.gonza.kotlinplayground.vo.TryCountByInput
 
 fun main() {
     val output = OutputView()
@@ -9,33 +11,41 @@ fun main() {
     val validator = RacingCarGameValidator()
 
     val carNameByInput = getValidatedCarName(output, input, validator)
-    val tryCount = getValidatedTryCount(output, input, validator)
+    val tryCountByInput = getValidatedTryCount(output, input, validator)
+    val racingCarGame = RacingCarGame(
+        carNameByInput = carNameByInput,
+        tryCountByInput = tryCountByInput
+    )
 }
 
 private fun getValidatedCarName(
     output: OutputView,
     input: InputView,
     validator: RacingCarGameValidator
-): String {
-    return getValidatedTemplate(
+): CarNameByInput {
+    val value = getValidatedTemplate(
         outputMessage = output::printInputCarNameList,
         inputMessage = input::read,
         errorMessage = output::printCarNameError,
         validator = validator::getValidatedCarName
     )
+
+    return CarNameByInput(value)
 }
 
 private fun getValidatedTryCount(
     output: OutputView,
     input: InputView,
     validator: RacingCarGameValidator
-): Int {
-    return getValidatedTemplate(
+): TryCountByInput {
+    val value = getValidatedTemplate(
         outputMessage = output::printTryCount,
         inputMessage = input::read,
         errorMessage = output::printTryCountError,
         validator = validator::getValidatedTryCountString
     )
+
+    return TryCountByInput(value)
 }
 
 private fun <T> getValidatedTemplate(
