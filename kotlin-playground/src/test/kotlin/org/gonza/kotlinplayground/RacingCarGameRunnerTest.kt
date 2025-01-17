@@ -1,6 +1,5 @@
 package org.gonza.kotlinplayground
 
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.*
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.ui.InputView
@@ -73,7 +72,8 @@ class RacingCarGameRunnerTest {
 
     @Test
     fun `게임이 시작될때 이름이 없다면 게임이 다시 실행된다`() {
-        val outputView = TestOutputViewFixture()
+        val errorView = TestOutputErrorView()
+        val outputView = TestOutputViewAdapter(errorView)
         val validator = RacingCarGameValidator()
         val nullNameRacingCarGameRunner = RacingCarGameRunner(
             output = outputView,
@@ -90,14 +90,15 @@ class RacingCarGameRunnerTest {
 
         assertDoesNotThrow { nullNameRacingCarGameRunner.run() }
         assertDoesNotThrow { emptyNameRacingCarGameRunner.run() }
-        assertThat(outputView.printErrorCount).isGreaterThan(0)
+        assertThat(errorView.printErrorCount).isGreaterThan(0)
         assertThat(nullTestInputView.callCount).isGreaterThan(1)
         assertThat(emptyTestInputView.callCount).isGreaterThan(1)
     }
 
     @Test
     fun `게임이 시작될때 이름이 중복된다면 게임이 다시 실행된다`() {
-        val outputView = TestOutputViewFixture()
+        val errorView = TestOutputErrorView()
+        val outputView = TestOutputViewAdapter(errorView)
         val validator = RacingCarGameValidator()
         val duplicatedNameRacingCarGameRunner = spy(RacingCarGameRunner(
             output = outputView,
@@ -108,13 +109,14 @@ class RacingCarGameRunnerTest {
 
         assertDoesNotThrow { duplicatedNameRacingCarGameRunner.run() }
         verify(duplicatedNameRacingCarGameRunner, times(2)).run()
-        assertThat(outputView.printErrorCount > 0)
+        assertThat(errorView.printErrorCount > 0)
         assertThat(duplicatedTestInputView.callCount > 1)
     }
 
     @Test
     fun `게임이 시작될때 이름이 5글자를 초과하면 게임이 다시 실행된다`() {
-        val outputView = TestOutputViewFixture()
+        val errorView = TestOutputErrorView()
+        val outputView = TestOutputViewAdapter(errorView)
         val validator = RacingCarGameValidator()
         val nameLengthOverRacingCarGameRunner = spy(RacingCarGameRunner(
             output = outputView,
@@ -125,7 +127,7 @@ class RacingCarGameRunnerTest {
 
         assertDoesNotThrow { nameLengthOverRacingCarGameRunner.run() }
         verify(nameLengthOverRacingCarGameRunner, times(2)).run()
-        assertThat(outputView.printErrorCount > 0)
+        assertThat(errorView.printErrorCount > 0)
         assertThat(carNameLengthOverTestInputView.callCount > 1)
     }
 }
