@@ -15,10 +15,9 @@ class RacingCarGame(
         carName: CarName,
         initTryCount: TryCount = TryCount(0)
     ) : this(
-        carList = with(CarNameParser) {
-            val parsedCarName = parse(carName.value)
-            toCarList(parsedCarName)
-        },
+        carList = CarNameConverter.toCarList(
+            carNameList = CarNameParser.parse(carName)
+        ),
         currentGameCount = initTryCount
     )
 
@@ -36,10 +35,14 @@ class RacingCarGame(
     private object CarNameParser {
         private const val SPLIT_KEYWORD = ","
 
-        fun toCarList(carNameList: List<String>): List<Car> =
-            carNameList.map { Car(it, 0) }
+        fun parse(carName: CarName): List<CarName> =
+            carName.value.split(SPLIT_KEYWORD)
+                .map { it.trim() }
+                .map { CarName(it) }
+    }
 
-        fun parse(carName: String): List<String> =
-            carName.split(SPLIT_KEYWORD).map { it.trim() }
+    private object CarNameConverter {
+        fun toCarList(carNameList: List<CarName>): List<Car> =
+            carNameList.map { Car(it.value, 0) }
     }
 }
