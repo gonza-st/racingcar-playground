@@ -9,6 +9,7 @@ import org.gonza.kotlinplayground.dto.toRacingCarGame
 import org.gonza.kotlinplayground.ui.InputView
 import org.gonza.kotlinplayground.ui.OutputView
 import org.gonza.kotlinplayground.ui.exception.EmptyOrNullableCarNameException
+import org.gonza.kotlinplayground.ui.exception.InvalidTryCountException
 import org.gonza.kotlinplayground.vo.CarName
 import org.gonza.kotlinplayground.vo.TryCount
 
@@ -51,7 +52,7 @@ class RacingCarGameRunner(
         return try {
             val inputValue = input.read()
             TryCount(validator.getValidatedTryCountString(inputValue))
-        } catch (e: Exception) {
+        } catch (e: InvalidTryCountException) {
             output.printTryCountError()
             getValidTryCount()
         }
