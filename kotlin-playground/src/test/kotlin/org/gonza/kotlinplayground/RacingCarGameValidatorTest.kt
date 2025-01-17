@@ -1,8 +1,8 @@
 package org.gonza.kotlinplayground
 
 import org.assertj.core.api.Assertions.assertThatThrownBy
-import org.gonza.kotlinplayground.domain.car.exception.EmptyOrNullableCarNameException
-import org.gonza.kotlinplayground.domain.car.exception.InvalidTryCountException
+import org.gonza.kotlinplayground.ui.exception.EmptyOrNullableCarNameException
+import org.gonza.kotlinplayground.ui.exception.InvalidTryCountException
 import org.junit.jupiter.api.Test
 
 class RacingCarGameValidatorTest {
