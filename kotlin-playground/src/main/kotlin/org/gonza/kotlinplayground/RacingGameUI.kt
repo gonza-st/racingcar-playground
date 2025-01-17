@@ -9,7 +9,8 @@ class RacingGameUI {
             val raceParticipants = inputParticipants()
             val tryCount = inputTryCount()
             val gameBoard = GameBoard(raceParticipants, RandomMoveStrategy())
-            println("\n실행 결과")
+            println("-".repeat(50))
+            println("실행 결과")
             outputRoundResult(raceParticipants.cars)
             repeat(tryCount) {
                 Thread.sleep(1000)
@@ -18,6 +19,31 @@ class RacingGameUI {
                 outputRoundResult(cars)
             }
             outputWinner(gameBoard.raceParticipants.cars)
+            println("-".repeat(50))
+            val isContinue = outputIsContinue()
+            if (!isContinue) {
+                break
+            }
+        }
+    }
+
+    // 게임 종료 여부를 묻고, 종료하면 종료 메시지 출력
+    private fun outputIsContinue(): Boolean {
+        while (true) {
+            try {
+                println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
+                val input = readlnOrNull() ?: continue
+                when (input) {
+                    "1" -> return true
+                    "2" -> {
+                        println("게임을 종료합니다.")
+                        return false
+                    }
+                    else -> throw Exception()
+                }
+            } catch (e: Exception) {
+                println("1 또는 2를 입력해주세요.")
+            }
         }
     }
 
@@ -27,7 +53,7 @@ class RacingGameUI {
                 car.position == cars.maxOf { it.position }
             }
         val winnerNames = winners.joinToString(", ") { it.name }
-        println("$winnerNames 이(가) 최종 우승했습니다.\n")
+        println("$winnerNames 이(가) 최종 우승했습니다.")
     }
 
     private fun outputRoundResult(cars: List<Car>) {
