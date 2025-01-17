@@ -21,8 +21,8 @@ class OutputViewImpl : OutputView {
         println("실행 결과")
     }
 
-    override fun printWonResultMessage(wonName: String) {
-        println("$wonName 가 최종 우승했습니다.")
+    override fun printWinnerMessage(winner: String) {
+        println("$winner 가 최종 우승했습니다.")
     }
 
     override fun printEmptyOrNullCarNameError() {

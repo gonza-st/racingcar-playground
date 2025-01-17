@@ -23,7 +23,7 @@ class TestOutputViewFixture : OutputView {
         TODO("Not yet implemented")
     }
 
-    override fun printWonResultMessage(wonName: String) {
+    override fun printWinnerMessage(winner: String) {
         TODO("Not yet implemented")
     }
 

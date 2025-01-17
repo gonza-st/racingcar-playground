@@ -11,7 +11,7 @@ interface OutputView {
 
     fun printResultMessage()
 
-    fun printWonResultMessage(wonName: String)
+    fun printWinnerMessage(winner: String)
 
     fun printEmptyOrNullCarNameError()
 

@@ -9,7 +9,7 @@ class RacingCars(
         validateDuplicatedCarName()
     }
 
-    fun findWonCarList(): List<Car> {
+    fun findWinnerCarList(): List<Car> {
         val farthestPosition = carList.maxOf { it.getPosition() }
         val farthestCarList = carList.filter { it.getPosition() == farthestPosition }
 
