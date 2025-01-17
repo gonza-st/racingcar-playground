@@ -13,8 +13,8 @@ class OutputViewImpl : OutputView {
         print("$carName : ")
     }
 
-    override fun printMovement(count: String) {
-        print("-".repeat(count.length))
+    override fun printMovement(count: Int) {
+        print("-".repeat(count))
     }
 
     override fun printResultMessage() {

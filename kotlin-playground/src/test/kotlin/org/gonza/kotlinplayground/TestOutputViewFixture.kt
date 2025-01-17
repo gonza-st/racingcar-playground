@@ -15,7 +15,7 @@ class TestOutputViewFixture : OutputView {
         TODO("Not yet implemented")
     }
 
-    override fun printMovement(count: String) {
+    override fun printMovement(count: Int) {
         TODO("Not yet implemented")
     }
 

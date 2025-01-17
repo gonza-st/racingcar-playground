@@ -7,7 +7,7 @@ interface OutputView {
 
     fun printCarName(carName: String)
 
-    fun printMovement(count: String)
+    fun printMovement(count: Int)
 
     fun printResultMessage()
 

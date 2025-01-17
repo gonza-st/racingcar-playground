@@ -1,5 +1,6 @@
 package org.gonza.kotlinplayground
 
+import org.gonza.kotlinplayground.RacingCarGame.CarNameParser.SPLIT_KEYWORD
 import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.domain.car.RacingCars
@@ -32,6 +33,13 @@ class RacingCarGame(
         )
     }
 
+    fun findWinner(): String {
+        val racingCars = RacingCars(carList)
+        val winnerCarList = racingCars.findWinnerCarList()
+        val winnerCarNameList = winnerCarList.map { CarName(it.getName()) }
+        return CarNameParser.toCarNameString(winnerCarNameList)
+    }
+
     fun isFinished(tryCount: TryCount): Boolean =
         currentGameCount.value >= tryCount.value
 
@@ -42,6 +50,9 @@ class RacingCarGame(
             carName.value.split(SPLIT_KEYWORD)
                 .map { it.trim() }
                 .map { CarName(it) }
+
+        fun toCarNameString(carNameList: List<CarName>): String =
+            carNameList.joinToString(SPLIT_KEYWORD) { it.value }
     }
 
     private object CarNameConverter {

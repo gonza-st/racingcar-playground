@@ -1,6 +1,7 @@
 package org.gonza.kotlinplayground
 
 import org.assertj.core.api.Assertions.*
+import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.dto.toRacingCarGame
 import org.gonza.kotlinplayground.vo.CarName
@@ -89,5 +90,54 @@ class RacingCarGameTest {
         val endRacingCarGame = result4.toRacingCarGame()
 
         assertThat(endRacingCarGame.isFinished(endTryCount)).isFalse()
+    }
+
+    @Test
+    fun `게임에서 이긴 차량의 이름을 조회할 수 있다`() {
+        val car1 = Car(
+            name = "car1",
+            position = 1
+        )
+        val car2 = Car(
+            name = "car2",
+            position = 2
+        )
+        val winner = Car(
+            name = "win",
+            position = 100
+        )
+        val racingCarGame = RacingCarGame(
+            carList = listOf(car1, car2, winner),
+            currentGameCount = TryCount(1)
+        )
+
+        val result = racingCarGame.findWinner()
+
+        assertThat(result).isEqualTo(winner.getName())
+    }
+
+    @Test
+    fun `게임에서 이긴 차량이 여러 차량이라면 이어서 이름이 표현되어야 한다`() {
+        val car1 = Car(
+            name = "car1",
+            position = 1
+        )
+        val winner1 = Car(
+            name = "win1",
+            position = 100
+        )
+        val winner2 = Car(
+            name = "win2",
+            position = 100
+        )
+        val racingCarGame = RacingCarGame(
+            carList = listOf(car1, winner1, winner2),
+            currentGameCount = TryCount(1)
+        )
+        val expected = "${winner1.getName()},${winner2.getName()}"
+
+        val result = racingCarGame.findWinner()
+
+        assertThat(result).isEqualTo(expected)
     }
 }

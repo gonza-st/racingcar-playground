@@ -3,6 +3,7 @@ package org.gonza.kotlinplayground
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.domain.car.exception.DuplicatedCarNameException
 import org.gonza.kotlinplayground.domain.car.exception.InvalidCarNameLengthException
+import org.gonza.kotlinplayground.dto.toRacingCarGame
 import org.gonza.kotlinplayground.ui.InputView
 import org.gonza.kotlinplayground.ui.OutputView
 import org.gonza.kotlinplayground.ui.exception.EmptyOrNullableCarNameException
