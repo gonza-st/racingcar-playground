@@ -1,18 +1,27 @@
 package org.gonza.javaplayground.car;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 public class RaceResult {
-	private final List<String> carNameList;
-	private final int position;
+	private final List<Car> carList;
 
 	public RaceResult(List<Car> carList) {
-		this.carNameList = carList.stream().map(Car::getName).toList();
-		this.position = carList.getFirst().getPosition();
+		this.carList = carList;
 	}
 
-	public int highestPosition() {
-		return position;
+	public int getHighestPosition() {
+		return this.carList.stream()
+				.map(Car::getPosition)
+				.sorted()
+				.toList()
+				.getLast();
+	}
+
+	public List<Car> getHighestCar() {
+		int highestPosition = getHighestPosition();
+
+		return this.carList.stream()
+				.filter(car -> car.getPosition() == highestPosition)
+				.toList();
 	}
 }

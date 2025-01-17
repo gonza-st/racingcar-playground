@@ -22,17 +22,6 @@ public class Cars {
             .toList();
     }
 
-    private List<Car> highestPositionsCar() {
-        int highestPosition = this.carList.stream()
-                .map(Car::getPosition)
-                .sorted()
-                .toList()
-                .getFirst();
-        return this.carList.stream()
-                .filter(car -> car.getPosition() == highestPosition)
-                .toList();
-    }
-
     private static void moveByNumberCondition(int number, Car car) {
         if (number >= MOVE_CONDITION) {
             car.move();
@@ -44,8 +33,6 @@ public class Cars {
             moveByNumberCondition(numbers.get(i), carList.get(i));
         }
 
-        List<Car> highestPositionsCarList = highestPositionsCar();
-
-        return new RaceResult(highestPositionsCarList);
+        return new RaceResult(carList);
     }
 }

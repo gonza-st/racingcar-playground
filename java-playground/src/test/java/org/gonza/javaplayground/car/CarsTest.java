@@ -1,11 +1,11 @@
 package org.gonza.javaplayground.car;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CarsTest {
     @Test
@@ -25,12 +25,22 @@ class CarsTest {
     }
 
     @Test
+    void 숫자가_4_이상인_Car만_이동한다() {
+        Cars cars = new Cars(List.of("test1", "test2"));
+
+        RaceResult result = cars.race(List.of(3, 4));
+
+        assertEquals(1, result.getHighestPosition());
+        assertEquals("test2", result.getHighestCar().getFirst().getName());
+    }
+
+    @Test
     void Cars의_Car는_숫자_4_이상이면_이동한다() {
         Cars cars = new Cars(List.of("test1"));
 
         RaceResult result = cars.race(List.of(4));
 
-        assertEquals(1, result.highestPosition());
+        assertEquals(1, result.getHighestPosition());
     }
 
     @Test
@@ -39,6 +49,6 @@ class CarsTest {
 
         RaceResult result = cars.race(List.of(3));
 
-        assertEquals(0, result.highestPosition());
+        assertEquals(0, result.getHighestPosition());
     }
 }
