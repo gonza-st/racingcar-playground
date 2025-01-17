@@ -1,14 +1,13 @@
 package org.gonza.kotlinplayground
 
 import org.gonza.kotlinplayground.domain.car.exception.EmptyOrNullableCarNameException
-import org.gonza.kotlinplayground.domain.car.exception.InvalidCarNameLengthException
 import org.gonza.kotlinplayground.domain.car.exception.InvalidTryCountException
 
 class RacingCarGameValidator {
     fun getValidatedCarName(carName: String?): String {
         val nonNullCarName = validateNullOrEmptyCarName(carName)
 
-        return validateWordCountOver(nonNullCarName)
+        return nonNullCarName
     }
 
     fun getValidatedTryCountString(tryCount: String?): Int {
@@ -38,13 +37,5 @@ class RacingCarGameValidator {
         } catch (e: NumberFormatException) {
             throw InvalidTryCountException()
         }
-    }
-
-    fun validateWordCountOver(carName: String): String {
-        if (carName.length > 5) {
-            throw InvalidCarNameLengthException()
-        }
-
-        return carName
     }
 }

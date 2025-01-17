@@ -2,7 +2,6 @@ package org.gonza.kotlinplayground
 
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.gonza.kotlinplayground.domain.car.exception.EmptyOrNullableCarNameException
-import org.gonza.kotlinplayground.domain.car.exception.InvalidCarNameLengthException
 import org.gonza.kotlinplayground.domain.car.exception.InvalidTryCountException
 import org.junit.jupiter.api.Test
 
@@ -45,15 +44,5 @@ class RacingCarGameValidatorTest {
         assertThatThrownBy {
             validator.validateStringToIntTryCount(invalidTryCount)
         }.isInstanceOf(InvalidTryCountException::class.java)
-    }
-
-    @Test
-    fun `차량 이름이 5글를 초과하면 예외가 발생한다`() {
-        val carNameFiveWordOver = "123456"
-        val validator = RacingCarGameValidator()
-
-        assertThatThrownBy {
-            validator.validateWordCountOver(carNameFiveWordOver)
-        }.isInstanceOf(InvalidCarNameLengthException::class.java)
     }
 }

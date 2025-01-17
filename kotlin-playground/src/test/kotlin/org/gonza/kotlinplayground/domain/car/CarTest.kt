@@ -1,6 +1,7 @@
 package org.gonza.kotlinplayground.domain.car
 
 import org.assertj.core.api.Assertions.*
+import org.gonza.kotlinplayground.domain.car.exception.InvalidCarNameLengthException
 import org.junit.jupiter.api.Test
 
 class CarTest {
@@ -26,5 +27,12 @@ class CarTest {
         assertThat(car1).isEqualTo(car2)
         assertThat(car1).isNotEqualTo(otherCar)
         assertThat(car2).isNotEqualTo(otherCar)
+    }
+
+    @Test
+    fun `자동차의 이름은 5글자를 초과할 수 없다`() {
+        assertThatThrownBy {
+            Car("123456", 1)
+        }.isInstanceOf(InvalidCarNameLengthException::class.java)
     }
 }
