@@ -48,9 +48,10 @@ class RacingGameUI {
     }
 
     private fun outputWinner(cars: List<Car>) {
+        val maxPosition = cars.maxOf { it.position }
         val winners =
             cars.filter { car ->
-                car.position == cars.maxOf { it.position }
+                car.position == maxPosition
             }
         val winnerNames = winners.joinToString(", ") { it.name }
         println("$winnerNames 이(가) 최종 우승했습니다.")
