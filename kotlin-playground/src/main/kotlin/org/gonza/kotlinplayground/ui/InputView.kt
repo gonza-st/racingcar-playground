@@ -1,5 +1,5 @@
 package org.gonza.kotlinplayground.ui
 
-class InputView {
-    fun read(): String? = readlnOrNull()
+interface InputView {
+    fun read(): String?
 }
