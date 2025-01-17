@@ -26,4 +26,9 @@ public class Car {
             throw new IllegalArgumentException("Car name must not exceed 5 characters");
         }
     }
+
+    public String report() {
+        String dashByPosition = "-".repeat(Math.max(0, this.position));
+        return String.format("%s : %s", this.name, dashByPosition);
+    }
 }

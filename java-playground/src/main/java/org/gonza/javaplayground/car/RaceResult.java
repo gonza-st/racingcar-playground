@@ -1,6 +1,7 @@
 package org.gonza.javaplayground.car;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RaceResult {
 	private final List<Car> carList;
@@ -23,5 +24,11 @@ public class RaceResult {
 		return this.carList.stream()
 				.filter(car -> car.getPosition() == highestPosition)
 				.toList();
+	}
+
+	public String report() {
+		return carList.stream()
+				.map(Car::report)
+				.collect(Collectors.joining("\n"));
 	}
 }

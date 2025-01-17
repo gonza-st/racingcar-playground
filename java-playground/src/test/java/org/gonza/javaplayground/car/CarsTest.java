@@ -51,4 +51,18 @@ class CarsTest {
 
         assertEquals(0, result.getHighestCar().getFirst().getPosition());
     }
+
+    @Test
+    void 결과를_출력할_수_있다() {
+        Cars cars = new Cars(List.of("test1", "test2"));
+
+        RaceResult firstResult = cars.race(List.of(4, 4));
+        assertEquals("test1 : -\ntest2 : -", firstResult.report());
+
+        RaceResult secondResult = cars.race(List.of(4, 4));
+        assertEquals("test1 : --\ntest2 : --", secondResult.report());
+
+        RaceResult thirdResult = cars.race(List.of(3, 4));
+        assertEquals("test1 : --\ntest2 : ---", thirdResult.report());
+    }
 }
