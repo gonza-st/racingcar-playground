@@ -1,6 +1,5 @@
 package org.gonza.kotlinplayground
 
-import org.gonza.kotlinplayground.domain.car.exception.EmptyOrNullableCarNameException
 import org.gonza.kotlinplayground.ui.InputView
 import org.gonza.kotlinplayground.ui.OutputView
 
@@ -18,14 +17,12 @@ private fun getValidatedCarName(
     input: InputView,
     validator: RacingCarGameValidator
 ): String {
-    while (true) {
-        return getValidatedTemplate(
-            outputMessage = output::printInputCarNameList,
-            inputMessage = input::read,
-            errorMessage = output::printCarNameError,
-            validator = validator::getValidatedCarName
-        )
-    }
+    return getValidatedTemplate(
+        outputMessage = output::printInputCarNameList,
+        inputMessage = input::read,
+        errorMessage = output::printCarNameError,
+        validator = validator::getValidatedCarName
+    )
 }
 
 private fun getValidatedTryCount(
@@ -33,14 +30,12 @@ private fun getValidatedTryCount(
     input: InputView,
     validator: RacingCarGameValidator
 ): Int {
-    while (true) {
-        return getValidatedTemplate(
-            outputMessage = output::printTryCount,
-            inputMessage = input::read,
-            errorMessage = output::printTryCountError,
-            validator = validator::getValidatedTryCountString
-        )
-    }
+    return getValidatedTemplate(
+        outputMessage = output::printTryCount,
+        inputMessage = input::read,
+        errorMessage = output::printTryCountError,
+        validator = validator::getValidatedTryCountString
+    )
 }
 
 private fun <T> getValidatedTemplate(
@@ -55,5 +50,11 @@ private fun <T> getValidatedTemplate(
         return validator(inputValue)
     } catch (e: Exception) {
         errorMessage()
+        return getValidatedTemplate(
+            outputMessage = outputMessage,
+            inputMessage = inputMessage,
+            errorMessage = errorMessage,
+            validator = validator
+        )
     }
 }
