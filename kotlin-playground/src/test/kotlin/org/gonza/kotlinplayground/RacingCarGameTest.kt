@@ -51,4 +51,43 @@ class RacingCarGameTest {
 
         assertThat(movedCar1SecondPosition).isEqualTo(movedCar1FirstPosition + 1)
     }
+
+    @Test
+    fun `게임이 끝났다면 결과는 참이다`() {
+        val endTryCount = TryCount(5)
+        val initTryCount = TryCount(0)
+        val racingCarGame = RacingCarGame(
+            carList = emptyList(),
+            currentGameCount = initTryCount
+        )
+        val testMoveStrategy = MoveStrategy{ true }
+
+        val result1 = racingCarGame.start(testMoveStrategy)
+        val result2 = result1.toRacingCarGame().start(testMoveStrategy)
+        val result3 = result2.toRacingCarGame().start(testMoveStrategy)
+        val result4 = result3.toRacingCarGame().start(testMoveStrategy)
+        val result5 = result4.toRacingCarGame().start(testMoveStrategy)
+        val endRacingCarGame = result5.toRacingCarGame()
+
+        assertThat(endRacingCarGame.isFinished(endTryCount)).isTrue()
+    }
+
+    @Test
+    fun `게임이 끝나지 않았다면 결과는 거짓이다`() {
+        val endTryCount = TryCount(5)
+        val initTryCount = TryCount(0)
+        val racingCarGame = RacingCarGame(
+            carList = emptyList(),
+            currentGameCount = initTryCount
+        )
+        val testMoveStrategy = MoveStrategy{ true }
+
+        val result1 = racingCarGame.start(testMoveStrategy)
+        val result2 = result1.toRacingCarGame().start(testMoveStrategy)
+        val result3 = result2.toRacingCarGame().start(testMoveStrategy)
+        val result4 = result3.toRacingCarGame().start(testMoveStrategy)
+        val endRacingCarGame = result4.toRacingCarGame()
+
+        assertThat(endRacingCarGame.isFinished(endTryCount)).isFalse()
+    }
 }

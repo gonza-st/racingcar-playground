@@ -32,6 +32,9 @@ class RacingCarGame(
         )
     }
 
+    fun isFinished(tryCount: TryCount): Boolean =
+        currentGameCount.value >= tryCount.value
+
     private object CarNameParser {
         private const val SPLIT_KEYWORD = ","
 
