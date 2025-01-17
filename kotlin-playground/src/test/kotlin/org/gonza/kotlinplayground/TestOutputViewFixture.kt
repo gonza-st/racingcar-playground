@@ -5,10 +5,26 @@ import org.gonza.kotlinplayground.ui.OutputView
 class TestOutputViewFixture : OutputView {
     var printErrorCount = 0
 
-    override fun printInputCarNameList() {
+    override fun printInputCarNameListMessage() {
     }
 
-    override fun printTryCount() {
+    override fun printInputTryCountMessage() {
+    }
+
+    override fun printCarName(carName: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun printMovement(count: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun printResultMessage() {
+        TODO("Not yet implemented")
+    }
+
+    override fun printWonResultMessage(wonName: String) {
+        TODO("Not yet implemented")
     }
 
     override fun printEmptyOrNullCarNameError() {

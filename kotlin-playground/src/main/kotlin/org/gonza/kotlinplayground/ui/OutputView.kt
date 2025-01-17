@@ -1,9 +1,17 @@
 package org.gonza.kotlinplayground.ui
 
 interface OutputView {
-    fun printInputCarNameList()
+    fun printInputCarNameListMessage()
 
-    fun printTryCount()
+    fun printInputTryCountMessage()
+
+    fun printCarName(carName: String)
+
+    fun printMovement(count: String)
+
+    fun printResultMessage()
+
+    fun printWonResultMessage(wonName: String)
 
     fun printEmptyOrNullCarNameError()
 

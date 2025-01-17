@@ -1,12 +1,28 @@
 package org.gonza.kotlinplayground.ui
 
 class OutputViewImpl : OutputView {
-    override fun printInputCarNameList() {
+    override fun printInputCarNameListMessage() {
         println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).")
     }
 
-    override fun printTryCount() {
+    override fun printInputTryCountMessage() {
         println("시도할 회수는 몇회인가요?")
+    }
+
+    override fun printCarName(carName: String) {
+        print("$carName : ")
+    }
+
+    override fun printMovement(count: String) {
+        print("-".repeat(count.length))
+    }
+
+    override fun printResultMessage() {
+        println("실행 결과")
+    }
+
+    override fun printWonResultMessage(wonName: String) {
+        println("$wonName 가 최종 우승했습니다.")
     }
 
     override fun printEmptyOrNullCarNameError() {

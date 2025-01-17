@@ -24,7 +24,7 @@ class RacingCarGameRunner(
     private fun runGame(carName: CarName, tryCount: TryCount) {
         try {
             val racingCarGame = RacingCarGame(carName = carName)
-            racingCarGame.start(moveStrategy)
+            val result = racingCarGame.start(moveStrategy)
         } catch (e: DuplicatedCarNameException) {
             output.printDuplicatedCarNameError()
             run()
@@ -35,7 +35,7 @@ class RacingCarGameRunner(
     }
 
     private fun getValidatedCarName(): CarName {
-        output.printInputCarNameList()
+        output.printInputCarNameListMessage()
         return try {
             val inputValue = input.read()
             CarName(validator.getValidatedCarName(inputValue))
@@ -46,7 +46,7 @@ class RacingCarGameRunner(
     }
 
     private fun getValidatedTryCount(): TryCount {
-        output.printTryCount()
+        output.printInputTryCountMessage()
         return try {
             val inputValue = input.read()
             TryCount(validator.getValidatedTryCountString(inputValue))
