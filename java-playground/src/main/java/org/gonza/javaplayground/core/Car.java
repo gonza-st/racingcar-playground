@@ -9,8 +9,8 @@ public class Car {
         this.position = position;
     }
 
-    public Nickname getNickName() {
-        return nickname;
+    public String getNickName() {
+        return nickname.getName();
     }
 
     public Position getPosition() {
@@ -19,5 +19,9 @@ public class Car {
 
     public void forward(int randomNumber) {
         position.increase(randomNumber);
+    }
+
+    public boolean isWinner(Position winner) {
+        return this.position.equals(winner);
     }
 }
