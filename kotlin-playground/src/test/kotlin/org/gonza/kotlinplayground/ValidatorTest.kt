@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
+import kotlin.test.assertEquals
 
 class ValidatorTest {
     @Test
@@ -14,7 +15,12 @@ class ValidatorTest {
         val target = "아반떼"
         val validator = Validator()
 
-        assertDoesNotThrow { validator.stringLengthValidate(target = target, length = RacingConstants.DEFAULT_CAR_NAME_LENGTH) }
+        assertDoesNotThrow {
+            validator.stringLengthValidate(
+                target = target,
+                length = RacingConstants.DEFAULT_CAR_NAME_LENGTH
+            )
+        }
     }
 
     @Test
@@ -22,7 +28,12 @@ class ValidatorTest {
         val target = "이것은울트라짱짱캡숑긴자동차이름"
         val validator = Validator()
 
-        assertThrows<IllegalArgumentException> { validator.stringLengthValidate(target = target, length = RacingConstants.DEFAULT_CAR_NAME_LENGTH) }
+        assertThrows<IllegalArgumentException> {
+            validator.stringLengthValidate(
+                target = target,
+                length = RacingConstants.DEFAULT_CAR_NAME_LENGTH
+            )
+        }
     }
 
     @Test
@@ -30,7 +41,8 @@ class ValidatorTest {
         val validator = Validator()
         val target = 9
 
-        val result = validator.isNumberGreaterThanThreshold(target = target, threshold = RacingConstants.RANDOM_NUMBER_THRESHOLD)
+        val result =
+            validator.isNumberGreaterThanThreshold(target = target, threshold = RacingConstants.RANDOM_NUMBER_THRESHOLD)
 
         assertTrue(result)
     }
@@ -40,7 +52,8 @@ class ValidatorTest {
         val validator = Validator()
         val target = 3
 
-        val result = validator.isNumberGreaterThanThreshold(target = target, threshold = RacingConstants.RANDOM_NUMBER_THRESHOLD)
+        val result =
+            validator.isNumberGreaterThanThreshold(target = target, threshold = RacingConstants.RANDOM_NUMBER_THRESHOLD)
 
         assertFalse(result)
     }
@@ -67,5 +80,21 @@ class ValidatorTest {
         val validator = Validator()
 
         assertThrows<IllegalArgumentException> { validator.validateDelimiter(invalidString) }
+    }
+
+    @Test
+    fun `입력한 문자를 숫자로 변환 가능한지 검증할 수 있다`() {
+        val digitString = "5"
+        val validator = Validator()
+
+        assertDoesNotThrow { validator.validateDigit(digitString) }
+    }
+
+    @Test
+    fun `입력한 문자가 숫자가 아닐 경우 예외가 발생한다`() {
+        val invalidString = "invalid"
+        val validator = Validator()
+
+        assertThrows<IllegalArgumentException> { validator.validateDigit(invalidString) }
     }
 }

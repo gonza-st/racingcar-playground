@@ -7,4 +7,5 @@ class StringGenerator : TargetGenerator<String, List<String>> {
         val list = target.split(RacingConstants.INPUT_DELIMITER)
         return list
     }
+
 }

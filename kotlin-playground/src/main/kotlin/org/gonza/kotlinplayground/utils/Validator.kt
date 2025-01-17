@@ -35,4 +35,12 @@ class Validator {
         }
     }
 
+    fun validateDigit(digitString: String) {
+        try {
+            digitString.toInt()
+        } catch (e: NumberFormatException) {
+            throw IllegalArgumentException("숫자로 변환할 수 없습니다.")
+        }
+    }
+
 }
