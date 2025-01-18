@@ -3,14 +3,14 @@ package org.gonza.javaplayground.view;
 import java.util.Scanner;
 
 public class ConsoleReader implements Reader {
-    private final Scanner scanner;
-
-    public ConsoleReader(Scanner scanner) {
-        this.scanner = scanner;
-    }
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     @Override
     public String read() {
-        return scanner.nextLine();
+        return SCANNER.nextLine();
+    }
+
+    public int readNumber() {
+        return SCANNER.nextInt();
     }
 }
