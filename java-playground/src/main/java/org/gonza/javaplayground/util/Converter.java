@@ -13,8 +13,12 @@ public class Converter {
     }
 
     public static List<String> separatedByCommas(String input) {
-        String[] separatedInputList = input.split(COMMAS);
-
-        return Arrays.asList(separatedInputList);
+        if (input == null || input.trim().isEmpty()) {
+            throw new IllegalArgumentException("입력값이 비어있습니다.");
+        }
+        if (!input.contains(COMMAS)) {
+            throw new IllegalArgumentException("구분자는 ,(콤마)를 입력해주세요.");
+        }
+        return Arrays.asList(input.split(COMMAS));
     }
 }
