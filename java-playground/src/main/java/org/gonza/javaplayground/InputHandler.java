@@ -1,7 +1,7 @@
 package org.gonza.javaplayground;
 
 public interface InputHandler {
-    String getCarNames();
+    String getStringInput(String guideMessage);
 
     Integer getRacingCount();
 }

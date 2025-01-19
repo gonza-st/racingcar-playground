@@ -14,7 +14,6 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class GameTest {
-
     @Mock
     private InputHandler inputHandler;
 
@@ -37,7 +36,7 @@ public class GameTest {
         when(inputHandler.getRacingCount()).thenReturn(count);
 
         String names = "too-long-name";
-        when(inputHandler.getCarNames()).thenReturn(names);
+        when(inputHandler.getStringInput(anyString())).thenReturn(names);
 
         assertThrows(IllegalArgumentException.class, () -> {
             sut.race();
@@ -54,7 +53,7 @@ public class GameTest {
         when(inputHandler.getRacingCount()).thenReturn(count);
 
         String names = "car1,car2";
-        when(inputHandler.getCarNames()).thenReturn(names);
+        when(inputHandler.getStringInput(anyString())).thenReturn(names);
 
         sut.race();
 
@@ -75,7 +74,7 @@ public class GameTest {
         when(inputHandler.getRacingCount()).thenReturn(count);
 
         String names = "car1,car2";
-        when(inputHandler.getCarNames()).thenReturn(names);
+        when(inputHandler.getStringInput(anyString())).thenReturn(names);
 
         sut.race();
 

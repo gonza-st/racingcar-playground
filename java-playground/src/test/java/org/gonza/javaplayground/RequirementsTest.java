@@ -38,7 +38,7 @@ public class RequirementsTest {
         when(inputHandler.getRacingCount()).thenReturn(count);
 
         String names = "too-long-name";
-        when(inputHandler.getCarNames()).thenReturn(names);
+        when(inputHandler.getStringInput(anyString())).thenReturn(names);
 
         assertThrows(IllegalArgumentException.class, () -> {
             sut.race();
@@ -51,7 +51,7 @@ public class RequirementsTest {
         when(inputHandler.getRacingCount()).thenReturn(count);
 
         String names = "car1";
-        when(inputHandler.getCarNames()).thenReturn(names);
+        when(inputHandler.getStringInput(anyString())).thenReturn(names);
 
         sut.race();
 
@@ -79,7 +79,7 @@ public class RequirementsTest {
         when(inputHandler.getRacingCount()).thenReturn(count);
 
         String names = "car1";
-        when(inputHandler.getCarNames()).thenReturn(names);
+        when(inputHandler.getStringInput(anyString())).thenReturn(names);
 
         sut.race();
 
@@ -97,7 +97,7 @@ public class RequirementsTest {
         when(inputHandler.getRacingCount()).thenReturn(count);
 
         String names = "car1";
-        when(inputHandler.getCarNames()).thenReturn(names);
+        when(inputHandler.getStringInput(anyString())).thenReturn(names);
 
         sut.race();
 
