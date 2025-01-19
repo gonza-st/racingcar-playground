@@ -1,5 +1,6 @@
-package org.gonza.javaplayground.io;
+package org.gonza.javaplayground.io.handler;
 
+import org.gonza.javaplayground.io.handler.IOHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

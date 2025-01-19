@@ -1,5 +1,6 @@
 package org.gonza.javaplayground.game;
 
+import org.gonza.javaplayground.io.handler.InputHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,6 +1,7 @@
 package org.gonza.javaplayground.game;
 
 import org.gonza.javaplayground.game.record.GameRecord;
+import org.gonza.javaplayground.io.handler.InputHandler;
 
 import java.util.*;
 

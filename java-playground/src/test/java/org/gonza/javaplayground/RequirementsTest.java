@@ -1,7 +1,7 @@
 package org.gonza.javaplayground;
 
 import org.gonza.javaplayground.game.Game;
-import org.gonza.javaplayground.game.InputHandler;
+import org.gonza.javaplayground.io.handler.InputHandler;
 import org.gonza.javaplayground.game.OutputHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
