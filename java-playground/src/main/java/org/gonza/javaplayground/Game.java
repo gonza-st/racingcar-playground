@@ -6,12 +6,14 @@ import java.util.*;
 public class Game {
     private final PrintStream printStream;
     private final Scanner scanner;
+    private final Random random;
 
     private final Map<String, Integer> record = new HashMap<>();
 
-    public Game(PrintStream printStream, Scanner scanner) {
+    public Game(PrintStream printStream, Scanner scanner, Random random) {
         this.printStream = printStream;
         this.scanner = scanner;
+        this.random = random;
     }
 
     public void race() {
@@ -22,7 +24,7 @@ public class Game {
         while (count > 0) {
             for (int i = 0; i < carNames.length; i++) {
                 String carName = carNames[i];
-                Integer distance = 1;
+                Integer distance = random.nextInt(10) + 1;
 
                 Integer history = record.getOrDefault(carName, 0);
 
