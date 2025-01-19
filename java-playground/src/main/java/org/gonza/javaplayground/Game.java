@@ -28,8 +28,8 @@ public class Game {
 
                 if (distance >= 4) {
                     Integer history = record.getOrDefault(carName, 0);
-                    printStream.println(carName + ":" + (distance + history));
-                    record.put(carName, distance + history);
+                    printStream.println(carName + ":" + (1 + history));
+                    record.put(carName, 1 + history);
                 } else {
                     Integer history = record.getOrDefault(carName, 0);
                     printStream.println(carName + ":" + (history));

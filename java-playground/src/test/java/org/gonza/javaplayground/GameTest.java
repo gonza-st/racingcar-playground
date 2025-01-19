@@ -32,6 +32,25 @@ public class GameTest {
     }
 
     @Test
+    public void 경주의_결과는_이동거리가_아닌_이동횟수를_기록한다() {
+        when(random.nextInt(10))
+                .thenReturn(5)
+                .thenReturn(1);
+
+        Integer count = 1;
+        when(scanner.nextInt()).thenReturn(count);
+
+        String names = "car1,car2";
+        when(scanner.nextLine()).thenReturn(names);
+
+        sut.race();
+
+        verify(printStream).println("car1:" + 1);
+        verify(printStream).println("car2:" + 0);
+    }
+
+
+    @Test
     public void 경주마다_이동거리가_4보다_큰경우만_누적한다() {
         when(random.nextInt(10))
                 .thenReturn(1)
@@ -49,7 +68,7 @@ public class GameTest {
 
         verify(printStream, times(2)).println("car1:" + 0);
         verify(printStream).println("car2:" + 0);
-        verify(printStream).println("car2:" + 5);
+        verify(printStream).println("car2:" + 1);
 
         verify(printStream).println("car2");
     }
