@@ -8,7 +8,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.PrintStream;
 import java.util.Random;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
@@ -17,7 +16,7 @@ import static org.mockito.Mockito.*;
 public class GameTest {
 
     @Mock
-    private Scanner scanner;
+    private InputHandler inputHandler;
 
     @Mock
     private PrintStream printStream;
@@ -29,16 +28,16 @@ public class GameTest {
 
     @BeforeEach
     public void setup() {
-        sut = new Game(printStream, scanner, random);
+        sut = new Game(printStream, random, inputHandler);
     }
 
     @Test
     public void 차량이름이_5글자_초과하는_경우_예외가_발생한다() {
         Integer count = 1;
-        when(scanner.nextInt()).thenReturn(count);
+        when(inputHandler.getRacingCount()).thenReturn(count);
 
         String names = "too-long-name";
-        when(scanner.nextLine()).thenReturn(names);
+        when(inputHandler.getCarNames()).thenReturn(names);
 
         assertThrows(IllegalArgumentException.class, () -> {
             sut.race();
@@ -52,10 +51,10 @@ public class GameTest {
                 .thenReturn(1);
 
         Integer count = 1;
-        when(scanner.nextInt()).thenReturn(count);
+        when(inputHandler.getRacingCount()).thenReturn(count);
 
         String names = "car1,car2";
-        when(scanner.nextLine()).thenReturn(names);
+        when(inputHandler.getCarNames()).thenReturn(names);
 
         sut.race();
 
@@ -73,10 +72,10 @@ public class GameTest {
                 .thenReturn(4);
 
         Integer count = 2;
-        when(scanner.nextInt()).thenReturn(count);
+        when(inputHandler.getRacingCount()).thenReturn(count);
 
         String names = "car1,car2";
-        when(scanner.nextLine()).thenReturn(names);
+        when(inputHandler.getCarNames()).thenReturn(names);
 
         sut.race();
 

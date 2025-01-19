@@ -5,20 +5,21 @@ import java.util.*;
 
 public class Game {
     private final PrintStream printStream;
-    private final Scanner scanner;
     private final Random random;
+
+    private final InputHandler inputHandler;
 
     private final Map<String, Integer> record = new HashMap<>();
 
-    public Game(PrintStream printStream, Scanner scanner, Random random) {
+    public Game(PrintStream printStream, Random random, InputHandler inputHandler) {
         this.printStream = printStream;
-        this.scanner = scanner;
         this.random = random;
+        this.inputHandler = inputHandler;
     }
 
     public void race() {
-        Integer count = scanner.nextInt();
-        String cars = scanner.nextLine();
+        Integer count = inputHandler.getRacingCount();
+        String cars = inputHandler.getCarNames();
         String[] carNames = cars.split(",");
 
         for (String carName : carNames) {
