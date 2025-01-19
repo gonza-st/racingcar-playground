@@ -1,4 +1,4 @@
-package org.gonza.javaplayground;
+package org.gonza.javaplayground.game;
 
 import java.util.*;
 

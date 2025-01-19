@@ -1,7 +1,7 @@
 package org.gonza.javaplayground.io;
 
-import org.gonza.javaplayground.InputHandler;
-import org.gonza.javaplayground.OutputHandler;
+import org.gonza.javaplayground.game.InputHandler;
+import org.gonza.javaplayground.game.OutputHandler;
 
 import java.io.PrintStream;
 import java.util.Scanner;
