@@ -1,11 +1,13 @@
 package org.gonza.javaplayground;
 
 import java.io.PrintStream;
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
     private final PrintStream printStream;
     private final Scanner scanner;
+
+    private final Map<String, Integer> record = new HashMap<>();
 
     public Game(PrintStream printStream, Scanner scanner) {
         this.printStream = printStream;
@@ -19,12 +21,47 @@ public class Game {
 
         while (count > 0) {
             for (int i = 0; i < carNames.length; i++) {
-                printStream.println(carNames[i]);
+                String carName = carNames[i];
+                Integer distance = 1;
+
+                Integer history = record.getOrDefault(carName, 0);
+
+                printStream.println(carName + ":" + (distance + history));
+                record.put(carName, distance + history);
             }
 
             count -= 1;
         }
 
-        printStream.println("result");
+        Integer maxDistance = 0;
+        String[] winners = new String[0];
+
+        for (Map.Entry<String, Integer> entry : record.entrySet()) {
+            Integer distance = entry.getValue();
+            String carName = entry.getKey();
+
+            if (distance > maxDistance) {
+                maxDistance = distance;
+                winners = new String[]{carName};
+            } else if (distance == maxDistance) {
+                String[] winnersCopy = Arrays.copyOf(winners, winners.length + 1);
+                winnersCopy[winnersCopy.length - 1] = carName;
+                winners = winnersCopy;
+            }
+        }
+
+        String[] winnersOrdered = Arrays.copyOf(winners, winners.length);
+        Arrays.sort(winnersOrdered);
+
+        String winnerSentence = "";
+        for (int i = 0; i < winnersOrdered.length; i++) {
+            if (i == 0) {
+                winnerSentence += winnersOrdered[i];
+            } else {
+                winnerSentence += "," + winnersOrdered[i];
+            }
+        }
+
+        printStream.println(winnerSentence);
     }
 }

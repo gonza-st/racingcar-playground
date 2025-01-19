@@ -28,23 +28,7 @@ public class GameTest {
     }
 
     @Test
-    public void 경주가_진행되면_결과가_출력된다() {
-        doNothing().when(printStream).println("hi");
-        sut.race();
-
-        verify(printStream, times(1)).println("hi");
-    }
-
-    @Test
-    public void 입력받은_경주_횟수만큼_결과가_출력된다() {
-        Integer count = 3;
-        when(scanner.nextInt()).thenReturn(count);
-        sut.race();
-        verify(printStream, times(count)).println("hi");
-    }
-
-    @Test
-    public void 경주가_끝나면_입력받은_차량이름을_출력한다() {
+    public void 경주가_한번_끝날_때_마다_이전_경주의_결과를_누적해서_보여준다() {
         Integer count = 3;
         when(scanner.nextInt()).thenReturn(count);
 
@@ -53,13 +37,20 @@ public class GameTest {
 
         sut.race();
 
-        verify(printStream, times(count)).println("car1");
-        verify(printStream, times(count)).println("car2");
-        verify(printStream, times(count)).println("car3");
+        verify(printStream).println("car1:" + 1);
+        verify(printStream).println("car2:" + 1);
+        verify(printStream).println("car3:" + 1);
+        verify(printStream).println("car1:" + 2);
+        verify(printStream).println("car2:" + 2);
+        verify(printStream).println("car3:" + 2);
+        verify(printStream).println("car1:" + 3);
+        verify(printStream).println("car2:" + 3);
+        verify(printStream).println("car3:" + 3);
+
     }
 
     @Test
-    public void 게임이_끝나면_결과를_출력한다() {
+    public void 게임이_끝나면_우승자한_차량이름을_출력한다() {
         Integer count = 3;
         when(scanner.nextInt()).thenReturn(count);
 
@@ -68,6 +59,6 @@ public class GameTest {
 
         sut.race();
 
-        verify(printStream, times(1)).println("result");
+        verify(printStream, times(1)).println("car1,car2,car3");
     }
 }
