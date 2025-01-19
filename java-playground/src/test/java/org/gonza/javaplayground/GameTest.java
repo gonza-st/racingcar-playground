@@ -6,7 +6,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.PrintStream;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -18,7 +17,7 @@ public class GameTest {
     private InputHandler inputHandler;
 
     @Mock
-    private PrintStream printStream;
+    private OutputHandler outputHandler;
 
     @Mock
     private Random random;
@@ -27,7 +26,7 @@ public class GameTest {
 
     @BeforeEach
     public void setup() {
-        sut = new Game(printStream, random, inputHandler);
+        sut = new Game(random, inputHandler, outputHandler);
     }
 
     @Test
@@ -57,8 +56,8 @@ public class GameTest {
 
         sut.race();
 
-        verify(printStream).println("car1:" + 1);
-        verify(printStream).println("car2:" + 0);
+        verify(outputHandler).println("car1:" + 1);
+        verify(outputHandler).println("car2:" + 0);
     }
 
 
@@ -78,10 +77,10 @@ public class GameTest {
 
         sut.race();
 
-        verify(printStream, times(2)).println("car1:" + 0);
-        verify(printStream).println("car2:" + 0);
-        verify(printStream).println("car2:" + 1);
+        verify(outputHandler, times(2)).println("car1:" + 0);
+        verify(outputHandler).println("car2:" + 0);
+        verify(outputHandler).println("car2:" + 1);
 
-        verify(printStream).println("car2");
+        verify(outputHandler).println("car2");
     }
 }

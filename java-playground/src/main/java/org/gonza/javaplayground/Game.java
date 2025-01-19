@@ -1,23 +1,23 @@
 package org.gonza.javaplayground;
 
-import java.io.PrintStream;
 import java.util.*;
 
 public class Game {
     private static final String NAME_GUIDE_MSG = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     private static final String INT_GUIDE_MSG = "시도할 회수는 몇회인가요?";
 
-    private final PrintStream printStream;
     private final Random random;
 
     private final InputHandler inputHandler;
 
+    private final OutputHandler outputHandler;
+
     private final Map<String, Integer> record = new HashMap<>();
 
-    public Game(PrintStream printStream, Random random, InputHandler inputHandler) {
-        this.printStream = printStream;
+    public Game(Random random, InputHandler inputHandler, OutputHandler outputHandler) {
         this.random = random;
         this.inputHandler = inputHandler;
+        this.outputHandler = outputHandler;
     }
 
     public void race() {
@@ -38,11 +38,11 @@ public class Game {
 
                 if (distance >= 4) {
                     Integer history = record.getOrDefault(carName, 0);
-                    printStream.println(carName + ":" + (1 + history));
+                    outputHandler.println(carName + ":" + (1 + history));
                     record.put(carName, 1 + history);
                 } else {
                     Integer history = record.getOrDefault(carName, 0);
-                    printStream.println(carName + ":" + (history));
+                    outputHandler.println(carName + ":" + (history));
                 }
             }
 
@@ -78,6 +78,6 @@ public class Game {
             }
         }
 
-        printStream.println(winnerSentence);
+        outputHandler.println(winnerSentence);
     }
 }

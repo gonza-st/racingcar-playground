@@ -1,11 +1,12 @@
 package org.gonza.javaplayground.io;
 
 import org.gonza.javaplayground.InputHandler;
+import org.gonza.javaplayground.OutputHandler;
 
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class IOHandler implements InputHandler {
+public class IOHandler implements InputHandler, OutputHandler {
     private final Scanner scanner;
     private final PrintStream printStream;
 
@@ -32,5 +33,10 @@ public class IOHandler implements InputHandler {
         } catch (Exception e) {
             return this.getIntegerInput(guideMessage);
         }
+    }
+
+    @Override
+    public void println(String text) {
+        printStream.println(text);
     }
 }

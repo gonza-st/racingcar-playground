@@ -29,6 +29,17 @@ public class IOHandlerTest {
     }
 
     @Nested
+    class PrintlnTest {
+        @Test
+        public void 인자로_전달된_문자열을_출력한다() {
+            String text = "should print this sentence";
+            sut.println(text);
+
+            verify(printStream).println(text);
+        }
+    }
+
+    @Nested
     class GetIntegerInputTest {
         private static final String INT_GUIDE_MSG = "시도할 회수는 몇회인가요?";
 

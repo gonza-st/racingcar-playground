@@ -7,7 +7,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.PrintStream;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -20,7 +19,7 @@ public class RequirementsTest {
     private InputHandler inputHandler;
 
     @Mock
-    private PrintStream printStream;
+    private OutputHandler outputHandler;
 
     @Mock
     private Random random;
@@ -29,7 +28,7 @@ public class RequirementsTest {
 
     @BeforeEach
     public void setup() {
-        sut = new Game(printStream, random, inputHandler);
+        sut = new Game(random, inputHandler, outputHandler);
     }
 
     @Test
@@ -56,7 +55,7 @@ public class RequirementsTest {
         sut.race();
 
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
-        verify(printStream, times(2)).println(captor.capture());
+        verify(outputHandler, times(2)).println(captor.capture());
 
         assertTrue(captor.getAllValues().get(0).contains(names));
     }
@@ -83,8 +82,8 @@ public class RequirementsTest {
 
         sut.race();
 
-        verify(printStream).println("car1:" + 0);
-        verify(printStream).println("car1:" + 1);
+        verify(outputHandler).println("car1:" + 0);
+        verify(outputHandler).println("car1:" + 1);
     }
 
     @Test
@@ -101,6 +100,6 @@ public class RequirementsTest {
 
         sut.race();
 
-        verify(printStream).println("car1");
+        verify(outputHandler).println("car1");
     }
 }
