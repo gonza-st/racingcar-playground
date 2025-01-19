@@ -1,4 +1,4 @@
-package org.gonza.javaplayground.game;
+package org.gonza.javaplayground.game.record;
 
 import java.util.HashMap;
 import java.util.List;

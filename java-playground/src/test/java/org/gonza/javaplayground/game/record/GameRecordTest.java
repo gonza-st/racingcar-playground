@@ -1,4 +1,4 @@
-package org.gonza.javaplayground.game;
+package org.gonza.javaplayground.game.record;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

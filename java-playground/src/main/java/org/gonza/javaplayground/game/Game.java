@@ -1,5 +1,7 @@
 package org.gonza.javaplayground.game;
 
+import org.gonza.javaplayground.game.record.GameRecord;
+
 import java.util.*;
 
 public class Game {
