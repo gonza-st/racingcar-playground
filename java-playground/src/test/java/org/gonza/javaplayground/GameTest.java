@@ -32,31 +32,25 @@ public class GameTest {
     }
 
     @Test
-    public void 경주마다_랜덤한_숫자만큼_이동한다() {
+    public void 경주마다_이동거리가_4보다_큰경우만_누적한다() {
         when(random.nextInt(10))
-                .thenReturn(0)
-                .thenReturn(12)
-                .thenReturn(6)
                 .thenReturn(1)
-                .thenReturn(0)
-                .thenReturn(6);
+                .thenReturn(2)
+                .thenReturn(1)
+                .thenReturn(4);
 
         Integer count = 2;
         when(scanner.nextInt()).thenReturn(count);
 
-        String names = "car1,car2,car3";
+        String names = "car1,car2";
         when(scanner.nextLine()).thenReturn(names);
 
         sut.race();
 
-        verify(printStream).println("car1:" + 1);
-        verify(printStream).println("car1:" + 3);
+        verify(printStream, times(2)).println("car1:" + 0);
+        verify(printStream).println("car2:" + 0);
+        verify(printStream).println("car2:" + 5);
 
-        verify(printStream).println("car2:" + 13);
-        verify(printStream).println("car2:" + 14);
-
-        verify(printStream).println("car3:" + 7);
-        verify(printStream).println("car3:" + 14);
-        verify(printStream).println("car2,car3");
+        verify(printStream).println("car2");
     }
 }

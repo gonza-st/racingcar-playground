@@ -26,10 +26,14 @@ public class Game {
                 String carName = carNames[i];
                 Integer distance = random.nextInt(10) + 1;
 
-                Integer history = record.getOrDefault(carName, 0);
-
-                printStream.println(carName + ":" + (distance + history));
-                record.put(carName, distance + history);
+                if (distance >= 4) {
+                    Integer history = record.getOrDefault(carName, 0);
+                    printStream.println(carName + ":" + (distance + history));
+                    record.put(carName, distance + history);
+                } else {
+                    Integer history = record.getOrDefault(carName, 0);
+                    printStream.println(carName + ":" + (history));
+                }
             }
 
             count -= 1;
