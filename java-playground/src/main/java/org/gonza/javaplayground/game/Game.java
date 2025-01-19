@@ -12,7 +12,7 @@ public class Game {
 
     private final OutputHandler outputHandler;
 
-    private final Map<String, Integer> record = new HashMap<>();
+    private final GameRecord record = new GameRecord();
 
     public Game(Random random, InputHandler inputHandler, OutputHandler outputHandler) {
         this.random = random;
@@ -37,47 +37,22 @@ public class Game {
                 Integer distance = random.nextInt(10) + 1;
 
                 if (distance >= 4) {
-                    Integer history = record.getOrDefault(carName, 0);
-                    outputHandler.println(carName + ":" + (1 + history));
-                    record.put(carName, 1 + history);
+                    Integer newCount = record.plusMoveCount(carName);
+                    outputHandler.println(carName + ":" + (newCount));
                 } else {
-                    Integer history = record.getOrDefault(carName, 0);
-                    outputHandler.println(carName + ":" + (history));
+                    Integer prevCount = record.getMoveCount(carName);
+                    outputHandler.println(carName + ":" + (prevCount));
                 }
             }
 
             count -= 1;
         }
 
-        Integer maxDistance = 0;
-        String[] winners = new String[0];
+        List<String> carNamesWithLargestMoveCount = record.getCarWithLargestMoveCount();
+        String winners = carNamesWithLargestMoveCount.stream()
+                .reduce((acc, cur) -> acc + "," + cur)
+                .orElseThrow(() -> new IllegalStateException("An error occurred while searching for winner"));
 
-        for (Map.Entry<String, Integer> entry : record.entrySet()) {
-            Integer distance = entry.getValue();
-            String carName = entry.getKey();
-
-            if (distance > maxDistance) {
-                maxDistance = distance;
-                winners = new String[]{carName};
-            } else if (distance == maxDistance) {
-                String[] winnersCopy = Arrays.copyOf(winners, winners.length + 1);
-                winnersCopy[winnersCopy.length - 1] = carName;
-                winners = winnersCopy;
-            }
-        }
-
-        String[] winnersOrdered = Arrays.copyOf(winners, winners.length);
-        Arrays.sort(winnersOrdered);
-
-        String winnerSentence = "";
-        for (int i = 0; i < winnersOrdered.length; i++) {
-            if (i == 0) {
-                winnerSentence += winnersOrdered[i];
-            } else {
-                winnerSentence += "," + winnersOrdered[i];
-            }
-        }
-
-        outputHandler.println(winnerSentence);
+        outputHandler.println(winners);
     }
 }
