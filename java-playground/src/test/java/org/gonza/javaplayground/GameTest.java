@@ -33,7 +33,7 @@ public class GameTest {
     @Test
     public void 차량이름이_5글자_초과하는_경우_예외가_발생한다() {
         Integer count = 1;
-        when(inputHandler.getRacingCount()).thenReturn(count);
+        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
 
         String names = "too-long-name";
         when(inputHandler.getStringInput(anyString())).thenReturn(names);
@@ -50,7 +50,7 @@ public class GameTest {
                 .thenReturn(1);
 
         Integer count = 1;
-        when(inputHandler.getRacingCount()).thenReturn(count);
+        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
 
         String names = "car1,car2";
         when(inputHandler.getStringInput(anyString())).thenReturn(names);
@@ -71,7 +71,7 @@ public class GameTest {
                 .thenReturn(4);
 
         Integer count = 2;
-        when(inputHandler.getRacingCount()).thenReturn(count);
+        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
 
         String names = "car1,car2";
         when(inputHandler.getStringInput(anyString())).thenReturn(names);

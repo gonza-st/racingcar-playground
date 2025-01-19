@@ -25,7 +25,12 @@ public class IOHandler implements InputHandler {
     }
 
     @Override
-    public Integer getRacingCount() {
-        return 0;
+    public Integer getIntegerInput(String guideMessage) {
+        try {
+            printStream.println(guideMessage);
+            return scanner.nextInt();
+        } catch (Exception e) {
+            return this.getIntegerInput(guideMessage);
+        }
     }
 }

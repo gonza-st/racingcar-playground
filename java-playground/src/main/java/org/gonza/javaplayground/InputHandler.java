@@ -3,5 +3,5 @@ package org.gonza.javaplayground;
 public interface InputHandler {
     String getStringInput(String guideMessage);
 
-    Integer getRacingCount();
+    Integer getIntegerInput(String guideMessage);
 }

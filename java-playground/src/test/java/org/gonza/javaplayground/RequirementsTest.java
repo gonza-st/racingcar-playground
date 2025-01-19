@@ -35,7 +35,7 @@ public class RequirementsTest {
     @Test
     public void 차량이름은_5자를_초과할_수_없다() {
         Integer count = 1;
-        when(inputHandler.getRacingCount()).thenReturn(count);
+        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
 
         String names = "too-long-name";
         when(inputHandler.getStringInput(anyString())).thenReturn(names);
@@ -48,7 +48,7 @@ public class RequirementsTest {
     @Test
     public void 전진하는_자동차를_출력할_때_자동차_이름을_같이_출력한다() {
         Integer count = 1;
-        when(inputHandler.getRacingCount()).thenReturn(count);
+        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
 
         String names = "car1";
         when(inputHandler.getStringInput(anyString())).thenReturn(names);
@@ -76,7 +76,7 @@ public class RequirementsTest {
                 .thenReturn(4);
 
         Integer count = 2;
-        when(inputHandler.getRacingCount()).thenReturn(count);
+        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
 
         String names = "car1";
         when(inputHandler.getStringInput(anyString())).thenReturn(names);
@@ -94,7 +94,7 @@ public class RequirementsTest {
                 .thenReturn(4);
 
         Integer count = 2;
-        when(inputHandler.getRacingCount()).thenReturn(count);
+        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
 
         String names = "car1";
         when(inputHandler.getStringInput(anyString())).thenReturn(names);

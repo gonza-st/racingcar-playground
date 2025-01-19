@@ -5,6 +5,7 @@ import java.util.*;
 
 public class Game {
     private static final String NAME_GUIDE_MSG = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String INT_GUIDE_MSG = "시도할 회수는 몇회인가요?";
 
     private final PrintStream printStream;
     private final Random random;
@@ -20,7 +21,7 @@ public class Game {
     }
 
     public void race() {
-        Integer count = inputHandler.getRacingCount();
+        Integer count = inputHandler.getIntegerInput(INT_GUIDE_MSG);
         String cars = inputHandler.getStringInput(NAME_GUIDE_MSG);
         String[] carNames = cars.split(",");
 
