@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -37,7 +38,7 @@ public class GameTest {
         Integer count = 1;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
-        String names = "too-long-name";
+        List<String> names = List.of("too-long-name");
         when(carNameReader.getCarNames()).thenReturn(names);
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -54,7 +55,7 @@ public class GameTest {
         Integer count = 1;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
-        String names = "car1,car2";
+        List<String> names = List.of("car1", "car2");
         when(carNameReader.getCarNames()).thenReturn(names);
 
         sut.race();
@@ -75,7 +76,7 @@ public class GameTest {
         Integer count = 2;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
-        String names = "car1,car2";
+        List<String> names = List.of("car1", "car2");
         when(carNameReader.getCarNames()).thenReturn(names);
 
         sut.race();

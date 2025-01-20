@@ -11,6 +11,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -43,7 +44,7 @@ public class RequirementsTest {
         Integer count = 1;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
-        String names = "too-long-name";
+        List<String> names = List.of("too-long-name");
         when(carNameReader.getCarNames()).thenReturn(names);
 
         assertThrows(IllegalArgumentException.class, () -> {
@@ -56,7 +57,7 @@ public class RequirementsTest {
         Integer count = 1;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
-        String names = "car1";
+        List<String> names = List.of("car1");
         when(carNameReader.getCarNames()).thenReturn(names);
 
         sut.race();
@@ -64,7 +65,7 @@ public class RequirementsTest {
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(outputHandler, times(2)).println(captor.capture());
 
-        assertTrue(captor.getAllValues().get(0).contains(names));
+        assertTrue(captor.getAllValues().get(0).contains(names.get(0)));
     }
 
     @Test
@@ -84,7 +85,7 @@ public class RequirementsTest {
         Integer count = 2;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
-        String names = "car1";
+        List<String> names = List.of("car1");
         when(carNameReader.getCarNames()).thenReturn(names);
 
         sut.race();
@@ -102,7 +103,7 @@ public class RequirementsTest {
         Integer count = 2;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
-        String names = "car1";
+        List<String> names = List.of("car1");
         when(carNameReader.getCarNames()).thenReturn(names);
 
         sut.race();

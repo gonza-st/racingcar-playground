@@ -50,16 +50,16 @@ public class Game {
     }
 
     private String[] getCarNames() {
-        String cars = carNameReader.getCarNames();
-        String[] carNames = cars.split(",");
+        List<String> carNames = carNameReader.getCarNames();
 
-        for (String carName : carNames) {
+        carNames.forEach((carName) -> {
             if (carName.length() > 5) {
                 throw new IllegalArgumentException("Car name too long");
             }
-        }
+        });
 
-        return carNames;
+        String[] result = carNames.toArray(new String[carNames.size()]);
+        return result;
     }
 
     private String getWinnerNames() {

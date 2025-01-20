@@ -8,6 +8,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -48,8 +50,8 @@ public class CarNameReaderImplTest {
     @Test
     public void 입력된_차량이름은_trim_처리하여_반환한다() {
         when(inputHandler.getStringInput(anyString())).thenReturn("car1 ");
-        String carName = sut.getCarNames();
+        List<String> carName = sut.getCarNames();
 
-        assertEquals("car1", carName);
+        assertEquals("car1", carName.get(0));
     }
 }
