@@ -25,14 +25,7 @@ public class Game {
 
     public void race() {
         Integer count = racingCountReader.getRacingCount();
-        String cars = carNameReader.getCarNames();
-        String[] carNames = cars.split(",");
-
-        for (String carName : carNames) {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("Car name too long");
-            }
-        }
+        String[] carNames = getCarNames();
 
         while (count > 0) {
             for (int i = 0; i < carNames.length; i++) {
@@ -57,5 +50,18 @@ public class Game {
                 .orElseThrow(() -> new IllegalStateException("An error occurred while searching for winner"));
 
         outputHandler.println(winners);
+    }
+
+    private String[] getCarNames() {
+        String cars = carNameReader.getCarNames();
+        String[] carNames = cars.split(",");
+
+        for (String carName : carNames) {
+            if (carName.length() > 5) {
+                throw new IllegalArgumentException("Car name too long");
+            }
+        }
+
+        return carNames;
     }
 }
