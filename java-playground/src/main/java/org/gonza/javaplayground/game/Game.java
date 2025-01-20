@@ -44,11 +44,8 @@ public class Game {
             count -= 1;
         }
 
-        List<String> carNamesWithLargestMoveCount = record.getCarWithLargestMoveCount();
-        String winners = carNamesWithLargestMoveCount.stream()
-                .reduce((acc, cur) -> acc + "," + cur)
-                .orElseThrow(() -> new IllegalStateException("An error occurred while searching for winner"));
 
+        String winners = getWinnerNames();
         outputHandler.println(winners);
     }
 
@@ -63,5 +60,14 @@ public class Game {
         }
 
         return carNames;
+    }
+
+    private String getWinnerNames() {
+        List<String> carNamesWithLargestMoveCount = record.getCarWithLargestMoveCount();
+        String winners = carNamesWithLargestMoveCount.stream()
+                .reduce((acc, cur) -> acc + "," + cur)
+                .orElseThrow(() -> new IllegalStateException("An error occurred while searching for winner"));
+
+        return winners;
     }
 }
