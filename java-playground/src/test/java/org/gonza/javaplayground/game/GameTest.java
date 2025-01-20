@@ -1,6 +1,5 @@
 package org.gonza.javaplayground.game;
 
-import org.gonza.javaplayground.io.handler.InputHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +14,10 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class GameTest {
     @Mock
-    private InputHandler inputHandler;
+    private RacingCountReader racingCountReader;
+
+    @Mock
+    private CarNameReader carNameReader;
 
     @Mock
     private OutputHandler outputHandler;
@@ -27,16 +29,16 @@ public class GameTest {
 
     @BeforeEach
     public void setup() {
-        sut = new Game(random, inputHandler, outputHandler);
+        sut = new Game(random, carNameReader, racingCountReader, outputHandler);
     }
 
     @Test
     public void 차량이름이_5글자_초과하는_경우_예외가_발생한다() {
         Integer count = 1;
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
+        when(racingCountReader.getRacingCount()).thenReturn(count);
 
         String names = "too-long-name";
-        when(inputHandler.getStringInput(anyString())).thenReturn(names);
+        when(carNameReader.getCarNames()).thenReturn(names);
 
         assertThrows(IllegalArgumentException.class, () -> {
             sut.race();
@@ -50,10 +52,10 @@ public class GameTest {
                 .thenReturn(1);
 
         Integer count = 1;
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
+        when(racingCountReader.getRacingCount()).thenReturn(count);
 
         String names = "car1,car2";
-        when(inputHandler.getStringInput(anyString())).thenReturn(names);
+        when(carNameReader.getCarNames()).thenReturn(names);
 
         sut.race();
 
@@ -71,10 +73,10 @@ public class GameTest {
                 .thenReturn(4);
 
         Integer count = 2;
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
+        when(racingCountReader.getRacingCount()).thenReturn(count);
 
         String names = "car1,car2";
-        when(inputHandler.getStringInput(anyString())).thenReturn(names);
+        when(carNameReader.getCarNames()).thenReturn(names);
 
         sut.race();
 

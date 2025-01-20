@@ -6,26 +6,26 @@ import org.gonza.javaplayground.io.handler.InputHandler;
 import java.util.*;
 
 public class Game {
-    private static final String NAME_GUIDE_MSG = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
-    private static final String INT_GUIDE_MSG = "시도할 회수는 몇회인가요?";
-
     private final Random random;
 
-    private final InputHandler inputHandler;
+    private final CarNameReader carNameReader;
+
+    private final RacingCountReader racingCountReader;
 
     private final OutputHandler outputHandler;
 
     private final GameRecord record = new GameRecord();
 
-    public Game(Random random, InputHandler inputHandler, OutputHandler outputHandler) {
+    public Game(Random random, CarNameReader carNameReader, RacingCountReader racingCountReader, OutputHandler outputHandler) {
         this.random = random;
-        this.inputHandler = inputHandler;
+        this.carNameReader = carNameReader;
+        this.racingCountReader = racingCountReader;
         this.outputHandler = outputHandler;
     }
 
     public void race() {
-        Integer count = inputHandler.getIntegerInput(INT_GUIDE_MSG);
-        String cars = inputHandler.getStringInput(NAME_GUIDE_MSG);
+        Integer count = racingCountReader.getRacingCount();
+        String cars = carNameReader.getCarNames();
         String[] carNames = cars.split(",");
 
         for (String carName : carNames) {

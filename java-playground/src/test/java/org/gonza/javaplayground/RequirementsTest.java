@@ -1,7 +1,8 @@
 package org.gonza.javaplayground;
 
+import org.gonza.javaplayground.game.CarNameReader;
 import org.gonza.javaplayground.game.Game;
-import org.gonza.javaplayground.io.handler.InputHandler;
+import org.gonza.javaplayground.game.RacingCountReader;
 import org.gonza.javaplayground.game.OutputHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,10 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class RequirementsTest {
     @Mock
-    private InputHandler inputHandler;
+    private RacingCountReader racingCountReader;
+
+    @Mock
+    private CarNameReader carNameReader;
 
     @Mock
     private OutputHandler outputHandler;
@@ -31,16 +35,16 @@ public class RequirementsTest {
 
     @BeforeEach
     public void setup() {
-        sut = new Game(random, inputHandler, outputHandler);
+        sut = new Game(random, carNameReader, racingCountReader, outputHandler);
     }
 
     @Test
     public void 차량이름은_5자를_초과할_수_없다() {
         Integer count = 1;
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
+        when(racingCountReader.getRacingCount()).thenReturn(count);
 
         String names = "too-long-name";
-        when(inputHandler.getStringInput(anyString())).thenReturn(names);
+        when(carNameReader.getCarNames()).thenReturn(names);
 
         assertThrows(IllegalArgumentException.class, () -> {
             sut.race();
@@ -50,10 +54,10 @@ public class RequirementsTest {
     @Test
     public void 전진하는_자동차를_출력할_때_자동차_이름을_같이_출력한다() {
         Integer count = 1;
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
+        when(racingCountReader.getRacingCount()).thenReturn(count);
 
         String names = "car1";
-        when(inputHandler.getStringInput(anyString())).thenReturn(names);
+        when(carNameReader.getCarNames()).thenReturn(names);
 
         sut.race();
 
@@ -78,10 +82,10 @@ public class RequirementsTest {
                 .thenReturn(4);
 
         Integer count = 2;
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
+        when(racingCountReader.getRacingCount()).thenReturn(count);
 
         String names = "car1";
-        when(inputHandler.getStringInput(anyString())).thenReturn(names);
+        when(carNameReader.getCarNames()).thenReturn(names);
 
         sut.race();
 
@@ -96,10 +100,10 @@ public class RequirementsTest {
                 .thenReturn(4);
 
         Integer count = 2;
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(count);
+        when(racingCountReader.getRacingCount()).thenReturn(count);
 
         String names = "car1";
-        when(inputHandler.getStringInput(anyString())).thenReturn(names);
+        when(carNameReader.getCarNames()).thenReturn(names);
 
         sut.race();
 
