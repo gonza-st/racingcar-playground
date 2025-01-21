@@ -16,7 +16,7 @@ public class CarService {
         List<String> carNamesAsString = carNameReader.getCarNames();
         List<Car> cars = carNamesAsString.stream()
                 .peek(this::validateCarName)
-                .map((name) -> new Car(name, new Random()))
+                .map(this::createCar)
                 .toList();
 
         return cars;
@@ -28,4 +28,11 @@ public class CarService {
         }
     }
 
+    private Car createCar(String carName) {
+        Random random = new Random();
+        Integer engineSpec = carSpec.getMaxDistance();
+        CarEngine engine = new CarEngine(random, engineSpec);
+
+        return new Car(carName, engine);
+    }
 }

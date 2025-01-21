@@ -1,19 +1,16 @@
 package org.gonza.javaplayground.game.car;
 
-import java.util.Random;
-
 public class Car {
-    private static final Integer BOUND = 10;
-    private static final Integer OFFSET = 1;
     private static final Integer MAX_DISTANCE = 10;
     private static final Integer MIN_DISTANCE = 1;
 
     private final String name;
-    private final Random random;
+    private final CarEngine engine;
 
-    public Car(String name, Random random) {
+
+    public Car(String name, CarEngine engine) {
         this.name = name;
-        this.random = random;
+        this.engine = engine;
     }
 
     public String getName() {
@@ -21,7 +18,7 @@ public class Car {
     }
 
     public Integer move() {
-        Integer distance = random.nextInt(BOUND) + OFFSET;
+        Integer distance = engine.cycle();
 
         if (distance > MAX_DISTANCE || distance < MIN_DISTANCE) {
             return move();
