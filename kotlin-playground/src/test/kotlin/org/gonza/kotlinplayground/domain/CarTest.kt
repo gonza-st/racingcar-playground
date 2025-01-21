@@ -21,4 +21,12 @@ class CarTest {
 
         assertThrows<IllegalArgumentException> { Car(name) }
     }
+
+    @Test
+    fun `차는 최초로 생성될 시 position이 0이다` () {
+        val name = "name"
+
+        val result = Car(name)
+        assertThat(result.position).isEqualTo(0)
+    }
 }
