@@ -17,12 +17,6 @@ class Racers(
             println("----- turn ${it + 1} end -----")
         }
     }
-
-    fun winner(): List<Racer> {
-        val maxLocation = racers.maxOf { it.car.location }
-        return racers.filter { it.car.location == maxLocation }
-    }
-
     private fun visualize(racer: Racer) {
         println("${racer.car.name}: ${"-".repeat(racer.car.location)}")
     }

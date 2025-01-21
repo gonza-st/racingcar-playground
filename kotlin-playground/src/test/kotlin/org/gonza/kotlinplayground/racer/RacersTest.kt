@@ -58,38 +58,4 @@ class RacersTest {
         }
     }
 
-    @Test
-    fun `우승자를 계산할 수 있다`(){
-        val turns = 5
-
-        val actual = Racers(
-            listOf(racer1, racer2)
-        )
-
-        actual.play(turns)
-
-        val winner = actual.winner()
-
-        assertEquals(winner, listOf(racer2))
-    }
-
-    @Test
-    fun `우승자는 2명 이상일 수 있다`(){
-        val racer3 = Fixture.createRacer(
-            name = "씨바겐",
-            number = 5
-        )
-
-        val turns = 5
-
-        val actual = Racers(
-            listOf(racer1, racer2, racer3)
-        )
-
-        actual.play(turns)
-
-        val winner = actual.winner()
-
-        assertEquals(winner, listOf(racer2, racer3))
-    }
 }
