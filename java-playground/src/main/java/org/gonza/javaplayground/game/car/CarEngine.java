@@ -2,7 +2,7 @@ package org.gonza.javaplayground.game.car;
 
 import java.util.Random;
 
-public class CarEngine {
+class CarEngine {
     private static final Integer NOT_ZERO_OFFSET = 1;
 
     private final Integer maxPower;
