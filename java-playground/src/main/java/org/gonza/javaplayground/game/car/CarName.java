@@ -2,7 +2,7 @@ package org.gonza.javaplayground.game.car;
 
 import java.util.Objects;
 
-public class CarName {
+class CarName {
     private static final Integer MAX_NAME_LENGTH = 5;
 
     private final String name;

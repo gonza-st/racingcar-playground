@@ -1,12 +1,10 @@
 package org.gonza.javaplayground.game;
 
-import org.gonza.javaplayground.game.car.CarName;
+import org.gonza.javaplayground.game.car.Car;
 import org.gonza.javaplayground.game.record.GameRecord;
 import java.util.*;
 
 public class Game {
-    private final Random random;
-
     private final CarNameReader carNameReader;
 
     private final RacingCountReader racingCountReader;
@@ -15,8 +13,7 @@ public class Game {
 
     private final GameRecord record = new GameRecord();
 
-    public Game(Random random, CarNameReader carNameReader, RacingCountReader racingCountReader, GamePrinter gamePrinter) {
-        this.random = random;
+    public Game(CarNameReader carNameReader, RacingCountReader racingCountReader, GamePrinter gamePrinter) {
         this.carNameReader = carNameReader;
         this.racingCountReader = racingCountReader;
         this.gamePrinter = gamePrinter;
@@ -24,12 +21,12 @@ public class Game {
 
     public void race() {
         Integer count = racingCountReader.getRacingCount();
-        List<CarName> carNames = getCarNames();
+        List<Car> cars = getCars();
 
         while (count > 0) {
-            for (int i = 0; i < carNames.size(); i++) {
-                String carName = carNames.get(i).getValue();
-                Integer distance = random.nextInt(10) + 1;
+            for (int i = 0; i < cars.size(); i++) {
+                String carName = cars.get(i).getName();
+                Integer distance = cars.get(i).move();
 
                 if (distance >= 4) {
                     Integer newCount = record.plusMoveCount(carName);
@@ -48,12 +45,12 @@ public class Game {
         gamePrinter.showResult(carNamesWithLargestMoveCount);
     }
 
-    private List<CarName> getCarNames() {
+    private List<Car> getCars() {
         List<String> carNamesAsString = carNameReader.getCarNames();
-        List<CarName> carNames = carNamesAsString.stream()
-                .map(CarName::new)
+        List<Car> cars = carNamesAsString.stream()
+                .map(Car::new)
                 .toList();
 
-        return carNames;
+        return cars;
     }
 }
