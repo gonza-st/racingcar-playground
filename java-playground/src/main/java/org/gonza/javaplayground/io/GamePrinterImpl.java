@@ -1,7 +1,7 @@
 package org.gonza.javaplayground.io;
 
 import org.gonza.javaplayground.game.GamePrinter;
-import org.gonza.javaplayground.game.OutputHandler;
+import org.gonza.javaplayground.io.handler.OutputHandler;
 
 import java.util.List;
 
