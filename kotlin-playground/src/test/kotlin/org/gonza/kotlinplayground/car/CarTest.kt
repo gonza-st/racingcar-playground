@@ -1,5 +1,7 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.car
 
+import org.gonza.kotlinplayground.Fixture
+import org.gonza.kotlinplayground.car.Car
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
@@ -26,7 +28,7 @@ class CarTest {
     fun `자동차의 처음 위치는 0 일 수 있다`(){
         val actual = Car(Fixture.name)
 
-        assertEquals(actual.location ,Fixture.location)
+        assertEquals(actual.location , Fixture.location)
     }
 
     @Test

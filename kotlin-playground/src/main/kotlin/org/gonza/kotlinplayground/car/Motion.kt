@@ -1,4 +1,4 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.car
 
 enum class Motion{
     BREAK,

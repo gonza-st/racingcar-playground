@@ -1,5 +1,6 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.rule
 
+import org.gonza.kotlinplayground.rule.NumberGeneratorImpl
 import org.junit.jupiter.api.Test
 
 class NumberGeneratorImplTest {

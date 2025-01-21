@@ -1,5 +1,9 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.racer
 
+import org.gonza.kotlinplayground.Fixture
+import org.gonza.kotlinplayground.car.Accelerate
+import org.gonza.kotlinplayground.racer.Racer
+import org.gonza.kotlinplayground.rule.FakeNumberGeneratorImpl
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import kotlin.test.assertEquals
@@ -54,7 +58,7 @@ class RacerTest {
         assertEquals(actual.car.location, 0)
     }
 
-    private fun getAccelerate(number: Int): Accelerate{
+    private fun getAccelerate(number: Int): Accelerate {
         return  Accelerate(
             numberGenerator = FakeNumberGeneratorImpl(number)
         )

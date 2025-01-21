@@ -1,5 +1,6 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.rule
 
+import org.gonza.kotlinplayground.rule.FakeNumberGeneratorImpl
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.Test

@@ -1,4 +1,4 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.rule
 
 class FakeNumberGeneratorImpl(private val number: Int): NumberGenerator {
     init {

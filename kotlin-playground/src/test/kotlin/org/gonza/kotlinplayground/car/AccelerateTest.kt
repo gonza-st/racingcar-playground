@@ -1,5 +1,8 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.car
 
+import org.gonza.kotlinplayground.car.Accelerate
+import org.gonza.kotlinplayground.car.Motion
+import org.gonza.kotlinplayground.rule.FakeNumberGeneratorImpl
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
