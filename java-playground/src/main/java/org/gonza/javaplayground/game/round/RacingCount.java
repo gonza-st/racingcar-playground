@@ -1,11 +1,11 @@
 package org.gonza.javaplayground.game.round;
 
-public class RacingRound {
+public class RacingCount {
     private static final Integer MIN_ROUND = 0;
 
     private Integer round;
 
-    public RacingRound(Integer round) {
+    public RacingCount(Integer round) {
         if (round <= 0) {
             throw new IllegalArgumentException("should be positive integer");
         }
