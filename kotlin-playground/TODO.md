@@ -6,10 +6,10 @@ Car
 
 Racing
 - [x] has List<Car>
-- [ ] has round
+- [x] has round
 
 Car
-- [ ] moveForward
+- [x] moveForward
 
 Racing
 - [ ] startRace
