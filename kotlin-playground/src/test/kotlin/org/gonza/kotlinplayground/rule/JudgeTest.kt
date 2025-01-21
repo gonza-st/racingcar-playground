@@ -23,7 +23,7 @@ class JudgeTest {
 
         val racers = Racers(racerList)
 
-        racers.play(turns)
+        racers.race(turns)
 
         val actual = Judge()
         val winner = actual.winner(racerList)
@@ -43,7 +43,7 @@ class JudgeTest {
 
         val racers= Racers(racerList)
 
-        racers.play(turns)
+        racers.race(turns)
 
         val actual = Judge()
         val winner = actual.winner(racerList)
