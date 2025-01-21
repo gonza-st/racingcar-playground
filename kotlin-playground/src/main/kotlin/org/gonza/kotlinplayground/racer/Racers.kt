@@ -6,7 +6,7 @@ class Racers(
     init {
         require(racers.isNotEmpty()) { "레이서가 한 명 이상 있어야 합니다." }
     }
-    fun play(turns: Int) {
+    fun race(turns: Int) {
         require(turns >= 0) { "턴 수는 0 이상이어야 합니다." }
 
         repeat(turns) {
@@ -20,4 +20,6 @@ class Racers(
     private fun visualize(racer: Racer) {
         println("${racer.car.name}: ${"-".repeat(racer.car.location)}")
     }
+
+    fun getRacers(): List<Racer> = racers.toList()
 }

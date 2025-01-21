@@ -1,26 +1,17 @@
 package org.gonza.kotlinplayground.racer
 
-import org.gonza.kotlinplayground.Fixture
+import org.gonza.kotlinplayground.Fixture.racer1
+import org.gonza.kotlinplayground.Fixture.racer2
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 
 class RacersTest {
-    val racer1 = Fixture.createRacer(
-        name = "에이바겐",
-        number = 1
-    )
-
-    val racer2 = Fixture.createRacer(
-        name = "비바겐",
-        number = 5
-    )
-
     @Test
     fun `Racer를 일급 컬렉션으로 관리할 수 있다`(){
         assertDoesNotThrow {
-            Racers(listOf( racer1, racer2))
+            Racers(listOf(racer1, racer2))
         }
     }
 
@@ -30,21 +21,6 @@ class RacersTest {
             Racers(emptyList())
         }
     }
-
-    @Test
-    fun `Racers로 게임을 진행할 수 있다`(){
-        val turns = 5
-
-        val actual = Racers(
-            listOf(racer1, racer2)
-        )
-
-        actual.play(turns)
-
-        assertEquals(racer1.car.location, 0 )
-        assertEquals(racer2.car.location, 5 )
-    }
-
     @Test
     fun `turns은 음수 일 수 없다`(){
         val turns = -1
@@ -54,8 +30,18 @@ class RacersTest {
         )
 
         assertThrows<IllegalArgumentException> {
-            actual.play(turns)
+            actual.race(turns)
         }
     }
 
+    @Test
+    fun `Racers 에 포함된 racer들을 조회할 수 있다`(){
+        val racers = Racers(
+            listOf(racer1, racer2)
+        )
+
+        val actual = racers.getRacers()
+        assertEquals(actual[0], racer1)
+        assertEquals(actual[1], racer2)
+    }
 }
