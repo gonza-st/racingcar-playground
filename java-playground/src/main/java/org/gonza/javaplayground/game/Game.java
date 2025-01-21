@@ -9,6 +9,8 @@ import org.gonza.javaplayground.game.round.RacingCountService;
 import java.util.*;
 
 public class Game {
+    private static final Integer MIN_ACCEPTABLE_RESULT = 4;
+
     private final CarService carService;
 
     private final RacingCountService racingCountService;
@@ -44,7 +46,7 @@ public class Game {
     }
 
     private void recordRaceResultByCar(Car car) {
-        if (car.move() >= 4) {
+        if (car.move() >= MIN_ACCEPTABLE_RESULT) {
             record.plusMoveCount(car.getName());
         }
     }
