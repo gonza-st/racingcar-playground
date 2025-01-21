@@ -26,6 +26,7 @@ public class CarServiceTest {
         sut = new CarService(carNameReader, carSpec);
     }
 
+
     @Test
     public void 유저가_입력한_이름의_길이가_5_이상이면_예외가_발생한다() {
         List<String> userInputCarName = List.of("too-long-car-name");
