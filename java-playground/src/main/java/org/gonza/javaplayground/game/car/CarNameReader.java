@@ -1,4 +1,4 @@
-package org.gonza.javaplayground.game;
+package org.gonza.javaplayground.game.car;
 
 import java.util.List;
 

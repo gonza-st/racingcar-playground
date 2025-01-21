@@ -2,6 +2,8 @@ package org.gonza.javaplayground;
 
 import org.gonza.javaplayground.game.*;
 import org.gonza.javaplayground.game.car.Car;
+import org.gonza.javaplayground.game.car.CarNameReader;
+import org.gonza.javaplayground.game.car.CarService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

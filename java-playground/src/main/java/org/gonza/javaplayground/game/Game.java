@@ -1,6 +1,7 @@
 package org.gonza.javaplayground.game;
 
 import org.gonza.javaplayground.game.car.Car;
+import org.gonza.javaplayground.game.car.CarService;
 import org.gonza.javaplayground.game.record.GameRecord;
 import java.util.*;
 

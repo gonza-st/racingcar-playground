@@ -1,6 +1,6 @@
 package org.gonza.javaplayground.io;
 
-import org.gonza.javaplayground.game.CarNameReader;
+import org.gonza.javaplayground.game.car.CarNameReader;
 import org.gonza.javaplayground.io.handler.InputHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

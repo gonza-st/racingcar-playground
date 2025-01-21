@@ -1,6 +1,5 @@
-package org.gonza.javaplayground.game;
+package org.gonza.javaplayground.game.car;
 
-import org.gonza.javaplayground.game.car.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
