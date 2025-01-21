@@ -16,6 +16,11 @@ class Racing(
     }
 
     fun start() {
-
+        while (this.round.canStartNext()) {
+            this.round.startNext()
+            this.carList.map {
+                it.move()
+            }
+        }
     }
 }
