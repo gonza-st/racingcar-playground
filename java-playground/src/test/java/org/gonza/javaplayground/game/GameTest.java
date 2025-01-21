@@ -1,7 +1,7 @@
 package org.gonza.javaplayground.game;
 
+import org.gonza.javaplayground.game.car.Car;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -18,7 +18,7 @@ public class GameTest {
     private RacingCountReader racingCountReader;
 
     @Mock
-    private CarNameReader carNameReader;
+    private CarService carService;
 
     @Mock
     private GamePrinter gamePrinter;
@@ -27,11 +27,15 @@ public class GameTest {
 
     @BeforeEach
     public void setup() {
-        sut = new Game(carNameReader, racingCountReader, gamePrinter);
+        sut = new Game(carService, racingCountReader, gamePrinter);
     }
 
     @Test
     public void 차량이름이_5글자_초과하는_경우_예외가_발생한다() {
+        CarNameReader carNameReader = mock(CarNameReader.class);
+        CarService carService = new CarService(carNameReader);
+        Game game = new Game(carService, racingCountReader, gamePrinter);
+
         Integer count = 1;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
@@ -39,22 +43,24 @@ public class GameTest {
         when(carNameReader.getCarNames()).thenReturn(names);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            sut.race();
+            game.race();
         });
     }
 
     @Test
-    @Disabled("차량 이동 랜덤 로직 추가 필요")
     public void 경주의_결과는_이동거리가_아닌_이동횟수를_기록한다() {
-//        when(random.nextInt(10))
-//                .thenReturn(5)
-//                .thenReturn(1);
-
         Integer count = 1;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
         List<String> names = List.of("car1", "car2");
-        when(carNameReader.getCarNames()).thenReturn(names);
+        Car car1 = mock(Car.class);
+        when(car1.getName()).thenReturn(names.get(0));
+        when(car1.move()).thenReturn(5);
+
+        Car car2 = mock(Car.class);
+        when(car2.getName()).thenReturn(names.get(1));
+        when(car2.move()).thenReturn(1);
+        when(carService.createCars()).thenReturn(List.of(car1, car2));
 
         sut.race();
 
@@ -64,19 +70,19 @@ public class GameTest {
 
 
     @Test
-    @Disabled("차량 이동 랜덤 로직 추가 필요")
     public void 경주마다_이동거리가_4보다_큰경우만_누적한다() {
-//        when(random.nextInt(10))
-//                .thenReturn(1)
-//                .thenReturn(2)
-//                .thenReturn(1)
-//                .thenReturn(4);
-
         Integer count = 2;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
         List<String> names = List.of("car1", "car2");
-        when(carNameReader.getCarNames()).thenReturn(names);
+        Car car1 = mock(Car.class);
+        when(car1.getName()).thenReturn(names.get(0));
+        when(car1.move()).thenReturn(1).thenReturn(1);
+
+        Car car2 = mock(Car.class);
+        when(car2.getName()).thenReturn(names.get(1));
+        when(car2.move()).thenReturn(2).thenReturn(4);
+        when(carService.createCars()).thenReturn(List.of(car1, car2));
 
         sut.race();
 

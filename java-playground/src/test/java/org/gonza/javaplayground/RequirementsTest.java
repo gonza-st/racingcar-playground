@@ -1,8 +1,8 @@
 package org.gonza.javaplayground;
 
 import org.gonza.javaplayground.game.*;
+import org.gonza.javaplayground.game.car.Car;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,7 +21,7 @@ public class RequirementsTest {
     private RacingCountReader racingCountReader;
 
     @Mock
-    private CarNameReader carNameReader;
+    private CarService carService;
 
     @Mock
     private GamePrinter gamePrinter;
@@ -31,11 +30,15 @@ public class RequirementsTest {
 
     @BeforeEach
     public void setup() {
-        sut = new Game(carNameReader, racingCountReader, gamePrinter);
+        sut = new Game(carService, racingCountReader, gamePrinter);
     }
 
     @Test
     public void 차량이름은_5자를_초과할_수_없다() {
+        CarNameReader carNameReader = mock(CarNameReader.class);
+        CarService carService = new CarService(carNameReader);
+        Game game = new Game(carService, racingCountReader, gamePrinter);
+
         Integer count = 1;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
@@ -43,7 +46,7 @@ public class RequirementsTest {
         when(carNameReader.getCarNames()).thenReturn(names);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            sut.race();
+            game.race();
         });
     }
 
@@ -53,7 +56,10 @@ public class RequirementsTest {
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
         List<String> names = List.of("car1");
-        when(carNameReader.getCarNames()).thenReturn(names);
+
+        Car car = mock(Car.class);
+        when(car.getName()).thenReturn(names.get(0));
+        when(carService.createCars()).thenReturn(List.of(car));
 
         sut.race();
 
@@ -74,17 +80,16 @@ public class RequirementsTest {
     }
 
     @Test
-    @Disabled("차량 이동 랜덤 로직 추가 필요")
     public void 전진하는_조건은_random_값이_4이상일_경우이다() {
-//        when(random.nextInt(10))
-//                .thenReturn(1)
-//                .thenReturn(4);
-
         Integer count = 2;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
         List<String> names = List.of("car1");
-        when(carNameReader.getCarNames()).thenReturn(names);
+
+        Car car = mock(Car.class);
+        when(car.getName()).thenReturn(names.get(0));
+        when(car.move()).thenReturn(1).thenReturn(4);
+        when(carService.createCars()).thenReturn(List.of(car));
 
         sut.race();
 
@@ -92,17 +97,16 @@ public class RequirementsTest {
     }
 
     @Test
-    @Disabled("차량 이동 랜덤 로직 추가 필요")
     public void 자동차_경주_완료_후_우승자를_알려준다() {
-//        when(random.nextInt(10))
-//                .thenReturn(1)
-//                .thenReturn(4);
-
         Integer count = 2;
         when(racingCountReader.getRacingCount()).thenReturn(count);
 
         List<String> names = List.of("car1");
-        when(carNameReader.getCarNames()).thenReturn(names);
+
+        Car car = mock(Car.class);
+        when(car.getName()).thenReturn(names.get(0));
+        when(car.move()).thenReturn(1).thenReturn(4);
+        when(carService.createCars()).thenReturn(List.of(car));
 
         sut.race();
 

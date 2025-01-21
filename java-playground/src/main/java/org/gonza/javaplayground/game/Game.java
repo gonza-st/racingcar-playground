@@ -5,7 +5,7 @@ import org.gonza.javaplayground.game.record.GameRecord;
 import java.util.*;
 
 public class Game {
-    private final CarNameReader carNameReader;
+    private final CarService carService;
 
     private final RacingCountReader racingCountReader;
 
@@ -13,15 +13,15 @@ public class Game {
 
     private final GameRecord record = new GameRecord();
 
-    public Game(CarNameReader carNameReader, RacingCountReader racingCountReader, GamePrinter gamePrinter) {
-        this.carNameReader = carNameReader;
+    public Game(CarService carService, RacingCountReader racingCountReader, GamePrinter gamePrinter) {
+        this.carService = carService;
         this.racingCountReader = racingCountReader;
         this.gamePrinter = gamePrinter;
     }
 
     public void race() {
         Integer count = racingCountReader.getRacingCount();
-        List<Car> cars = getCars();
+        List<Car> cars = carService.createCars();
 
         while (count > 0) {
             for (int i = 0; i < cars.size(); i++) {
@@ -43,14 +43,5 @@ public class Game {
 
         List<String> carNamesWithLargestMoveCount = record.getCarWithLargestMoveCount();
         gamePrinter.showResult(carNamesWithLargestMoveCount);
-    }
-
-    private List<Car> getCars() {
-        List<String> carNamesAsString = carNameReader.getCarNames();
-        List<Car> cars = carNamesAsString.stream()
-                .map(Car::new)
-                .toList();
-
-        return cars;
     }
 }
