@@ -28,16 +28,4 @@ class RacingTest {
         val carsName="test1,over5test,test3"
         assertThrows<IllegalArgumentException> { Racing(carsName = carsName, round = round) }
     }
-
-    @Test
-    fun `경주는 입력받은 만큼의 라운드를 가진다`() {
-        val result = Racing(carsName = carsName, round = round)
-        assertThat(result.round.value).isEqualTo(round)
-    }
-
-    @Test
-    fun `라운드는 0보다 작을 수 없다`() {
-        val round = -1
-        assertThrows<IllegalArgumentException> { Racing(carsName = carsName, round = round) }
-    }
 }

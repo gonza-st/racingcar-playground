@@ -14,4 +14,8 @@ class Racing(
         val carList = nameList.map { Car(it) }
         return carList
     }
+
+    fun start() {
+
+    }
 }
