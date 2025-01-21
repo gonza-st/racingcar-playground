@@ -1,6 +1,7 @@
 package org.gonza.javaplayground.game.car;
 
 import java.util.List;
+import java.util.Random;
 
 public class CarService {
     private final CarNameReader carNameReader;
@@ -12,7 +13,7 @@ public class CarService {
     public List<Car> createCars() {
         List<String> carNamesAsString = carNameReader.getCarNames();
         List<Car> cars = carNamesAsString.stream()
-                .map(Car::new)
+                .map((name) -> new Car(name, new Random()))
                 .toList();
 
         return cars;
