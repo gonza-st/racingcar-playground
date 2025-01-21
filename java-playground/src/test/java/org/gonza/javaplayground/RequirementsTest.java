@@ -1,9 +1,6 @@
 package org.gonza.javaplayground;
 
-import org.gonza.javaplayground.game.CarNameReader;
-import org.gonza.javaplayground.game.Game;
-import org.gonza.javaplayground.game.RacingCountReader;
-import org.gonza.javaplayground.game.OutputHandler;
+import org.gonza.javaplayground.game.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,7 +24,7 @@ public class RequirementsTest {
     private CarNameReader carNameReader;
 
     @Mock
-    private OutputHandler outputHandler;
+    private GamePrinter gamePrinter;
 
     @Mock
     private Random random;
@@ -36,7 +33,7 @@ public class RequirementsTest {
 
     @BeforeEach
     public void setup() {
-        sut = new Game(random, carNameReader, racingCountReader, outputHandler);
+        sut = new Game(random, carNameReader, racingCountReader, gamePrinter);
     }
 
     @Test
@@ -62,10 +59,12 @@ public class RequirementsTest {
 
         sut.race();
 
-        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
-        verify(outputHandler, times(2)).println(captor.capture());
+        ArgumentCaptor<String> carNameCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<Integer> countCaptor = ArgumentCaptor.forClass(Integer.class);
+        verify(gamePrinter)
+                .showDistance(carNameCaptor.capture(), countCaptor.capture());
 
-        assertTrue(captor.getAllValues().get(0).contains(names.get(0)));
+        assertTrue(carNameCaptor.getAllValues().get(0).contains(names.get(0)));
     }
 
     @Test
@@ -90,8 +89,7 @@ public class RequirementsTest {
 
         sut.race();
 
-        verify(outputHandler).println("car1:" + 0);
-        verify(outputHandler).println("car1:" + 1);
+        verify(gamePrinter).showDistance("car1", 1);
     }
 
     @Test
@@ -108,6 +106,6 @@ public class RequirementsTest {
 
         sut.race();
 
-        verify(outputHandler).println("car1");
+        verify(gamePrinter).showResult(names);
     }
 }

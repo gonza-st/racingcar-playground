@@ -21,7 +21,7 @@ public class GameTest {
     private CarNameReader carNameReader;
 
     @Mock
-    private OutputHandler outputHandler;
+    private GamePrinter gamePrinter;
 
     @Mock
     private Random random;
@@ -30,7 +30,7 @@ public class GameTest {
 
     @BeforeEach
     public void setup() {
-        sut = new Game(random, carNameReader, racingCountReader, outputHandler);
+        sut = new Game(random, carNameReader, racingCountReader, gamePrinter);
     }
 
     @Test
@@ -60,8 +60,8 @@ public class GameTest {
 
         sut.race();
 
-        verify(outputHandler).println("car1:" + 1);
-        verify(outputHandler).println("car2:" + 0);
+        verify(gamePrinter).showDistance("car1", 1);
+        verify(gamePrinter).showDistance("car2", 0);
     }
 
 
@@ -81,10 +81,10 @@ public class GameTest {
 
         sut.race();
 
-        verify(outputHandler, times(2)).println("car1:" + 0);
-        verify(outputHandler).println("car2:" + 0);
-        verify(outputHandler).println("car2:" + 1);
+        verify(gamePrinter, times(2)).showDistance("car1" , 0);
+        verify(gamePrinter).showDistance("car2", 0);
+        verify(gamePrinter).showDistance("car2", 1);
 
-        verify(outputHandler).println("car2");
+        verify(gamePrinter).showResult(List.of("car2"));
     }
 }

@@ -1,8 +1,6 @@
 package org.gonza.javaplayground.game;
 
 import org.gonza.javaplayground.game.record.GameRecord;
-import org.gonza.javaplayground.io.handler.InputHandler;
-
 import java.util.*;
 
 public class Game {
@@ -12,15 +10,15 @@ public class Game {
 
     private final RacingCountReader racingCountReader;
 
-    private final OutputHandler outputHandler;
+    private final GamePrinter gamePrinter;
 
     private final GameRecord record = new GameRecord();
 
-    public Game(Random random, CarNameReader carNameReader, RacingCountReader racingCountReader, OutputHandler outputHandler) {
+    public Game(Random random, CarNameReader carNameReader, RacingCountReader racingCountReader, GamePrinter gamePrinter) {
         this.random = random;
         this.carNameReader = carNameReader;
         this.racingCountReader = racingCountReader;
-        this.outputHandler = outputHandler;
+        this.gamePrinter = gamePrinter;
     }
 
     public void race() {
@@ -34,10 +32,10 @@ public class Game {
 
                 if (distance >= 4) {
                     Integer newCount = record.plusMoveCount(carName);
-                    outputHandler.println(carName + ":" + (newCount));
+                    gamePrinter.showDistance(carName, newCount);
                 } else {
                     Integer prevCount = record.getMoveCount(carName);
-                    outputHandler.println(carName + ":" + (prevCount));
+                    gamePrinter.showDistance(carName, prevCount);
                 }
             }
 
@@ -45,8 +43,8 @@ public class Game {
         }
 
 
-        String winners = getWinnerNames();
-        outputHandler.println(winners);
+        List<String> carNamesWithLargestMoveCount = record.getCarWithLargestMoveCount();
+        gamePrinter.showResult(carNamesWithLargestMoveCount);
     }
 
     private String[] getCarNames() {
@@ -60,14 +58,5 @@ public class Game {
 
         String[] result = carNames.toArray(new String[carNames.size()]);
         return result;
-    }
-
-    private String getWinnerNames() {
-        List<String> carNamesWithLargestMoveCount = record.getCarWithLargestMoveCount();
-        String winners = carNamesWithLargestMoveCount.stream()
-                .reduce((acc, cur) -> acc + "," + cur)
-                .orElseThrow(() -> new IllegalStateException("An error occurred while searching for winner"));
-
-        return winners;
     }
 }
