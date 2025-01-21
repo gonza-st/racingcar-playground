@@ -1,5 +1,6 @@
 package org.gonza.javaplayground.game;
 
+import org.gonza.javaplayground.game.car.CarName;
 import org.gonza.javaplayground.game.record.GameRecord;
 import java.util.*;
 
@@ -23,11 +24,11 @@ public class Game {
 
     public void race() {
         Integer count = racingCountReader.getRacingCount();
-        String[] carNames = getCarNames();
+        List<CarName> carNames = getCarNames();
 
         while (count > 0) {
-            for (int i = 0; i < carNames.length; i++) {
-                String carName = carNames[i];
+            for (int i = 0; i < carNames.size(); i++) {
+                String carName = carNames.get(i).getValue();
                 Integer distance = random.nextInt(10) + 1;
 
                 if (distance >= 4) {
@@ -47,16 +48,12 @@ public class Game {
         gamePrinter.showResult(carNamesWithLargestMoveCount);
     }
 
-    private String[] getCarNames() {
-        List<String> carNames = carNameReader.getCarNames();
+    private List<CarName> getCarNames() {
+        List<String> carNamesAsString = carNameReader.getCarNames();
+        List<CarName> carNames = carNamesAsString.stream()
+                .map(CarName::new)
+                .toList();
 
-        carNames.forEach((carName) -> {
-            if (carName.length() > 5) {
-                throw new IllegalArgumentException("Car name too long");
-            }
-        });
-
-        String[] result = carNames.toArray(new String[carNames.size()]);
-        return result;
+        return carNames;
     }
 }
