@@ -1,9 +1,7 @@
-package org.gonza.kotlinplayground.domain
+package org.gonza.kotlinplayground.domain.car
 
-import Car
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 
 class CarTest {

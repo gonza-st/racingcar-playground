@@ -1,5 +1,4 @@
-import org.gonza.kotlinplayground.domain.CarName
-import org.gonza.kotlinplayground.domain.CarPosition
+package org.gonza.kotlinplayground.domain.car
 
 class Car(
    name: String,
