@@ -9,9 +9,10 @@ class Round(
         }
     }
 
-    fun startNext(): Boolean {
+    fun canStartNext() : Boolean = this.value > 0
+
+    fun startNext() {
         this.decrease()
-        return this.value >= 0
     }
 
     private fun decrease() {
