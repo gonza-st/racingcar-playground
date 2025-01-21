@@ -1,6 +1,5 @@
 package org.gonza.kotlinplayground.racer
 
-import org.assertj.core.api.Assertions.assertThat
 import org.gonza.kotlinplayground.Fixture
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
