@@ -5,6 +5,8 @@ import org.gonza.javaplayground.game.car.Car;
 import org.gonza.javaplayground.game.car.CarNameReader;
 import org.gonza.javaplayground.game.car.CarService;
 import org.gonza.javaplayground.game.car.CarSpec;
+import org.gonza.javaplayground.game.round.RacingCount;
+import org.gonza.javaplayground.game.round.RacingCountService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,7 +23,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class RequirementsTest {
     @Mock
-    private RacingCountReader racingCountReader;
+    private RacingCountService racingCountService;
 
     @Mock
     private CarService carService;
@@ -33,7 +35,7 @@ public class RequirementsTest {
 
     @BeforeEach
     public void setup() {
-        sut = new Game(carService, racingCountReader, gamePrinter);
+        sut = new Game(carService, racingCountService, gamePrinter);
     }
 
     @Test
@@ -41,10 +43,10 @@ public class RequirementsTest {
         CarNameReader carNameReader = mock(CarNameReader.class);
         CarSpec carSpec = new CarSpec(5, 10);
         CarService carService = new CarService(carNameReader, carSpec);
-        Game game = new Game(carService, racingCountReader, gamePrinter);
+        Game game = new Game(carService, racingCountService, gamePrinter);
 
         Integer count = 1;
-        when(racingCountReader.getRacingCount()).thenReturn(count);
+        when(racingCountService.createRacingCount()).thenReturn(new RacingCount(count));
 
         List<String> names = List.of("too-long-name");
         when(carNameReader.getCarNames()).thenReturn(names);
@@ -57,7 +59,7 @@ public class RequirementsTest {
     @Test
     public void 전진하는_자동차를_출력할_때_자동차_이름을_같이_출력한다() {
         Integer count = 1;
-        when(racingCountReader.getRacingCount()).thenReturn(count);
+        when(racingCountService.createRacingCount()).thenReturn(new RacingCount(count));
 
         List<String> names = List.of("car1");
 
@@ -86,7 +88,7 @@ public class RequirementsTest {
     @Test
     public void 전진하는_조건은_random_값이_4이상일_경우이다() {
         Integer count = 2;
-        when(racingCountReader.getRacingCount()).thenReturn(count);
+        when(racingCountService.createRacingCount()).thenReturn(new RacingCount(count));
 
         List<String> names = List.of("car1");
 
@@ -103,7 +105,7 @@ public class RequirementsTest {
     @Test
     public void 자동차_경주_완료_후_우승자를_알려준다() {
         Integer count = 2;
-        when(racingCountReader.getRacingCount()).thenReturn(count);
+        when(racingCountService.createRacingCount()).thenReturn(new RacingCount(count));
 
         List<String> names = List.of("car1");
 

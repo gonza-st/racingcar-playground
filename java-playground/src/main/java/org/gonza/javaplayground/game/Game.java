@@ -3,28 +3,31 @@ package org.gonza.javaplayground.game;
 import org.gonza.javaplayground.game.car.Car;
 import org.gonza.javaplayground.game.car.CarService;
 import org.gonza.javaplayground.game.record.GameRecord;
+import org.gonza.javaplayground.game.round.RacingCount;
+import org.gonza.javaplayground.game.round.RacingCountService;
+
 import java.util.*;
 
 public class Game {
     private final CarService carService;
 
-    private final RacingCountReader racingCountReader;
+    private final RacingCountService racingCountService;
 
     private final GamePrinter gamePrinter;
 
     private final GameRecord record = new GameRecord();
 
-    public Game(CarService carService, RacingCountReader racingCountReader, GamePrinter gamePrinter) {
+    public Game(CarService carService, RacingCountService racingCountService, GamePrinter gamePrinter) {
         this.carService = carService;
-        this.racingCountReader = racingCountReader;
+        this.racingCountService = racingCountService;
         this.gamePrinter = gamePrinter;
     }
 
     public void race() {
-        Integer count = racingCountReader.getRacingCount();
+        RacingCount count = racingCountService.createRacingCount();
         List<Car> cars = carService.createCars();
 
-        while (count > 0) {
+        while (count.isAvailable()) {
             for (int i = 0; i < cars.size(); i++) {
                 String carName = cars.get(i).getName();
                 Integer distance = cars.get(i).move();
@@ -38,7 +41,7 @@ public class Game {
                 }
             }
 
-            count -= 1;
+            count.consume();
         }
 
 
