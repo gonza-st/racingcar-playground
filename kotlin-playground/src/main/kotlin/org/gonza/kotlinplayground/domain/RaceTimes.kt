@@ -1,6 +1,6 @@
 package org.gonza.kotlinplayground.domain
 
-class RaceTimes(
+data class RaceTimes(
     private val value: Int,
 ) {
     init {
@@ -14,15 +14,4 @@ class RaceTimes(
     fun equal(other: Int): Boolean = this.value == other
 
     fun isNotZero(): Boolean = this.value > 0
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is RaceTimes) return false
-
-        if (value != other.value) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int = value
 }

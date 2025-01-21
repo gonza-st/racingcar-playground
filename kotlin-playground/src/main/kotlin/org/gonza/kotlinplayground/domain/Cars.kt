@@ -3,7 +3,7 @@ package org.gonza.kotlinplayground.domain
 private const val POSITION_DELIMITER = "-"
 private const val NAME_DELIMITER = ", "
 
-class Cars(
+data class Cars(
     private val carList: List<Car>,
 ) {
     fun positions(): String {
@@ -18,17 +18,4 @@ class Cars(
         val winners = this.carList.filter { it.positionEqual(maxPosition) }
         return winners.joinToString(NAME_DELIMITER) { it.name }
     }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is Cars) return false
-
-        if (carList != other.carList) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int = carList.hashCode()
-
-    override fun toString(): String = "Cars(carList=$carList)"
 }

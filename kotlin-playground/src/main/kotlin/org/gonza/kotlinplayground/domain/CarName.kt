@@ -1,6 +1,6 @@
 package org.gonza.kotlinplayground.domain
 
-class CarName(
+data class CarName(
     val value: String,
 ) {
     init {
@@ -14,15 +14,4 @@ class CarName(
             throw IllegalArgumentException("이름은 5자를 초과할 수 없습니다.")
         }
     }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is CarName) return false
-
-        if (value != other.value) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int = value.hashCode()
 }
