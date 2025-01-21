@@ -3,6 +3,7 @@ package org.gonza.javaplayground.game;
 import org.gonza.javaplayground.game.car.Car;
 import org.gonza.javaplayground.game.car.CarNameReader;
 import org.gonza.javaplayground.game.car.CarService;
+import org.gonza.javaplayground.game.car.CarSpec;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,7 +36,8 @@ public class GameTest {
     @Test
     public void 차량이름이_5글자_초과하는_경우_예외가_발생한다() {
         CarNameReader carNameReader = mock(CarNameReader.class);
-        CarService carService = new CarService(carNameReader);
+        CarSpec carSpec = new CarSpec(5, 10);
+        CarService carService = new CarService(carNameReader, carSpec);
         Game game = new Game(carService, racingCountReader, gamePrinter);
 
         Integer count = 1;

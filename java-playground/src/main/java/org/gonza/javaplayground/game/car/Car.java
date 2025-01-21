@@ -8,16 +8,16 @@ public class Car {
     private static final Integer MAX_DISTANCE = 10;
     private static final Integer MIN_DISTANCE = 1;
 
-    private final CarName name;
+    private final String name;
     private final Random random;
 
     public Car(String name, Random random) {
-        this.name = new CarName(name);
+        this.name = name;
         this.random = random;
     }
 
     public String getName() {
-        return name.getValue();
+        return name;
     }
 
     public Integer move() {

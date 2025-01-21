@@ -1,6 +1,6 @@
 package org.gonza.javaplayground.game.car;
 
-class CarSpec {
+public class CarSpec {
     private final Integer maxNameLength;
     private final Integer maxDistance;
 

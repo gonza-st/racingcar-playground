@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -21,7 +22,18 @@ public class CarServiceTest {
 
     @BeforeEach
     public void setup() {
-        sut = new CarService(carNameReader);
+        CarSpec carSpec = new CarSpec(5, 10);
+        sut = new CarService(carNameReader, carSpec);
+    }
+
+    @Test
+    public void 유저가_입력한_이름의_길이가_5_이상이면_예외가_발생한다() {
+        List<String> userInputCarName = List.of("too-long-car-name");
+        when(carNameReader.getCarNames()).thenReturn(userInputCarName);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            sut.createCars();
+        });
     }
 
     @Test
