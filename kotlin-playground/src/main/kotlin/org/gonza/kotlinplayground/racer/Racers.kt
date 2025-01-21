@@ -14,6 +14,7 @@ class Racers(
                 racer.race()
                 visualize(racer)
             }
+            println("----- turn ${it + 1} end -----")
         }
     }
 
