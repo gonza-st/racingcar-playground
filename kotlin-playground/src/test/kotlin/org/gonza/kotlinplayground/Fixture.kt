@@ -11,6 +11,16 @@ object Fixture {
 
     val car = Car(name = name)
 
+    val racer1 = createRacer(
+        name = "에이바겐",
+        number = 1
+    )
+
+    val racer2 = createRacer(
+        name = "비바겐",
+        number = 5
+    )
+
     fun createRacer(name: String, number: Int): Racer{
        return Racer(
            car = Car(name = name),
