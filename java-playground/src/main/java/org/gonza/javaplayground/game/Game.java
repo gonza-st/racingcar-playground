@@ -15,12 +15,17 @@ public class Game {
 
     private final GamePrinter gamePrinter;
 
-    private final GameRecord record = new GameRecord();
+    private final GameRecord record;
 
-    public Game(CarService carService, RacingCountService racingCountService, GamePrinter gamePrinter) {
+    public Game(
+            CarService carService,
+            RacingCountService racingCountService,
+            GamePrinter gamePrinter
+    ) {
         this.carService = carService;
         this.racingCountService = racingCountService;
         this.gamePrinter = gamePrinter;
+        this.record = new GameRecord();
     }
 
     public void race() {
@@ -28,24 +33,31 @@ public class Game {
         List<Car> cars = carService.createCars();
 
         while (count.isAvailable()) {
-            for (int i = 0; i < cars.size(); i++) {
-                String carName = cars.get(i).getName();
-                Integer distance = cars.get(i).move();
-
-                if (distance >= 4) {
-                    Integer newCount = record.plusMoveCount(carName);
-                    gamePrinter.showDistance(carName, newCount);
-                } else {
-                    Integer prevCount = record.getMoveCount(carName);
-                    gamePrinter.showDistance(carName, prevCount);
-                }
-            }
+            cars.stream()
+                    .peek(this::recordRaceResultByCar)
+                    .forEach(this::printRaceResultByCar);
 
             count.consume();
         }
 
+        printGameResult();
+    }
 
-        List<String> carNamesWithLargestMoveCount = record.getCarWithLargestMoveCount();
-        gamePrinter.showResult(carNamesWithLargestMoveCount);
+    private void recordRaceResultByCar(Car car) {
+        if (car.move() >= 4) {
+            record.plusMoveCount(car.getName());
+        }
+    }
+
+    private void printRaceResultByCar(Car car) {
+        String carName = car.getName();
+        Integer result = record.getMoveCount(carName);
+
+        gamePrinter.showDistance(carName, result);
+    }
+
+    private void printGameResult() {
+        List<String> winners = record.getCarWithLargestMoveCount();
+        gamePrinter.showResult(winners);
     }
 }
