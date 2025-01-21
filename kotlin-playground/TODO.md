@@ -5,7 +5,7 @@ Car
 - [x] can add 1 position
 
 Racing
-- [ ] has List<Car>
+- [x] has List<Car>
 - [ ] has round
 
 Car
