@@ -1,6 +1,6 @@
 package org.gonza.javaplayground.io;
 
-import org.gonza.javaplayground.game.RacingCountReader;
+import org.gonza.javaplayground.game.count.RacingCountReader;
 import org.gonza.javaplayground.io.handler.InputHandler;
 
 import java.util.Objects;

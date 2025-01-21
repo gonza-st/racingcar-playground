@@ -1,6 +1,5 @@
-package org.gonza.javaplayground.game.round;
+package org.gonza.javaplayground.game.count;
 
-import org.gonza.javaplayground.game.RacingCountReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,6 +1,4 @@
-package org.gonza.javaplayground.game.round;
-
-import org.gonza.javaplayground.game.RacingCountReader;
+package org.gonza.javaplayground.game.count;
 
 public class RacingCountService {
     private final RacingCountReader racingCountReader;

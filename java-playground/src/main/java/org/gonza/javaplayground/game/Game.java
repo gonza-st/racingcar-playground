@@ -3,8 +3,8 @@ package org.gonza.javaplayground.game;
 import org.gonza.javaplayground.game.car.Car;
 import org.gonza.javaplayground.game.car.CarService;
 import org.gonza.javaplayground.game.record.GameRecord;
-import org.gonza.javaplayground.game.round.RacingCount;
-import org.gonza.javaplayground.game.round.RacingCountService;
+import org.gonza.javaplayground.game.count.RacingCount;
+import org.gonza.javaplayground.game.count.RacingCountService;
 
 import java.util.*;
 

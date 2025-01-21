@@ -1,4 +1,4 @@
-package org.gonza.javaplayground.game.round;
+package org.gonza.javaplayground.game.count;
 
 import org.junit.jupiter.api.Test;
 

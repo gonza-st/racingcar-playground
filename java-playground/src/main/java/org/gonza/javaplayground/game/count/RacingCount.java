@@ -1,4 +1,4 @@
-package org.gonza.javaplayground.game.round;
+package org.gonza.javaplayground.game.count;
 
 public class RacingCount {
     private static final Integer MIN_ROUND = 0;
