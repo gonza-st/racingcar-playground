@@ -28,4 +28,13 @@ class CarTest {
 
         assertEquals(actual.location ,Fixture.location)
     }
+
+    @Test
+    fun `자동차는 움직일 수 있다`(){
+        val actual = Car(Fixture.name)
+
+        actual.move()
+
+        assertEquals(actual.location, 1)
+    }
 }
