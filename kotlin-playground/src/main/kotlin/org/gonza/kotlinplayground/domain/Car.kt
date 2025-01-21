@@ -1,7 +1,3 @@
-class Car {
-    constructor(name: String) {
-        this.name = name
-    }
-
-    val name: String
-}
+class Car(
+   val name: String,
+)

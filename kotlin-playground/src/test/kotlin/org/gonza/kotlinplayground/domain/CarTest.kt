@@ -1,6 +1,7 @@
 package org.gonza.kotlinplayground.domain
 
 import Car
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
@@ -10,7 +11,8 @@ class CarTest {
     fun `차는 이름을 받아 생성된다`() {
         val name = "name"
 
-        assertDoesNotThrow { Car(name) }
+        val result = Car(name)
+        assertThat(result.name).isEqualTo(name)
     }
 
     @Test
