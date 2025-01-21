@@ -8,4 +8,8 @@ class Car(
    private val carPosition = CarPosition()
    val name: String get() = carName.value
    val position: Int get() = carPosition.value
+
+   fun move() {
+      this.carPosition.move()
+   }
 }
