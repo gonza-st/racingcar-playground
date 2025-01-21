@@ -18,7 +18,7 @@ fun main(args: Array<String>) {
     val carNames = readln()
 
     println("시도할 회수는 몇회인가요?")
-    val attempts = readln().toIntOrNull()
+    val attempts = readln().toInt()
 
     val racers = createRacers(carNames)
     val judge = Judge()
@@ -32,7 +32,6 @@ private fun createRacers(input: String): Racers {
 
     val names = input.split(",").map { it.trim() }
     require(names.isNotEmpty()) { "최소 하나의 자동차 이름이 필요합니다." }
-    require(names.all { it.isNotBlank() }) { "자동차 이름은 공백일 수 없습니다." }
 
     val racers = names.map { name ->
         val car = Car(name)

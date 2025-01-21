@@ -7,8 +7,6 @@ class Racers(
         require(racers.isNotEmpty()) { "레이서가 한 명 이상 있어야 합니다." }
     }
     fun race(turns: Int) {
-        require(turns >= 0) { "턴 수는 0 이상이어야 합니다." }
-
         repeat(turns) {
             racers.forEach { racer ->
                 racer.race()

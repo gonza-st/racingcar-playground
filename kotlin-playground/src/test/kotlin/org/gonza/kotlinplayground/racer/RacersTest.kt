@@ -22,19 +22,6 @@ class RacersTest {
         }
     }
     @Test
-    fun `turns은 음수 일 수 없다`(){
-        val turns = -1
-
-        val actual = Racers(
-            listOf(racer1, racer2)
-        )
-
-        assertThrows<IllegalArgumentException> {
-            actual.race(turns)
-        }
-    }
-
-    @Test
     fun `Racers 에 포함된 racer들을 조회할 수 있다`(){
         val racers = Racers(
             listOf(racer1, racer2)

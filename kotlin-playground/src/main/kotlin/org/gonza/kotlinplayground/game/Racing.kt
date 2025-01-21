@@ -9,6 +9,8 @@ class Racing(
     private val judge: Judge
 ) {
     fun play(turns: Int) {
+        require(turns >= 0) { "턴 수는 0 이상이어야 합니다." }
+
         racers.race(turns)
         val winners = judge.winner(racers.getRacers())
         announceWinners(winners)

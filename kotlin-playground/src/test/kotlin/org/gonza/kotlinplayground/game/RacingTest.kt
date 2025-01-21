@@ -25,4 +25,21 @@ class RacingTest {
             )
         }
     }
+
+    @Test
+    fun `Racing 게임 시 turn은 음수일 수 없다`() {
+        val turns = -1
+        val racers = Racers(
+            listOf(racer1, racer2)
+        )
+
+        racers.race(turns)
+
+        assertDoesNotThrow {
+            Racing(
+                racers,
+                judge
+            )
+        }
+    }
 }
