@@ -1,4 +1,4 @@
-package org.gonza.kotlinplayground.ui
+package org.gonza.kotlinplayground.presentation.ui
 
 class OutputViewImpl : OutputView {
     override fun printInputCarNameListMessage() {

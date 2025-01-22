@@ -1,6 +1,6 @@
 package org.gonza.kotlinplayground
 
-import org.gonza.kotlinplayground.ui.OutputErrorView
+import org.gonza.kotlinplayground.presentation.ui.OutputErrorView
 
 class TestOutputErrorView : OutputErrorView {
     var printErrorCount = 0

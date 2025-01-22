@@ -1,7 +1,7 @@
 package org.gonza.kotlinplayground
 
-import org.gonza.kotlinplayground.ui.exception.EmptyOrNullableCarNameException
-import org.gonza.kotlinplayground.ui.exception.InvalidTryCountException
+import org.gonza.kotlinplayground.presentation.exception.EmptyOrNullableCarNameException
+import org.gonza.kotlinplayground.presentation.exception.InvalidTryCountException
 
 class RacingCarGameValidator {
     fun getValidatedCarName(carName: String?): String {

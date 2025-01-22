@@ -1,4 +1,4 @@
-package org.gonza.kotlinplayground.ui
+package org.gonza.kotlinplayground.presentation.ui
 
 interface OutputMessageView {
     fun printInputCarNameListMessage()

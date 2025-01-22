@@ -6,10 +6,10 @@ import org.gonza.kotlinplayground.domain.car.exception.DuplicatedCarNameExceptio
 import org.gonza.kotlinplayground.domain.car.exception.InvalidCarNameLengthException
 import org.gonza.kotlinplayground.dto.GameResult
 import org.gonza.kotlinplayground.dto.toRacingCarGame
-import org.gonza.kotlinplayground.ui.InputView
-import org.gonza.kotlinplayground.ui.OutputView
-import org.gonza.kotlinplayground.ui.exception.EmptyOrNullableCarNameException
-import org.gonza.kotlinplayground.ui.exception.InvalidTryCountException
+import org.gonza.kotlinplayground.presentation.ui.InputView
+import org.gonza.kotlinplayground.presentation.ui.OutputView
+import org.gonza.kotlinplayground.presentation.exception.EmptyOrNullableCarNameException
+import org.gonza.kotlinplayground.presentation.exception.InvalidTryCountException
 import org.gonza.kotlinplayground.vo.CarName
 import org.gonza.kotlinplayground.vo.TryCount
 

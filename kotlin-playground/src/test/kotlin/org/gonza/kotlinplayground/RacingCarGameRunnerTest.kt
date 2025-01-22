@@ -2,7 +2,7 @@ package org.gonza.kotlinplayground
 
 import org.assertj.core.api.Assertions.*
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
-import org.gonza.kotlinplayground.ui.InputView
+import org.gonza.kotlinplayground.presentation.ui.InputView
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

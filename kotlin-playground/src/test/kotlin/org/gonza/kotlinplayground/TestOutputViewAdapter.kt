@@ -1,7 +1,7 @@
 package org.gonza.kotlinplayground
 
-import org.gonza.kotlinplayground.ui.OutputErrorView
-import org.gonza.kotlinplayground.ui.OutputView
+import org.gonza.kotlinplayground.presentation.ui.OutputErrorView
+import org.gonza.kotlinplayground.presentation.ui.OutputView
 
 class TestOutputViewAdapter(private val errorView: OutputErrorView) : OutputView {
     override fun printInputCarNameListMessage() {}
