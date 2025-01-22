@@ -4,14 +4,16 @@ import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.domain.car.exception.DuplicatedCarNameException
 import org.gonza.kotlinplayground.domain.car.exception.InvalidCarNameLengthException
-import org.gonza.kotlinplayground.dto.GameResult
-import org.gonza.kotlinplayground.dto.toRacingCarGame
+import org.gonza.kotlinplayground.service.dto.GameResult
+import org.gonza.kotlinplayground.service.dto.toRacingCarGame
+import org.gonza.kotlinplayground.presentation.RacingCarGameValidator
 import org.gonza.kotlinplayground.presentation.ui.InputView
 import org.gonza.kotlinplayground.presentation.ui.OutputView
 import org.gonza.kotlinplayground.presentation.exception.EmptyOrNullableCarNameException
 import org.gonza.kotlinplayground.presentation.exception.InvalidTryCountException
-import org.gonza.kotlinplayground.vo.CarName
-import org.gonza.kotlinplayground.vo.TryCount
+import org.gonza.kotlinplayground.service.RacingCarGame
+import org.gonza.kotlinplayground.service.vo.CarName
+import org.gonza.kotlinplayground.service.vo.TryCount
 
 class RacingCarGameRunner(
     private val output: OutputView,

@@ -1,4 +1,4 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.presentation
 
 import org.gonza.kotlinplayground.presentation.exception.EmptyOrNullableCarNameException
 import org.gonza.kotlinplayground.presentation.exception.InvalidTryCountException

@@ -1,11 +1,11 @@
-package org.gonza.kotlinplayground
+package org.gonza.kotlinplayground.service
 
 import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.domain.car.RacingCars
-import org.gonza.kotlinplayground.dto.GameResult
-import org.gonza.kotlinplayground.vo.CarName
-import org.gonza.kotlinplayground.vo.TryCount
+import org.gonza.kotlinplayground.service.dto.GameResult
+import org.gonza.kotlinplayground.service.vo.CarName
+import org.gonza.kotlinplayground.service.vo.TryCount
 
 class RacingCarGame(
     private val carList: List<Car>,

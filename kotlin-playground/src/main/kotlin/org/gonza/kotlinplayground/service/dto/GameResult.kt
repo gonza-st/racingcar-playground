@@ -1,8 +1,8 @@
-package org.gonza.kotlinplayground.dto
+package org.gonza.kotlinplayground.service.dto
 
-import org.gonza.kotlinplayground.RacingCarGame
+import org.gonza.kotlinplayground.service.RacingCarGame
 import org.gonza.kotlinplayground.domain.car.Car
-import org.gonza.kotlinplayground.vo.TryCount
+import org.gonza.kotlinplayground.service.vo.TryCount
 
 data class GameResult(
     val tryCount: TryCount,

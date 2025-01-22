@@ -3,9 +3,10 @@ package org.gonza.kotlinplayground
 import org.assertj.core.api.Assertions.*
 import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
-import org.gonza.kotlinplayground.dto.toRacingCarGame
-import org.gonza.kotlinplayground.vo.CarName
-import org.gonza.kotlinplayground.vo.TryCount
+import org.gonza.kotlinplayground.service.dto.toRacingCarGame
+import org.gonza.kotlinplayground.service.RacingCarGame
+import org.gonza.kotlinplayground.service.vo.CarName
+import org.gonza.kotlinplayground.service.vo.TryCount
 import org.junit.jupiter.api.Test
 
 class RacingCarGameTest {
