@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions.*
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.presentation.RacingCarGameValidator
 import org.gonza.kotlinplayground.presentation.ui.InputView
+import org.gonza.kotlinplayground.presentation.ui.TestOutputErrorView
+import org.gonza.kotlinplayground.presentation.ui.TestOutputViewAdapter
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
