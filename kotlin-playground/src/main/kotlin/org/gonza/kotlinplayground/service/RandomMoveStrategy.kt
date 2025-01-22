@@ -1,4 +1,6 @@
-package org.gonza.kotlinplayground.domain.car
+package org.gonza.kotlinplayground.service
+
+import org.gonza.kotlinplayground.domain.car.MoveStrategy
 
 class RandomMoveStrategy : MoveStrategy {
     private val passedValue = 4

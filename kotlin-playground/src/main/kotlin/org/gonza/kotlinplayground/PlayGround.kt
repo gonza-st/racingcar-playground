@@ -1,6 +1,6 @@
 package org.gonza.kotlinplayground
 
-import org.gonza.kotlinplayground.domain.car.RandomMoveStrategy
+import org.gonza.kotlinplayground.service.RandomMoveStrategy
 import org.gonza.kotlinplayground.ui.InputViewImpl
 import org.gonza.kotlinplayground.ui.OutputViewImpl
 
