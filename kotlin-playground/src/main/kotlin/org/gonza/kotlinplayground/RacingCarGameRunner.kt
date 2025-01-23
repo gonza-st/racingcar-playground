@@ -103,10 +103,5 @@ class RacingCarGameRunner(
     private fun printWinner(winner: String) {
         output.printWinnerMessage(winner)
     }
-
-    private data class GameConfig(
-        val carName: CarName,
-        val tryCount: TryCount
-    )
 }
 
