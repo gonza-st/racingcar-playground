@@ -11,7 +11,7 @@ import org.gonza.kotlinplayground.presentation.ui.InputView
 import org.gonza.kotlinplayground.presentation.ui.OutputView
 import org.gonza.kotlinplayground.presentation.exception.EmptyOrNullableCarNameException
 import org.gonza.kotlinplayground.presentation.exception.InvalidTryCountException
-import org.gonza.kotlinplayground.service.RacingCarGame
+import org.gonza.kotlinplayground.service.Round
 import org.gonza.kotlinplayground.service.vo.CarName
 import org.gonza.kotlinplayground.service.vo.TryCount
 
@@ -60,9 +60,9 @@ class RacingCarGameRunner(
         }
     }
 
-    private fun getValidGame(carName: CarName): RacingCarGame {
+    private fun getValidRound(carName: CarName): Round {
         try {
-            return RacingCarGame(carName = carName)
+            return Round(carName = carName)
         } catch (e: DuplicatedCarNameException) {
             output.printDuplicatedCarNameError()
             throw e
@@ -73,19 +73,19 @@ class RacingCarGameRunner(
     }
 
     private fun startGame(config: GameConfig) {
-        var racingCarGame = getValidGame(config.carName)
+        var round = getValidRound(config.carName)
         output.printResultMessage()
 
-        while (!racingCarGame.isFinished(config.tryCount)) {
-            val result = playRound(racingCarGame)
-            racingCarGame = result.toRacingCarGame()
+        while (!round.isFinished(config.tryCount)) {
+            val result = playRound(round)
+            round = result.toRacingCarGame()
         }
 
-        val winner = racingCarGame.findWinner()
+        val winner = round.findWinner()
         printWinner(winner)
     }
 
-    private fun playRound(game: RacingCarGame): GameResult {
+    private fun playRound(game: Round): GameResult {
         val result = game.start(moveStrategy)
         printRoundInfo(result.movedCarList)
         return result

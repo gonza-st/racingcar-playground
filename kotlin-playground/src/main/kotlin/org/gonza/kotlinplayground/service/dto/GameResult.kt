@@ -1,6 +1,6 @@
 package org.gonza.kotlinplayground.service.dto
 
-import org.gonza.kotlinplayground.service.RacingCarGame
+import org.gonza.kotlinplayground.service.Round
 import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.service.vo.TryCount
 
@@ -9,8 +9,8 @@ data class GameResult(
     val movedCarList: List<Car>
 )
 
-fun GameResult.toRacingCarGame(): RacingCarGame =
-    RacingCarGame(
+fun GameResult.toRacingCarGame(): Round =
+    Round(
         carList = this.movedCarList,
         currentGameCount = this.tryCount
     )

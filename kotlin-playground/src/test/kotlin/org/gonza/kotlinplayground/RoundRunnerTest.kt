@@ -14,7 +14,7 @@ import org.mockito.Mockito.*
 import org.mockito.junit.jupiter.MockitoExtension
 
 @ExtendWith(MockitoExtension::class)
-class RacingCarGameRunnerTest {
+class RoundRunnerTest {
     private val nullTestInputView = object : InputView {
         var callCount = 0
         override fun read(): String? {

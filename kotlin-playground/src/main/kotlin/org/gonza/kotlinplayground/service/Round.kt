@@ -7,7 +7,7 @@ import org.gonza.kotlinplayground.service.dto.GameResult
 import org.gonza.kotlinplayground.service.vo.CarName
 import org.gonza.kotlinplayground.service.vo.TryCount
 
-class RacingCarGame(
+class Round(
     private val carList: List<Car>,
     private val currentGameCount: TryCount
 ) {

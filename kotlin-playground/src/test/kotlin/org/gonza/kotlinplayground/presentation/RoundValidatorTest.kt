@@ -5,7 +5,7 @@ import org.gonza.kotlinplayground.presentation.exception.EmptyOrNullableCarNameE
 import org.gonza.kotlinplayground.presentation.exception.InvalidTryCountException
 import org.junit.jupiter.api.Test
 
-class RacingCarGameValidatorTest {
+class RoundValidatorTest {
     @Test
     fun `차량 이름을 아무것도 입력하지 않는다면 예외가 발생한다`() {
         val carNameString = null
