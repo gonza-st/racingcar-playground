@@ -42,6 +42,7 @@ class Round(
     fun isFinished(tryCount: TryCount): Boolean =
         currentGameCount.value >= tryCount.value
 
+    // FIXME: 여기 부분을 제거해야할 것 같음, Round 라는 도메인에 걸맞지 않음
     private object CarNameParser {
         private const val SPLIT_KEYWORD = ","
 
