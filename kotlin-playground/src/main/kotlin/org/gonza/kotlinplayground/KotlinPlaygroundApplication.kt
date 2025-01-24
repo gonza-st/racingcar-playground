@@ -15,8 +15,10 @@ fun main(args: Array<String>) {
     val input = InputView()
     val output = OutputView()
 
-    val carNames: String = input.carNames()
-    val racingCount: Int = input.racingCount()
+    output.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).")
+    val carNames: String = input.string()
+    output.print("시도할 회수는 몇 회인가요?")
+    val racingCount: Int = input.int()
 
     val race =
         Race(
@@ -27,6 +29,6 @@ fun main(args: Array<String>) {
 
     race.run()
 
-    output.roundPosition(race.raceResult())
-    output.winner(race.raceResult())
+    output.result(race.raceResult)
+    output.winner(race.raceWinners)
 }
