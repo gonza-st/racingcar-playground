@@ -21,4 +21,12 @@ class PositionTest {
 
         Assertions.assertThat(increasedPosition).isEqualTo(expectedValue)
     }
+
+    @Test
+    fun `Position은 0 이상이어야 합니다`() {
+        Assertions
+            .assertThatThrownBy { Position(-1) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("Position은 0 이상이어야 합니다")
+    }
 }
