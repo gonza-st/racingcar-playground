@@ -1,0 +1,32 @@
+package org.gonza.kotlinplayground.domain
+
+import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.Test
+
+class PositionTest {
+    @Test
+    fun `초기화를 수행하면 value가 0이 된다`() {
+        val initPosition = Position.init()
+        val expectedValue = Position(0)
+
+        Assertions.assertThat(initPosition).isEqualTo(expectedValue)
+    }
+
+    @Test
+    fun `increase 메소드가 호출되면 Position의 value가 1 증가한다`() {
+        val initPosition = Position.init()
+        val increasedPosition = initPosition.increase()
+
+        val expectedValue = Position(1)
+
+        Assertions.assertThat(increasedPosition).isEqualTo(expectedValue)
+    }
+
+    @Test
+    fun `Position은 0 이상이어야 합니다`() {
+        Assertions
+            .assertThatThrownBy { Position(-1) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("Position은 0 이상이어야 합니다")
+    }
+}
