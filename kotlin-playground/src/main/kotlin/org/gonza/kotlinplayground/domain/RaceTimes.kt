@@ -11,7 +11,5 @@ data class RaceTimes(
 
     fun decrease(): RaceTimes = RaceTimes(this.value - 1)
 
-    fun equal(other: Int): Boolean = this.value == other
-
     fun isNotZero(): Boolean = this.value > 0
 }
