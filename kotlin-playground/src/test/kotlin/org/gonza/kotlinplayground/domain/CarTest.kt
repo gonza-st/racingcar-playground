@@ -25,7 +25,7 @@ class CarTest {
     }
 
     @Test
-    fun `checkNumber로 번호를 확인한다`() {
+    fun `checkNumber로 움직임을 결정할 번호를 확인한다`() {
         val movedNumberGenerator = TestFixture.getMovedNumberGenerator()
         val car = Car(name = "아반떼", numberGenerator = movedNumberGenerator)
 
