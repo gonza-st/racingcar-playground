@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions
 import org.gonza.kotlinplayground.fixture.TestFixture
 import org.junit.jupiter.api.Test
 
-class CarsTest {
+class HistoryTest {
     @Test
     fun `자동차들의 위치 정보를 반환한다`() {
         val numberGenerator: NumberGenerator = TestFixture.getMovedNumberGenerator()
@@ -16,8 +16,8 @@ class CarsTest {
                 Car("jk", numberGenerator),
             )
         carList.forEach { it.move() }
-        val cars: Cars = Cars(carList)
-        val positions: String = cars.positions()
+        val history: History = History(carList)
+        val positions: String = history.positions()
 
         val expectedValue =
             """
@@ -41,8 +41,8 @@ class CarsTest {
                 Car("jk", numberGenerator),
             )
         carList.forEach { it.move() }
-        val cars: Cars = Cars(carList)
-        val winners: String = cars.winners()
+        val history: History = History(carList)
+        val winners: String = history.winners()
 
         val expectedValue = "pobi, crong, honux, jk"
 

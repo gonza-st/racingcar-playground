@@ -18,11 +18,11 @@ data class Race(
     fun run() {
         while (this.raceTimes.isNotZero()) {
             this.proceedRound()
-            val currentPosition = Cars(this.carList).positions()
+            val currentPosition = History(this.carList).positions()
             this.raceResult.add(currentPosition)
             this.raceTimes = this.raceTimes.decrease()
         }
-        this.raceWinners = Cars(this.carList).winners()
+        this.raceWinners = History(this.carList).winners()
     }
 
     fun timesEqualTo(expectedValue: Int): Boolean = this.raceTimes == RaceTimes(expectedValue)
