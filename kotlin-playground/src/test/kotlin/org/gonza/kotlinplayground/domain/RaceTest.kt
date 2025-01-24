@@ -15,7 +15,7 @@ class RaceTest {
                 numberGenerator = numberGenerator,
             )
 
-        val carList = race.proceed()
+        val carList = race.proceedRound()
         for (car in carList) {
             println(car)
         }
@@ -57,31 +57,41 @@ class RaceTest {
             )
         race.run()
 
-        val expectedCars =
+        val expectedValue =
             listOf(
-                Cars(
-                    listOf(
-                        Car("아반떼", Position(1), numberGenerator),
-                        Car("소나타", Position(1), numberGenerator),
-                        Car("그랜저", Position(1), numberGenerator),
-                    ),
-                ),
-                Cars(
-                    listOf(
-                        Car("아반떼", Position(2), numberGenerator),
-                        Car("소나타", Position(2), numberGenerator),
-                        Car("그랜저", Position(2), numberGenerator),
-                    ),
-                ),
-                Cars(
-                    listOf(
-                        Car("아반떼", Position(3), numberGenerator),
-                        Car("소나타", Position(3), numberGenerator),
-                        Car("그랜저", Position(3), numberGenerator),
-                    ),
-                ),
+                """
+                아반떼 : -
+                소나타 : -
+                그랜저 : -
+                """.trimIndent(),
+                """
+                아반떼 : --
+                소나타 : --
+                그랜저 : --
+                """.trimIndent(),
+                """
+                아반떼 : ---
+                소나타 : ---
+                그랜저 : ---
+                """.trimIndent(),
             )
 
-        Assertions.assertThat(race.raceResult()).isEqualTo(expectedCars)
+        Assertions.assertThat(race.raceResult).isEqualTo(expectedValue)
+    }
+
+    @Test
+    fun `우승자를 알 수 있다`() {
+        val numberGenerator = MovedNumberGenerator()
+        val race =
+            Race(
+                carNames = "아반떼, 소나타, 그랜저",
+                raceTimes = 3,
+                numberGenerator = numberGenerator,
+            )
+        race.run()
+
+        val expectedValue = "아반떼, 소나타, 그랜저"
+
+        Assertions.assertThat(race.raceWinners).isEqualTo(expectedValue)
     }
 }
