@@ -15,53 +15,61 @@ import org.mockito.junit.jupiter.MockitoExtension
 
 @ExtendWith(MockitoExtension::class)
 class RoundRunnerTest {
-    private val nullTestInputView = object : InputView {
-        var callCount = 0
-        override fun read(): String? {
-            callCount++
-            return when (callCount) {
-                1 -> null // 잘못된 차량이름 입력 케이스
-                2 -> "test" // 올바른 차량이름 입력 케이스
-                else -> "3" // 올바른 횟수 입력
-            }
-        }
-    }
+    private val nullTestInputView =
+        object : InputView {
+            var callCount = 0
 
-    private val emptyTestInputView = object : InputView {
-        var callCount = 0
-        override fun read(): String {
-            callCount++
-            return when (callCount) {
-                1 -> "" // 잘못된 차량이름 입력 케이스
-                2 -> "test" // 올바른 차량이름 입력 케이스
-                else -> "3" // 올바른 횟수 입력
+            override fun read(): String? {
+                callCount++
+                return when (callCount) {
+                    1 -> null // 잘못된 차량이름 입력 케이스
+                    2 -> "test" // 올바른 차량이름 입력 케이스
+                    else -> "3" // 올바른 횟수 입력
+                }
             }
         }
-    }
 
-    private val duplicatedTestInputView = object : InputView {
-        var callCount = 0
-        override fun read(): String {
-            callCount++
-            return when (callCount) {
-                1 -> "test,test" // 잘못된 차량이름 입력 케이스
-                2 -> "test" // 올바른 차량이름 입력 케이스
-                else -> "3" // 올바른 횟수 입력
-            }
-        }
-    }
+    private val emptyTestInputView =
+        object : InputView {
+            var callCount = 0
 
-    private val carNameLengthOverTestInputView = object : InputView {
-        var callCount = 0
-        override fun read(): String {
-            callCount++
-            return when (callCount) {
-                1 -> "123456789" // 잘못된 차량이름 입력 케이스
-                2 -> "test" // 올바른 차량이름 입력 케이스
-                else -> "3" // 올바른 횟수 입력
+            override fun read(): String {
+                callCount++
+                return when (callCount) {
+                    1 -> "" // 잘못된 차량이름 입력 케이스
+                    2 -> "test" // 올바른 차량이름 입력 케이스
+                    else -> "3" // 올바른 횟수 입력
+                }
             }
         }
-    }
+
+    private val duplicatedTestInputView =
+        object : InputView {
+            var callCount = 0
+
+            override fun read(): String {
+                callCount++
+                return when (callCount) {
+                    1 -> "test,test" // 잘못된 차량이름 입력 케이스
+                    2 -> "test" // 올바른 차량이름 입력 케이스
+                    else -> "3" // 올바른 횟수 입력
+                }
+            }
+        }
+
+    private val carNameLengthOverTestInputView =
+        object : InputView {
+            var callCount = 0
+
+            override fun read(): String {
+                callCount++
+                return when (callCount) {
+                    1 -> "123456789" // 잘못된 차량이름 입력 케이스
+                    2 -> "test" // 올바른 차량이름 입력 케이스
+                    else -> "3" // 올바른 횟수 입력
+                }
+            }
+        }
 
     private val testMoveStrategy = MoveStrategy { true }
 
@@ -78,18 +86,20 @@ class RoundRunnerTest {
         val errorView = TestOutputErrorView()
         val outputView = TestOutputViewAdapter(errorView)
         val validator = RacingCarGameValidator()
-        val nullNameRacingCarGameRunner = RacingCarGameRunner(
-            output = outputView,
-            input = nullTestInputView,
-            validator = validator,
-            moveStrategy = testMoveStrategy
-        )
-        val emptyNameRacingCarGameRunner = RacingCarGameRunner(
-            output = outputView,
-            input = emptyTestInputView,
-            validator = validator,
-            moveStrategy = testMoveStrategy
-        )
+        val nullNameRacingCarGameRunner =
+            RacingCarGameRunner(
+                output = outputView,
+                input = nullTestInputView,
+                validator = validator,
+                moveStrategy = testMoveStrategy,
+            )
+        val emptyNameRacingCarGameRunner =
+            RacingCarGameRunner(
+                output = outputView,
+                input = emptyTestInputView,
+                validator = validator,
+                moveStrategy = testMoveStrategy,
+            )
 
         assertDoesNotThrow { nullNameRacingCarGameRunner.run() }
         assertDoesNotThrow { emptyNameRacingCarGameRunner.run() }
@@ -103,12 +113,15 @@ class RoundRunnerTest {
         val errorView = TestOutputErrorView()
         val outputView = TestOutputViewAdapter(errorView)
         val validator = RacingCarGameValidator()
-        val duplicatedNameRacingCarGameRunner = spy(RacingCarGameRunner(
-            output = outputView,
-            input = duplicatedTestInputView,
-            validator = validator,
-            moveStrategy = testMoveStrategy
-        ))
+        val duplicatedNameRacingCarGameRunner =
+            spy(
+                RacingCarGameRunner(
+                    output = outputView,
+                    input = duplicatedTestInputView,
+                    validator = validator,
+                    moveStrategy = testMoveStrategy,
+                ),
+            )
 
         assertDoesNotThrow { duplicatedNameRacingCarGameRunner.run() }
         verify(duplicatedNameRacingCarGameRunner, times(2)).run()
@@ -121,12 +134,15 @@ class RoundRunnerTest {
         val errorView = TestOutputErrorView()
         val outputView = TestOutputViewAdapter(errorView)
         val validator = RacingCarGameValidator()
-        val nameLengthOverRacingCarGameRunner = spy(RacingCarGameRunner(
-            output = outputView,
-            input = carNameLengthOverTestInputView,
-            validator = validator,
-            moveStrategy = testMoveStrategy
-        ))
+        val nameLengthOverRacingCarGameRunner =
+            spy(
+                RacingCarGameRunner(
+                    output = outputView,
+                    input = carNameLengthOverTestInputView,
+                    validator = validator,
+                    moveStrategy = testMoveStrategy,
+                ),
+            )
 
         assertDoesNotThrow { nameLengthOverRacingCarGameRunner.run() }
         verify(nameLengthOverRacingCarGameRunner, times(2)).run()

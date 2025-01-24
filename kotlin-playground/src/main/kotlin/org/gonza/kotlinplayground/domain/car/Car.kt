@@ -4,23 +4,17 @@ import org.gonza.kotlinplayground.domain.car.exception.InvalidCarNameLengthExcep
 
 class Car(
     private val name: String,
-    private val position: Int
+    private val position: Int,
 ) {
     init {
         validateCarNameLength(name)
     }
 
-    fun move(): Car {
-        return Car(name, position + 1)
-    }
+    fun move(): Car = Car(name, position + 1)
 
-    fun getPosition(): Int {
-        return position
-    }
+    fun getPosition(): Int = position
 
-    fun getName(): String {
-        return name
-    }
+    fun getName(): String = name
 
     private fun validateCarNameLength(name: String) {
         if (name.length > 5) {
@@ -34,7 +28,5 @@ class Car(
         return other.getPosition() == position && other.getName() == name
     }
 
-    override fun hashCode(): Int {
-        return javaClass.hashCode()
-    }
+    override fun hashCode(): Int = javaClass.hashCode()
 }
