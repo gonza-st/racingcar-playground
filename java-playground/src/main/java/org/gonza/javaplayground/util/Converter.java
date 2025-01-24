@@ -7,8 +7,8 @@ public class Converter {
 
     public static final String COMMAS = ",";
 
-    public Converter() {
-        throw new IllegalStateException("유틸리티 클래스는 인스턴스화 할 수 없습니다.");
+    private Converter() throws InstantiationException {
+        throw new InstantiationException("유틸리티 클래스는 인스턴스화 할 수 없습니다.");
     }
 
     public static List<String> separatedByCommas(String input) {
