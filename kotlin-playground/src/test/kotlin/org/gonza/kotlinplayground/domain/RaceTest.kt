@@ -10,7 +10,7 @@ class RaceTest {
         val numberGenerator = MovedNumberGenerator()
         val race =
             Race(
-                carNames = "아반떼, 소나타, 그랜저",
+                carNameString = "아반떼, 소나타, 그랜저",
                 raceTimes = 1,
                 numberGenerator = numberGenerator,
             )
@@ -35,7 +35,7 @@ class RaceTest {
         val numberGenerator = MovedNumberGenerator()
         val race =
             Race(
-                carNames = "아반떼, 소나타, 그랜저",
+                carNameString = "아반떼, 소나타, 그랜저",
                 raceTimes = 5,
                 numberGenerator = numberGenerator,
             )
@@ -51,7 +51,7 @@ class RaceTest {
         val numberGenerator = MovedNumberGenerator()
         val race =
             Race(
-                carNames = "아반떼, 소나타, 그랜저",
+                carNameString = "아반떼, 소나타, 그랜저",
                 raceTimes = 3,
                 numberGenerator = numberGenerator,
             )
@@ -84,7 +84,7 @@ class RaceTest {
         val numberGenerator = MovedNumberGenerator()
         val race =
             Race(
-                carNames = "아반떼, 소나타, 그랜저",
+                carNameString = "아반떼, 소나타, 그랜저",
                 raceTimes = 3,
                 numberGenerator = numberGenerator,
             )

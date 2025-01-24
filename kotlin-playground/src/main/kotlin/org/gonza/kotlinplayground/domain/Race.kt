@@ -7,11 +7,11 @@ data class Race(
     var raceWinners: String = "",
 ) {
     constructor(
-        carNames: String,
+        carNameString: String,
         raceTimes: Int,
         numberGenerator: NumberGenerator,
     ) : this(
-        carList = StringSplitter.split(carNames).map { Car(it, numberGenerator) },
+        carList = StringSplitter.split(carNameString).map { Car(it, numberGenerator) },
         raceTimes = RaceTimes(raceTimes),
     )
 

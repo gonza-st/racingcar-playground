@@ -22,7 +22,7 @@ fun main(args: Array<String>) {
 
     val race =
         Race(
-            carNames = carNames,
+            carNameString = carNames,
             raceTimes = racingCount,
             numberGenerator = RandomNumberGenerator(),
         )
