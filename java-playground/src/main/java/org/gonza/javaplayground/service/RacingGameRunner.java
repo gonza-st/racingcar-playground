@@ -26,7 +26,7 @@ public class RacingGameRunner {
 
     private void playSingleRound() {
         racingGame.play();
-        printer.printGameStatus(racingGame);
+        printer.printGameStatus(racingGame.getCarNames(), racingGame.getCarPositions());
     }
 
     private void announceWinners() {

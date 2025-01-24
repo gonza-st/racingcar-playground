@@ -2,7 +2,6 @@ package org.gonza.javaplayground.view;
 
 import org.gonza.javaplayground.core.Nickname;
 import org.gonza.javaplayground.core.Position;
-import org.gonza.javaplayground.service.RacingGame;
 
 import java.util.List;
 
@@ -17,8 +16,8 @@ public class ConsolePrinter implements Printer {
     }
 
     @Override
-    public void printGameStatus(RacingGame racingGame) {
-        printCarStatus(racingGame.getCarNames(), racingGame.getCarPositions());
+    public void printGameStatus(List<String> carNames, List<Position> carPositions) {
+        printCarStatus(carNames, carPositions);
         printNewLine();
     }
 
