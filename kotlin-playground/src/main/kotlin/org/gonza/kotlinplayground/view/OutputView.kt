@@ -1,18 +1,16 @@
 package org.gonza.kotlinplayground.view
 
-import org.gonza.kotlinplayground.domain.Cars
-
 class OutputView {
-    fun roundPosition(raceResult: List<Cars>) {
+    fun result(value: List<String>) {
         println("실행 결과")
-        for (cars in raceResult) {
-            println(cars.positions())
-            println()
-        }
+        value.forEach { println(it) }
     }
 
-    fun winner(raceResult: List<Cars>) {
-        val winners = raceResult.last().winners()
-        println("${winners}가 최종 우승했습니다.")
+    fun winner(value: String) {
+        println("${value}가 최종 우승했습니다.")
+    }
+
+    fun print(value: String) {
+        println(value)
     }
 }
