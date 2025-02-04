@@ -1,8 +1,5 @@
 package org.gonza.javaplayground.core;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Nickname {
 
     public static final int MAX_NAME_LENGTH = 5;
@@ -15,10 +12,6 @@ public class Nickname {
 
     public String getName() {
         return this.name;
-    }
-
-    public static String parseWinnerNames(List<String> names) {
-        return names.stream().collect(Collectors.joining(","));
     }
 
     private void validateName(String value) {

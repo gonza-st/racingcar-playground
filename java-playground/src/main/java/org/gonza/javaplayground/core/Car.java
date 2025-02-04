@@ -20,8 +20,4 @@ public class Car {
     public void forward(int randomNumber) {
         position.increase(randomNumber);
     }
-
-    public boolean isWinner(Position winner) {
-        return this.position.equals(winner);
-    }
 }
