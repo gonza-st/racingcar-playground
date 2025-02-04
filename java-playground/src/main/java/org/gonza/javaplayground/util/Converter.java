@@ -12,7 +12,7 @@ public class Converter {
     }
 
     public static List<String> separatedByCommas(String input) {
-        if (input == null || input.trim().isEmpty()) {
+        if (input.isBlank()) {
             throw new IllegalArgumentException("입력값이 비어있습니다.");
         }
         if (!input.contains(COMMAS)) {
