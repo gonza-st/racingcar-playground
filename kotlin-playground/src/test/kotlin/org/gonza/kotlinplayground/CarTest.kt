@@ -51,7 +51,8 @@ class CarTest {
     @Test
     fun `기준값 이상일 경우만 전진한다`() {
         val expectedDistance = 0
-        val invalidGenerator = TestNumberGenerator(3)
+        val invalidNumber = 3
+        val invalidGenerator = TestNumberGenerator(invalidNumber)
         val car = Car(name = "벤스", validator = validator, generator = invalidGenerator)
 
         assertEquals(expectedDistance, car.distance)
