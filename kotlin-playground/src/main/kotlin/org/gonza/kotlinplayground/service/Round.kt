@@ -9,7 +9,7 @@ import org.gonza.kotlinplayground.service.vo.TryCount
 
 class Round(
     private val carList: List<Car>,
-    private val currentGameCount: TryCount,
+    private val currentTryCount: TryCount,
 ) {
     constructor(
         carName: CarName,
@@ -19,7 +19,7 @@ class Round(
             CarNameConverter.toCarList(
                 carNameList = CarNameParser.parse(carName),
             ),
-        currentGameCount = initTryCount,
+        currentTryCount = initTryCount,
     )
 
     fun getCarList(): List<Car> = carList.toList()
@@ -28,7 +28,7 @@ class Round(
         val racingCars = RacingCars(carList)
 
         return GameResult(
-            tryCount = TryCount(currentGameCount.value + 1),
+            tryCount = TryCount(currentTryCount.value + 1),
             movedCarList = racingCars.move(moveStrategy),
         )
     }
@@ -40,7 +40,7 @@ class Round(
         return CarNameParser.toCarNameString(winnerCarNameList)
     }
 
-    fun isFinished(maxTryCount: TryCount): Boolean = maxTryCount.graterThanOrEqual(currentGameCount)
+    fun isFinished(maxTryCount: TryCount): Boolean = maxTryCount.graterThanOrEqual(currentTryCount)
 
     // FIXME: 여기 부분을 제거해야할 것 같음, Round 라는 도메인에 걸맞지 않음
     private object CarNameParser {
