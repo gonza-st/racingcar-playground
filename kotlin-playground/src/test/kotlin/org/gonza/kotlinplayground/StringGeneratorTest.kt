@@ -13,5 +13,8 @@ class StringGeneratorTest {
         val result = generator.generate(carString)
 
         assertEquals(3, result.size)
+        assertEquals("아반떼", result[0])
+        assertEquals("포르쉐", result[1])
+        assertEquals("벤츠", result[2])
     }
 }
