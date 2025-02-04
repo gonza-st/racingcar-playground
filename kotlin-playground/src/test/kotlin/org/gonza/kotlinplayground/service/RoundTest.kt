@@ -3,7 +3,7 @@ package org.gonza.kotlinplayground.service
 import org.assertj.core.api.Assertions.*
 import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
-import org.gonza.kotlinplayground.service.dto.toRacingCarGame
+import org.gonza.kotlinplayground.service.dto.toRound
 import org.gonza.kotlinplayground.service.vo.CarName
 import org.gonza.kotlinplayground.service.vo.TryCount
 import org.junit.jupiter.api.Test
@@ -45,7 +45,7 @@ class RoundTest {
         val result1 = round1.start(moveStrategy)
         val movedCarList1 = result1.movedCarList
         val movedCar1FirstPosition = movedCarList1[0].getPosition()
-        val racingCarGame2 = result1.toRacingCarGame()
+        val racingCarGame2 = result1.toRound()
         val result2 = racingCarGame2.start(moveStrategy)
         val movedCarList2 = result2.movedCarList
         val movedCar1SecondPosition = movedCarList2[0].getPosition()
@@ -65,11 +65,11 @@ class RoundTest {
         val testMoveStrategy = MoveStrategy { true }
 
         val result1 = round.start(testMoveStrategy)
-        val result2 = result1.toRacingCarGame().start(testMoveStrategy)
-        val result3 = result2.toRacingCarGame().start(testMoveStrategy)
-        val result4 = result3.toRacingCarGame().start(testMoveStrategy)
-        val result5 = result4.toRacingCarGame().start(testMoveStrategy)
-        val endRacingCarGame = result5.toRacingCarGame()
+        val result2 = result1.toRound().start(testMoveStrategy)
+        val result3 = result2.toRound().start(testMoveStrategy)
+        val result4 = result3.toRound().start(testMoveStrategy)
+        val result5 = result4.toRound().start(testMoveStrategy)
+        val endRacingCarGame = result5.toRound()
 
         assertThat(endRacingCarGame.isFinished(endTryCount)).isTrue()
     }
@@ -86,10 +86,10 @@ class RoundTest {
         val testMoveStrategy = MoveStrategy { true }
 
         val result1 = round.start(testMoveStrategy)
-        val result2 = result1.toRacingCarGame().start(testMoveStrategy)
-        val result3 = result2.toRacingCarGame().start(testMoveStrategy)
-        val result4 = result3.toRacingCarGame().start(testMoveStrategy)
-        val endRacingCarGame = result4.toRacingCarGame()
+        val result2 = result1.toRound().start(testMoveStrategy)
+        val result3 = result2.toRound().start(testMoveStrategy)
+        val result4 = result3.toRound().start(testMoveStrategy)
+        val endRacingCarGame = result4.toRound()
 
         assertThat(endRacingCarGame.isFinished(endTryCount)).isFalse()
     }

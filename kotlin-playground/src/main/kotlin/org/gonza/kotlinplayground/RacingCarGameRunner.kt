@@ -10,7 +10,7 @@ import org.gonza.kotlinplayground.presentation.ui.InputView
 import org.gonza.kotlinplayground.presentation.ui.OutputView
 import org.gonza.kotlinplayground.service.Round
 import org.gonza.kotlinplayground.service.dto.GameResult
-import org.gonza.kotlinplayground.service.dto.toRacingCarGame
+import org.gonza.kotlinplayground.service.dto.toRound
 import org.gonza.kotlinplayground.service.vo.CarName
 import org.gonza.kotlinplayground.service.vo.TryCount
 
@@ -74,7 +74,7 @@ class RacingCarGameRunner(
 
         while (!round.isFinished(config.tryCount)) {
             val result = playRound(round)
-            round = result.toRacingCarGame()
+            round = result.toRound()
         }
 
         val winner = round.findWinner()

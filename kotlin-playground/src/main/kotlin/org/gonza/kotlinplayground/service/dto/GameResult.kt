@@ -9,7 +9,7 @@ data class GameResult(
     val movedCarList: List<Car>,
 )
 
-fun GameResult.toRacingCarGame(): Round =
+fun GameResult.toRound(): Round =
     Round(
         carList = this.movedCarList,
         currentTryCount = this.tryCount,
