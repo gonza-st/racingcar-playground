@@ -10,6 +10,10 @@ class Car(
         validateCarNameLength(name)
     }
 
+    companion object {
+        private const val MAX_NAME_LENGTH = 5
+    }
+
     fun move(): Car = Car(name, position + 1)
 
     fun getPosition(): Int = position
@@ -17,7 +21,7 @@ class Car(
     fun getName(): String = name
 
     private fun validateCarNameLength(name: String) {
-        if (name.length > 5) {
+        if (name.length > MAX_NAME_LENGTH) {
             throw InvalidCarNameLengthException()
         }
     }
