@@ -27,8 +27,6 @@ class RacingCarGameRunner(
             startGame(gameConfig)
         } catch (e: DuplicatedCarNameException) {
             run()
-        } catch (e: InvalidCarNameLengthException) {
-            run()
         }
     }
 
