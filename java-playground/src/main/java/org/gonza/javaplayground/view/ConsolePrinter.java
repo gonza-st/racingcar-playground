@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConsolePrinter implements Printer {
-    private static final char CAR_DISTANCE_CHARACTER = '-';
+    private static final String CAR_DISTANCE_CHARACTER = "-";
     private static final String PRINT_DELIMITER = " : ";
     private static final String WINNER_MESSAGE = "가 최종 우승했습니다.";
 
@@ -42,7 +42,7 @@ public class ConsolePrinter implements Printer {
     }
 
     private String printDistance(Position position) {
-        return "-".repeat(position.getDistance());
+        return CAR_DISTANCE_CHARACTER.repeat(position.getDistance());
     }
 
     private void printNewLine() {
