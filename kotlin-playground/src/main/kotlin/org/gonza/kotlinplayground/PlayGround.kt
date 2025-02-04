@@ -1,6 +1,5 @@
 package org.gonza.kotlinplayground
 
-import org.gonza.kotlinplayground.presentation.RacingCarGameValidator
 import org.gonza.kotlinplayground.presentation.ui.InputViewImpl
 import org.gonza.kotlinplayground.presentation.ui.OutputViewImpl
 import org.gonza.kotlinplayground.service.RandomMoveStrategy
@@ -10,7 +9,6 @@ fun main() {
         RacingCarGameRunner(
             output = OutputViewImpl(),
             input = InputViewImpl(),
-            validator = RacingCarGameValidator(),
             moveStrategy = RandomMoveStrategy(),
         )
 

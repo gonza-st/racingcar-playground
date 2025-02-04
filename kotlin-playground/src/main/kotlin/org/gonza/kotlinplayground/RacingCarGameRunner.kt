@@ -4,7 +4,6 @@ import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.domain.car.exception.DuplicatedCarNameException
 import org.gonza.kotlinplayground.domain.car.exception.InvalidCarNameLengthException
-import org.gonza.kotlinplayground.presentation.RacingCarGameValidator
 import org.gonza.kotlinplayground.presentation.exception.EmptyOrNullableCarNameException
 import org.gonza.kotlinplayground.presentation.exception.InvalidTryCountException
 import org.gonza.kotlinplayground.presentation.ui.InputView
@@ -18,7 +17,6 @@ import org.gonza.kotlinplayground.service.vo.TryCount
 class RacingCarGameRunner(
     private val output: OutputView,
     private val input: InputView,
-    private val validator: RacingCarGameValidator,
     private val moveStrategy: MoveStrategy,
 ) {
     fun run() {
@@ -51,7 +49,7 @@ class RacingCarGameRunner(
         output.printInputTryCountMessage()
         return try {
             val inputValue = input.read()
-            TryCount(validator.getValidatedTryCountString(inputValue))
+            TryCount.from(inputValue)
         } catch (e: InvalidTryCountException) {
             output.printTryCountError()
             getValidTryCount()

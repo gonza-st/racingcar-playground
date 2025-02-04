@@ -2,7 +2,6 @@ package org.gonza.kotlinplayground
 
 import org.assertj.core.api.Assertions.*
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
-import org.gonza.kotlinplayground.presentation.RacingCarGameValidator
 import org.gonza.kotlinplayground.presentation.ui.InputView
 import org.gonza.kotlinplayground.presentation.ui.TestOutputErrorView
 import org.gonza.kotlinplayground.presentation.ui.TestOutputViewAdapter
@@ -85,19 +84,16 @@ class RacingCarGameRunnerTest {
     fun `게임이 시작될때 이름이 없다면 게임이 다시 실행된다`() {
         val errorView = TestOutputErrorView()
         val outputView = TestOutputViewAdapter(errorView)
-        val validator = RacingCarGameValidator()
         val nullNameRacingCarGameRunner =
             RacingCarGameRunner(
                 output = outputView,
                 input = nullTestInputView,
-                validator = validator,
                 moveStrategy = testMoveStrategy,
             )
         val emptyNameRacingCarGameRunner =
             RacingCarGameRunner(
                 output = outputView,
                 input = emptyTestInputView,
-                validator = validator,
                 moveStrategy = testMoveStrategy,
             )
 
@@ -112,13 +108,11 @@ class RacingCarGameRunnerTest {
     fun `게임이 시작될때 이름이 중복된다면 게임이 다시 실행된다`() {
         val errorView = TestOutputErrorView()
         val outputView = TestOutputViewAdapter(errorView)
-        val validator = RacingCarGameValidator()
         val duplicatedNameRacingCarGameRunner =
             spy(
                 RacingCarGameRunner(
                     output = outputView,
                     input = duplicatedTestInputView,
-                    validator = validator,
                     moveStrategy = testMoveStrategy,
                 ),
             )
