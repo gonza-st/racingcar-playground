@@ -1,9 +1,9 @@
 package org.gonza.javaplayground.view;
 
-import org.gonza.javaplayground.core.Nickname;
 import org.gonza.javaplayground.core.Position;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConsolePrinter implements Printer {
     private static final char CAR_DISTANCE_CHARACTER = '-';
@@ -23,8 +23,8 @@ public class ConsolePrinter implements Printer {
 
     @Override
     public void printWinners(List<String> names) {
-        String winnerNames = Nickname.parseWinnerNames(names);
-        print(winnerNames + WINNER_MESSAGE);
+        print(names.stream()
+                .collect(Collectors.joining(",")) + WINNER_MESSAGE);
     }
 
     private void printCarStatus(List<String> names, List<Position> positions) {
@@ -37,11 +37,11 @@ public class ConsolePrinter implements Printer {
         StringBuilder status = new StringBuilder()
                 .append(name)
                 .append(PRINT_DELIMITER)
-                .append(generateDistance(position));
+                .append(printDistance(position));
         print(status.toString());
     }
 
-    private String generateDistance(Position position) {
+    private String printDistance(Position position) {
         return "-".repeat(position.getDistance());
     }
 
