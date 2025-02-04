@@ -1,26 +1,10 @@
 package org.gonza.kotlinplayground.presentation
 
 import org.assertj.core.api.Assertions.assertThatThrownBy
-import org.gonza.kotlinplayground.presentation.exception.EmptyOrNullableCarNameException
 import org.gonza.kotlinplayground.presentation.exception.InvalidTryCountException
 import org.junit.jupiter.api.Test
 
-class RoundValidatorTest {
-    @Test
-    fun `차량 이름을 아무것도 입력하지 않는다면 예외가 발생한다`() {
-        val carNameString = null
-        val carNameEmptyString = ""
-        val validator = RacingCarGameValidator()
-
-        assertThatThrownBy {
-            validator.validateNullOrEmptyCarName(carNameString)
-        }.isInstanceOf(EmptyOrNullableCarNameException::class.java)
-
-        assertThatThrownBy {
-            validator.validateNullOrEmptyCarName(carNameEmptyString)
-        }.isInstanceOf(EmptyOrNullableCarNameException::class.java)
-    }
-
+class RacingCarGameValidatorTest {
     @Test
     fun `차량 경주 게임의 횟수를 입력하지 않는다면 예외가 발생한다`() {
         val tryCountNull = null

@@ -40,7 +40,7 @@ class RacingCarGameRunner(
         output.printInputCarNameListMessage()
         return try {
             val inputValue = input.read()
-            CarName(validator.getValidatedCarName(inputValue))
+            CarName.from(inputValue)
         } catch (e: EmptyOrNullableCarNameException) {
             output.printEmptyOrNullCarNameError()
             getValidCarName()

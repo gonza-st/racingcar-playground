@@ -14,7 +14,7 @@ import org.mockito.Mockito.*
 import org.mockito.junit.jupiter.MockitoExtension
 
 @ExtendWith(MockitoExtension::class)
-class RoundRunnerTest {
+class RacingCarGameRunnerTest {
     private val nullTestInputView =
         object : InputView {
             var callCount = 0
@@ -127,26 +127,5 @@ class RoundRunnerTest {
         verify(duplicatedNameRacingCarGameRunner, times(2)).run()
         assertThat(errorView.printErrorCount > 0)
         assertThat(duplicatedTestInputView.callCount > 1)
-    }
-
-    @Test
-    fun `게임이 시작될때 이름이 5글자를 초과하면 게임이 다시 실행된다`() {
-        val errorView = TestOutputErrorView()
-        val outputView = TestOutputViewAdapter(errorView)
-        val validator = RacingCarGameValidator()
-        val nameLengthOverRacingCarGameRunner =
-            spy(
-                RacingCarGameRunner(
-                    output = outputView,
-                    input = carNameLengthOverTestInputView,
-                    validator = validator,
-                    moveStrategy = testMoveStrategy,
-                ),
-            )
-
-        assertDoesNotThrow { nameLengthOverRacingCarGameRunner.run() }
-        verify(nameLengthOverRacingCarGameRunner, times(2)).run()
-        assertThat(errorView.printErrorCount > 0)
-        assertThat(carNameLengthOverTestInputView.callCount > 1)
     }
 }
