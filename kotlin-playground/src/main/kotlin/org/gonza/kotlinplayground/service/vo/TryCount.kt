@@ -18,4 +18,6 @@ data class TryCount(
             }
         }
     }
+
+    fun graterThanOrEqual(tryCount: TryCount) = this.value <= tryCount.value
 }

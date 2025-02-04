@@ -40,7 +40,7 @@ class Round(
         return CarNameParser.toCarNameString(winnerCarNameList)
     }
 
-    fun isFinished(tryCount: TryCount): Boolean = currentGameCount.value >= tryCount.value
+    fun isFinished(maxTryCount: TryCount): Boolean = maxTryCount.graterThanOrEqual(currentGameCount)
 
     // FIXME: 여기 부분을 제거해야할 것 같음, Round 라는 도메인에 걸맞지 않음
     private object CarNameParser {
