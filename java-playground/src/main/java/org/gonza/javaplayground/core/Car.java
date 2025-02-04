@@ -1,12 +1,12 @@
 package org.gonza.javaplayground.core;
 
 public class Car {
-    private Nickname nickname;
+    private final Nickname nickname;
     private Position position;
 
-    public Car(Nickname nickname, Position position) {
-        this.nickname = nickname;
-        this.position = position;
+    public Car(String name) {
+        this.nickname = new Nickname(name);
+        this.position = new Position();
     }
 
     public String getNickName() {

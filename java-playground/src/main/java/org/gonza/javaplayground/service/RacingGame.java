@@ -1,7 +1,6 @@
 package org.gonza.javaplayground.service;
 
 import org.gonza.javaplayground.core.Car;
-import org.gonza.javaplayground.core.Nickname;
 import org.gonza.javaplayground.core.Position;
 import org.gonza.javaplayground.util.NumberGenerator;
 
@@ -47,7 +46,7 @@ public class RacingGame {
 
     private List<Car> createCars(List<String> carNames) {
         return carNames.stream()
-                .map(name -> new Car(new Nickname(name), new Position()))
+                .map(Car::new)
                 .collect(toList());
     }
 }
