@@ -29,14 +29,6 @@ class OutputViewImpl : OutputView {
         println("차량 이름을 잘 못 입력하였습니다.")
     }
 
-    override fun printDuplicatedCarNameError() {
-        println("차량 이름은 중복될 수 없습니다.")
-    }
-
-    override fun printInvalidCarNameLengthError() {
-        println("차량 이름은 5글자를 초과할 수 없습니다.")
-    }
-
     override fun printTryCountError() {
         println("시도 횟수를 잘 못 입력하였습니다.")
     }

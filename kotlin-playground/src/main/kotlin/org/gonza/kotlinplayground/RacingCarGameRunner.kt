@@ -2,13 +2,10 @@ package org.gonza.kotlinplayground
 
 import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
-import org.gonza.kotlinplayground.domain.car.exception.DuplicatedCarNameException
-import org.gonza.kotlinplayground.domain.car.exception.InvalidCarNameLengthException
 import org.gonza.kotlinplayground.presentation.ui.OutputView
 import org.gonza.kotlinplayground.service.Round
 import org.gonza.kotlinplayground.service.dto.GameResult
 import org.gonza.kotlinplayground.service.dto.toRound
-import org.gonza.kotlinplayground.service.vo.CarName
 
 class RacingCarGameRunner(
     private val output: OutputView,
@@ -18,20 +15,8 @@ class RacingCarGameRunner(
         startGame(gameConfig)
     }
 
-    private fun getValidRound(carName: CarName): Round {
-        try {
-            return Round(carName = carName)
-        } catch (e: DuplicatedCarNameException) {
-            output.printDuplicatedCarNameError()
-            throw e
-        } catch (e: InvalidCarNameLengthException) {
-            output.printInvalidCarNameLengthError()
-            throw e
-        }
-    }
-
     private fun startGame(config: GameConfig) {
-        var round = getValidRound(config.carName)
+        var round = Round(carName = config.carName)
         output.printResultMessage()
 
         while (!round.isFinished(config.tryCount)) {
