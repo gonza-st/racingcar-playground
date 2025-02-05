@@ -4,55 +4,21 @@ import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
 import org.gonza.kotlinplayground.domain.car.exception.DuplicatedCarNameException
 import org.gonza.kotlinplayground.domain.car.exception.InvalidCarNameLengthException
-import org.gonza.kotlinplayground.presentation.exception.EmptyOrNullableCarNameException
-import org.gonza.kotlinplayground.presentation.exception.InvalidTryCountException
-import org.gonza.kotlinplayground.presentation.ui.InputView
 import org.gonza.kotlinplayground.presentation.ui.OutputView
 import org.gonza.kotlinplayground.service.Round
 import org.gonza.kotlinplayground.service.dto.GameResult
 import org.gonza.kotlinplayground.service.dto.toRound
 import org.gonza.kotlinplayground.service.vo.CarName
-import org.gonza.kotlinplayground.service.vo.TryCount
 
 class RacingCarGameRunner(
     private val output: OutputView,
-    private val input: InputView,
     private val moveStrategy: MoveStrategy,
 ) {
-    fun run() {
+    fun run(gameConfig: GameConfig) {
         try {
-            val gameConfig = createGameConfig()
             startGame(gameConfig)
         } catch (e: DuplicatedCarNameException) {
-            run()
-        }
-    }
-
-    private fun createGameConfig(): GameConfig {
-        val carName = getValidCarName()
-        val tryCount = getValidTryCount()
-        return GameConfig(carName, tryCount)
-    }
-
-    private fun getValidCarName(): CarName {
-        output.printInputCarNameListMessage()
-        return try {
-            val inputValue = input.read()
-            CarName.from(inputValue)
-        } catch (e: EmptyOrNullableCarNameException) {
-            output.printEmptyOrNullCarNameError()
-            getValidCarName()
-        }
-    }
-
-    private fun getValidTryCount(): TryCount {
-        output.printInputTryCountMessage()
-        return try {
-            val inputValue = input.read()
-            TryCount.from(inputValue)
-        } catch (e: InvalidTryCountException) {
-            output.printTryCountError()
-            getValidTryCount()
+            run(gameConfig)
         }
     }
 
