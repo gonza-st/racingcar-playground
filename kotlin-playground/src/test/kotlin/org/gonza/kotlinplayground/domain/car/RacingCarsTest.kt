@@ -12,10 +12,10 @@ class RacingCarsTest {
         val winner = Car("3", 3)
         val racingCars = RacingCars(listOf(car1, car2, winner))
 
-        val farthestCarList = racingCars.findFarthestCarList()
+        val farthestCarNameList = racingCars.findFarthestCarNameList()
 
-        assertThat(farthestCarList).hasSize(1)
-        assertThat(farthestCarList[0].position).isEqualTo(winner.position)
+        assertThat(farthestCarNameList).hasSize(1)
+        assertThat(farthestCarNameList.map { it.value }).contains(winner.name)
     }
 
     @Test

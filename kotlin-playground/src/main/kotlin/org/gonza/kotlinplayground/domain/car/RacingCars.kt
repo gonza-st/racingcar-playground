@@ -1,6 +1,7 @@
 package org.gonza.kotlinplayground.domain.car
 
 import org.gonza.kotlinplayground.domain.car.exception.DuplicatedCarNameException
+import org.gonza.kotlinplayground.service.vo.CarName
 
 class RacingCars(
     private val carList: List<Car>,
@@ -9,11 +10,11 @@ class RacingCars(
         validateDuplicatedCarName()
     }
 
-    fun findFarthestCarList(): List<Car> {
+    fun findFarthestCarNameList(): List<CarName> {
         val farthestPosition = carList.maxOf { it.position }
         val farthestCarList = carList.filter { it.position == farthestPosition }
 
-        return farthestCarList.getCarList()
+        return farthestCarList.toCarNameList()
     }
 
     fun move(moveStrategy: MoveStrategy): List<Car> {
@@ -39,4 +40,6 @@ class RacingCars(
     }
 
     private fun List<Car>.getCarList() = this.map { Car(it.name, it.position) }
+
+    private fun List<Car>.toCarNameList() = this.map { CarName(it.name) }
 }
