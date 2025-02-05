@@ -15,11 +15,7 @@ class RacingCarGameRunner(
     private val moveStrategy: MoveStrategy,
 ) {
     fun run(gameConfig: GameConfig) {
-        try {
-            startGame(gameConfig)
-        } catch (e: DuplicatedCarNameException) {
-            run(gameConfig)
-        }
+        startGame(gameConfig)
     }
 
     private fun getValidRound(carName: CarName): Round {
