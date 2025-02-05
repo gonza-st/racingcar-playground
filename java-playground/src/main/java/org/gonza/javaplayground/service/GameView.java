@@ -60,13 +60,6 @@ public class GameView {
 
     private int parseRetryCount(String input) {
         int count = Integer.parseInt(input);
-        validateRetryCount(count);
         return count;
-    }
-
-    private void validateRetryCount(int count) {
-        if (count <= PlayerInput.MINIMUM_RETRY_LIMIT) {
-            throw new IllegalArgumentException("재시도 횟수는 0 이하일 수 없습니다.");
-        }
     }
 }
