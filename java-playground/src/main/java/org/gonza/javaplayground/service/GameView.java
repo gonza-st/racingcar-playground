@@ -7,11 +7,11 @@ import org.gonza.javaplayground.view.Reader;
 
 import java.util.List;
 
-public class GameInputView {
+public class GameView {
     private final Reader reader;
     private final Printer printer;
 
-    public GameInputView(Reader reader, final Printer printer) {
+    public GameView(Reader reader, final Printer printer) {
         this.reader = reader;
         this.printer = printer;
     }

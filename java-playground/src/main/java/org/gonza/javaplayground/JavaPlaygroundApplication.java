@@ -1,7 +1,7 @@
 package org.gonza.javaplayground;
 
 import org.gonza.javaplayground.core.PlayerInput;
-import org.gonza.javaplayground.service.GameInputView;
+import org.gonza.javaplayground.service.GameView;
 import org.gonza.javaplayground.service.RacingGame;
 import org.gonza.javaplayground.service.RacingGameRunner;
 import org.gonza.javaplayground.view.ConsolePrinter;
@@ -19,7 +19,7 @@ public class JavaPlaygroundApplication {
 
         Reader reader = new ConsoleReader();
         final Printer printer = new ConsolePrinter();
-        GameInputView inputView = new GameInputView(reader, printer);
+        GameView inputView = new GameView(reader, printer);
         PlayerInput playerInput = inputView.createPlayerInput();
 
         RacingGame racingGame = new RacingGame(playerInput.getNames());
