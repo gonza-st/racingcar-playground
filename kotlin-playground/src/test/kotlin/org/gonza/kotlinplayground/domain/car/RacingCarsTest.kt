@@ -15,7 +15,7 @@ class RacingCarsTest {
         val farthestCarList = racingCars.findFarthestCarList()
 
         assertThat(farthestCarList).hasSize(1)
-        assertThat(farthestCarList[0].getPosition()).isEqualTo(winner.getPosition())
+        assertThat(farthestCarList[0].position).isEqualTo(winner.position)
     }
 
     @Test
@@ -43,9 +43,9 @@ class RacingCarsTest {
 
         val movedCarList = racingCars.move(testStrategy)
 
-        assertThat(movedCarList[0].getPosition()).isEqualTo(initPosition)
-        assertThat(movedCarList[1].getPosition()).isEqualTo(initPosition)
-        assertThat(movedCarList[2].getPosition()).isEqualTo(initPosition)
+        assertThat(movedCarList[0].position).isEqualTo(initPosition)
+        assertThat(movedCarList[1].position).isEqualTo(initPosition)
+        assertThat(movedCarList[2].position).isEqualTo(initPosition)
     }
 
     @Test
@@ -59,8 +59,8 @@ class RacingCarsTest {
 
         val movedCarList = racingCars.move(testStrategy)
 
-        assertThat(movedCarList[0].getPosition()).isNotEqualTo(initPosition)
-        assertThat(movedCarList[1].getPosition()).isNotEqualTo(initPosition)
-        assertThat(movedCarList[2].getPosition()).isNotEqualTo(initPosition)
+        assertThat(movedCarList[0].position).isNotEqualTo(initPosition)
+        assertThat(movedCarList[1].position).isNotEqualTo(initPosition)
+        assertThat(movedCarList[2].position).isNotEqualTo(initPosition)
     }
 }

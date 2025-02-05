@@ -11,11 +11,10 @@ class CarTest {
         val initName = "name"
         val car = Car(initName, initPosition)
 
-        val movedCar1 = car.move()
-        val movedCar2 = movedCar1.move()
+        val movedCar = car.move()
 
-        assertThat(initPosition).isNotEqualTo(movedCar1.getPosition())
-        assertThat(movedCar1.getPosition()).isNotEqualTo(movedCar2.getPosition())
+        assertThat(initPosition).isNotEqualTo(movedCar.position)
+        assertThat(movedCar.position).isEqualTo(initPosition + 1)
     }
 
     @Test

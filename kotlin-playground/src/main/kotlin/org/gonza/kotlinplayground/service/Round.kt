@@ -36,7 +36,7 @@ class Round(
     fun findWinner(): String {
         val racingCars = RacingCars(carList)
         val winnerCarList = racingCars.findFarthestCarList()
-        val winnerCarNameList = winnerCarList.map { CarName(it.getName()) }
+        val winnerCarNameList = winnerCarList.map { CarName(it.name) }
         return CarNameParser.toCarNameString(winnerCarNameList)
     }
 

@@ -44,11 +44,11 @@ class RoundTest {
 
         val result1 = round1.start(moveStrategy)
         val movedCarList1 = result1.movedCarList
-        val movedCar1FirstPosition = movedCarList1[0].getPosition()
+        val movedCar1FirstPosition = movedCarList1[0].position
         val racingCarGame2 = result1.toRound()
         val result2 = racingCarGame2.start(moveStrategy)
         val movedCarList2 = result2.movedCarList
-        val movedCar1SecondPosition = movedCarList2[0].getPosition()
+        val movedCar1SecondPosition = movedCarList2[0].position
 
         assertThat(movedCar1SecondPosition).isEqualTo(movedCar1FirstPosition + 1)
     }
@@ -119,7 +119,7 @@ class RoundTest {
 
         val result = round.findWinner()
 
-        assertThat(result).isEqualTo(winner.getName())
+        assertThat(result).isEqualTo(winner.name)
     }
 
     @Test
@@ -144,7 +144,7 @@ class RoundTest {
                 carList = listOf(car1, winner1, winner2),
                 currentTryCount = TryCount(1),
             )
-        val expected = "${winner1.getName()},${winner2.getName()}"
+        val expected = "${winner1.name},${winner2.name}"
 
         val result = round.findWinner()
 

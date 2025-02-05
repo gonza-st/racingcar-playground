@@ -90,8 +90,8 @@ class RacingCarGameRunner(
     private fun printRoundInfo(carList: List<Car>) {
         output.println()
         carList.forEach { car ->
-            output.printCarName(car.getName())
-            output.printMovement(car.getPosition())
+            output.printCarName(car.name)
+            output.printMovement(car.position)
             output.println()
         }
     }
