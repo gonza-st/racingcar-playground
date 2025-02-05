@@ -11,7 +11,7 @@ class NumberGeneratorTest {
         val generator = NumberGenerator()
 
         repeat(1000) {
-            val actual = generator.generate()
+            val actual = generator.generate(RacingConstants.RANDOM_NUMBER_MAX_VALUE)
             assertTrue { actual >= RacingConstants.RANDOM_NUMBER_MIN_VALUE }
             assertTrue { actual < RacingConstants.RANDOM_NUMBER_MAX_VALUE }
         }

@@ -23,7 +23,7 @@ class Car(
     }
 
     private fun isMoveable(): Boolean {
-        val number = generator.generate()
+        val number = generator.generate(RacingConstants.RANDOM_NUMBER_MAX_VALUE)
         return validator.isNumberGreaterThanThreshold(
             target = number,
             threshold = RacingConstants.RANDOM_NUMBER_THRESHOLD
