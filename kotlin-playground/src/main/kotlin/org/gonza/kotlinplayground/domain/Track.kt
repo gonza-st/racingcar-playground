@@ -24,7 +24,7 @@ class Track(val rap: Int) {
         val rankMap = mutableMapOf<Int, List<String>>()
         while (currentRap <= rap) {
             val movedCarList = cars.moveAll()
-            val rankList = ranking.rank(movedCarList)
+            val rankList = ranking.tempRank(movedCarList)
             rankMap[currentRap] = rankList
 
             currentRap++

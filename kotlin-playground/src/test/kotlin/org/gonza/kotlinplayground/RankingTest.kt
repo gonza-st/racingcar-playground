@@ -3,7 +3,6 @@ package org.gonza.kotlinplayground
 import org.gonza.kotlinplayground.domain.Car
 import org.gonza.kotlinplayground.domain.Cars
 import org.gonza.kotlinplayground.domain.Ranking
-import org.gonza.kotlinplayground.ui.PrintView
 import org.gonza.kotlinplayground.utils.TestNumberGenerator
 import org.gonza.kotlinplayground.utils.Validator
 import org.junit.jupiter.api.Test
@@ -27,7 +26,7 @@ class RankingTest {
         }
 
         val ranking = Ranking()
-        val rankList = ranking.rank(movedCarList)
+        val rankList = ranking.tempRank(movedCarList)
 
         assertEquals(expectedRankList, rankList)
     }
