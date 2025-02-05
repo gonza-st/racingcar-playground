@@ -4,6 +4,7 @@ import org.gonza.kotlinplayground.config.RacingConstants
 import org.gonza.kotlinplayground.domain.Car
 import org.gonza.kotlinplayground.domain.Cars
 import org.gonza.kotlinplayground.domain.Ranking
+import org.gonza.kotlinplayground.domain.Rap
 import org.gonza.kotlinplayground.domain.Track
 import org.gonza.kotlinplayground.ui.InputView
 import org.gonza.kotlinplayground.ui.PrintView
@@ -37,10 +38,11 @@ fun main() {
     val cars = Cars(cars = carList)
 
     printView.print(message = RacingConstants.USER_INPUT_COUNT_HELP)
-    val rap = inputView.input()
-    validator.validateDigit(digitString = rap)
+    val rapInput = inputView.input()
+    validator.validateDigit(digitString = rapInput)
 
-    val track = Track(rap = rap.toInt())
+    val rap = Rap(round = 5)
+    val track = Track(rap = rap)
     val ranking = Ranking()
     track.setup(cars = cars, ranking = ranking)
     val racingResult = track.start()

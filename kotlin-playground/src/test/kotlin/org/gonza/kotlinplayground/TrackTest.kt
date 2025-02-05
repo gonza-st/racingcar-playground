@@ -3,6 +3,7 @@ package org.gonza.kotlinplayground
 import org.gonza.kotlinplayground.domain.Car
 import org.gonza.kotlinplayground.domain.Cars
 import org.gonza.kotlinplayground.domain.Ranking
+import org.gonza.kotlinplayground.domain.Rap
 import org.gonza.kotlinplayground.domain.Track
 import org.gonza.kotlinplayground.utils.TestNumberGenerator
 import org.gonza.kotlinplayground.utils.Validator
@@ -17,7 +18,7 @@ class TrackTest {
 
     @Test
     fun `트랙은 랩 수를 가질 수 있다`() {
-        val rap = 5
+        val rap = Rap(round = 5)
         val track = Track(rap = rap)
 
         assertEquals(rap, track.rap)
@@ -30,7 +31,7 @@ class TrackTest {
         val car3 = Car(name = "벤스", validator = validator, generator = generator)
         val carList = listOf(car1, car2, car3)
         val cars = Cars(carList)
-        val rap = 5
+        val rap = Rap(round = 5)
         val track = Track(rap = rap)
         val ranking = Ranking()
 
@@ -41,7 +42,7 @@ class TrackTest {
 
     @Test
     fun `트랙을 초기화 하지 않으면 예외가 발생한다`() {
-        val rap = 5
+        val rap = Rap(round = 5)
         val track = Track(rap = rap)
 
         assertThrows<IllegalArgumentException> { track.start() }
@@ -54,13 +55,13 @@ class TrackTest {
         val car3 = Car(name = "벤스", validator = validator, generator = generator)
         val carList = listOf(car1, car2, car3)
         val cars = Cars(carList)
-        val rap = 5
+        val rap = Rap(round = 5)
         val track = Track(rap = rap)
         val ranking = Ranking()
 
         track.setup(cars = cars, ranking = ranking)
         val result = track.start()
 
-        assertEquals(rap, result.size)
+        assertEquals(rap.getRound(), result.size)
     }
 }

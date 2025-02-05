@@ -1,6 +1,6 @@
 package org.gonza.kotlinplayground.domain
 
-class Track(val rap: Int) {
+class Track(val rap: Rap) {
     private lateinit var cars: Cars
     private lateinit var ranking: Ranking
 
@@ -19,15 +19,14 @@ class Track(val rap: Int) {
 
     fun start(): Map<Int, List<String>> {
         require(isInitialized) { "트랙이 정비되지 않았습니다." }
-        var currentRap = 1
 
         val rankMap = mutableMapOf<Int, List<String>>()
-        while (currentRap <= rap) {
+        while (rap.getCurrentRap() < rap.getRound()) {
             val movedCarList = cars.moveAll()
             val rankList = ranking.tempRank(movedCarList)
-            rankMap[currentRap] = rankList
+            rankMap[rap.getCurrentRap()] = rankList
 
-            currentRap++
+            rap.increaseRound()
         }
 
         return rankMap
