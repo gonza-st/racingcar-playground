@@ -18,7 +18,7 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차가 생성되면 위치는 제자리이다.")
+    @DisplayName("자동차가 생성되면 위치가 0이다.")
     void createCarSuccessTest() throws Exception {
         assertThat(car.getNickName()).isEqualTo("hong");
         assertThat(car.getPosition().getDistance()).isEqualTo(0);
