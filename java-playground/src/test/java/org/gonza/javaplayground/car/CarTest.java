@@ -37,7 +37,7 @@ class CarTest {
         Car car = new Car("name");
         assertEquals(car.getPosition(), 0);
 
-        car.move();
+        car.moveForward();
 
         assertEquals(car.getPosition(), 1);
     }

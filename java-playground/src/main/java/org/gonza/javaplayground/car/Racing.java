@@ -24,7 +24,7 @@ public class Racing {
 
     private static void moveByNumberCondition(int number, Car car) {
         if (number >= MOVE_CONDITION) {
-            car.move();
+            car.moveForward();
         }
     }
 
