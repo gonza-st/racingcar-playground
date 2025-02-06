@@ -21,7 +21,7 @@ public class PlayerInputTest {
     }
 
     @Test
-    @DisplayName("경주할 자동차는 2대 이상이어야만 합니다.")
+    @DisplayName("경주할 자동차는 2대 이상이어야만 한다.")
     void createPlayerInputFailTest_namesUnderTwo() throws Exception {
         assertThatThrownBy(() -> new PlayerInput(List.of("lee"), 5)).isInstanceOf(IllegalArgumentException.class).hasMessage("경주할 자동차는 최소 2대 이상이어야 합니다.");
     }
