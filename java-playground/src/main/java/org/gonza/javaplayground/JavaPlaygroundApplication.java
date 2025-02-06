@@ -1,9 +1,5 @@
 package org.gonza.javaplayground;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 import org.gonza.javaplayground.car.Car;
 import org.gonza.javaplayground.car.RaceResult;
 import org.gonza.javaplayground.car.Racing;
@@ -12,9 +8,16 @@ import org.gonza.javaplayground.util.RandomNumberGenerator;
 import org.gonza.javaplayground.util.StringConverter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 @SpringBootApplication
 public class JavaPlaygroundApplication {
+	private static final Scanner scanner = new Scanner(System.in);
+
 	public static final long TIME_DELAY = 1000L;
+
 	private static final Integer START_NUMBER = 1;
 	private static final Integer END_NUMBER = 9;
 
@@ -53,14 +56,12 @@ public class JavaPlaygroundApplication {
 
 	private static int getPlayCount() {
 		System.out.println("시도할 회수는 몇회인가요?");
-		Scanner scannerCount = new Scanner(System.in);
-		return NumberConverter.convertBy(scannerCount.nextLine());
+        return NumberConverter.convertBy(scanner.nextLine());
 	}
 
 	private static Racing getRacing() {
 		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-		Scanner scannerNames = new Scanner(System.in);
-		List<String> players = StringConverter.splitByComma(scannerNames.nextLine());
+		List<String> players = StringConverter.splitByComma(scanner.nextLine());
 		return new Racing(players);
 	}
 }
