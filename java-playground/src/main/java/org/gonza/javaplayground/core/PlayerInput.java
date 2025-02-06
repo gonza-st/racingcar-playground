@@ -35,8 +35,8 @@ public class PlayerInput {
     }
 
     private void validateRetry(int retry) {
-        if (retry < MINIMUM_RETRY_LIMIT) {
-            throw new IllegalArgumentException("재시도 횟수는 0미만일 수 없습니다.");
+        if (retry <= MINIMUM_RETRY_LIMIT) {
+            throw new IllegalArgumentException("재시도 횟수는 0이상이어야 합니다.");
         }
     }
 }

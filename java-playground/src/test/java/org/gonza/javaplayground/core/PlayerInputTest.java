@@ -27,10 +27,10 @@ public class PlayerInputTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {-3, -2, -99999})
-    @DisplayName("재시도 횟수는 0미만일 수 없다.")
+    @ValueSource(ints = {-3, -2, -99999, 0})
+    @DisplayName("재시도 횟수는 0보다 커야한다.")
     void createPlayerInputFailTest_retryUnderZero(int invalidRetry) throws Exception {
-        assertThatThrownBy(() -> new PlayerInput(List.of("lee", "hong", "seob"), invalidRetry)).isInstanceOf(IllegalArgumentException.class).hasMessage("재시도 횟수는 0미만일 수 없습니다.");
+        assertThatThrownBy(() -> new PlayerInput(List.of("lee", "hong", "seob"), invalidRetry)).isInstanceOf(IllegalArgumentException.class).hasMessage("재시도 횟수는 0이상이어야 합니다.");
     }
 
     // 빠진 테스트 케이스 추가
