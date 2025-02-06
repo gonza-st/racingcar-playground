@@ -11,5 +11,7 @@ class CarNameParser {
                 .split(SPLIT_KEYWORD)
                 .map { it.trim() }
                 .map { CarName(it) }
+
+        fun toCarNameString(carNameList: List<CarName>): String = carNameList.joinToString(SPLIT_KEYWORD) { it.value }
     }
 }

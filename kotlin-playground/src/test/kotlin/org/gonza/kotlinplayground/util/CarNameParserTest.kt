@@ -18,4 +18,18 @@ class CarNameParserTest {
         assertThat(result1).hasSize(expectedCount)
         assertThat(result2).hasSize(expectedCount)
     }
+
+    @Test
+    fun `차량 이름 값 객체 리스트를 문자열로 변환할 수 있다`() {
+        val carNameList =
+            listOf(
+                CarName("test1"),
+                CarName("test2"),
+            )
+
+        val result = CarNameParser.toCarNameString(carNameList)
+        val expected = "test1,test2"
+
+        assertThat(result).isEqualTo(expected)
+    }
 }

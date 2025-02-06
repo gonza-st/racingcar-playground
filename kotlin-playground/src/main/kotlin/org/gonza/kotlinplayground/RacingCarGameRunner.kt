@@ -19,9 +19,7 @@ class RacingCarGameRunner(
     }
 
     private fun startGame(config: GameConfig) {
-        val carNameList =
-            org.gonza.kotlinplayground.util.CarNameParser
-                .parse(config.carName)
+        val carNameList = CarNameParser.parse(config.carName)
         val carList = CarNameConverter.toCarList(carNameList)
         val racingCars = RacingCars(carList)
         var round = Round(racingCars)
@@ -54,12 +52,6 @@ class RacingCarGameRunner(
 
     private fun printWinner(winner: String) {
         output.printWinnerMessage(winner)
-    }
-
-    private object CarNameParser {
-        private const val SPLIT_KEYWORD = ","
-
-        fun toCarNameString(carNameList: List<CarName>): String = carNameList.joinToString(SPLIT_KEYWORD) { it.value }
     }
 
     private object CarNameConverter {
