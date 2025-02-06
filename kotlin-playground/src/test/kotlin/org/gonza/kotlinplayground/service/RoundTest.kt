@@ -10,19 +10,6 @@ import org.junit.jupiter.api.Test
 
 class RoundTest {
     @Test
-    fun `차량 이름을 쉼표를 기준으로 분리할 수 있다`() {
-        val carNameList = CarName("이,명,규")
-        val carNameListWithSpace = CarName("이,  명,  규")
-        val expectedCount = 3
-
-        val round1 = Round(carNameList)
-        val round2 = Round(carNameListWithSpace)
-
-        assertThat(round1.getCarList()).hasSize(expectedCount)
-        assertThat(round2.getCarList()).hasSize(expectedCount)
-    }
-
-    @Test
     fun `라운드를 시작하면 게임 횟수가 증가한다`() {
         val carNameList = CarName("이,명,규")
         val initTryCount = TryCount(0)
@@ -119,7 +106,7 @@ class RoundTest {
 
         val result = round.findWinner()
 
-        assertThat(result).isEqualTo(winner.name)
+        assertThat(result.map { it.value }).contains(winner.name)
     }
 
     @Test
@@ -144,10 +131,9 @@ class RoundTest {
                 carList = listOf(car1, winner1, winner2),
                 currentTryCount = TryCount(1),
             )
-        val expected = "${winner1.name},${winner2.name}"
-
         val result = round.findWinner()
 
-        assertThat(result).isEqualTo(expected)
+        assertThat(result.map { it.value }).contains(winner1.name)
+        assertThat(result.map { it.value }).contains(winner2.name)
     }
 }

@@ -6,6 +6,7 @@ import org.gonza.kotlinplayground.presentation.ui.OutputView
 import org.gonza.kotlinplayground.service.Round
 import org.gonza.kotlinplayground.service.dto.GameResult
 import org.gonza.kotlinplayground.service.dto.toRound
+import org.gonza.kotlinplayground.service.vo.CarName
 
 class RacingCarGameRunner(
     private val output: OutputView,
@@ -25,7 +26,8 @@ class RacingCarGameRunner(
         }
 
         val winner = round.findWinner()
-        printWinner(winner)
+        val winnerCarNameList = CarNameParser.toCarNameString(winner)
+        printWinner(winnerCarNameList)
     }
 
     private fun playRound(game: Round): GameResult {
@@ -45,5 +47,11 @@ class RacingCarGameRunner(
 
     private fun printWinner(winner: String) {
         output.printWinnerMessage(winner)
+    }
+
+    private object CarNameParser {
+        private const val SPLIT_KEYWORD = ","
+
+        fun toCarNameString(carNameList: List<CarName>): String = carNameList.joinToString(SPLIT_KEYWORD) { it.value }
     }
 }
