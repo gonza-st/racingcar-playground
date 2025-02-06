@@ -13,4 +13,5 @@ object RacingConstants {
     const val PRINT_DIVIDER = ""
     const val INPUT_DELIMITER = ","
     const val INPUT_REGEX = "[!@#$%^&*()\\-_=+\\[\\]{}\\\\|;:'\",.<>/?]"
+    const val WINNER_HELP_TEXT = "가 최종 우승했습니다."
 }

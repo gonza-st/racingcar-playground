@@ -53,4 +53,8 @@ fun main() {
         }
         printView.print(RacingConstants.PRINT_DIVIDER)
     }
+
+    val winners = cars.findWinner().map { it.name }
+    val winnerString = winners.joinToString(separator = ", ")
+    printView.print("${winnerString}${RacingConstants.WINNER_HELP_TEXT}")
 }
