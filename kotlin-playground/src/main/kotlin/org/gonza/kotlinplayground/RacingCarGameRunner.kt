@@ -2,11 +2,13 @@ package org.gonza.kotlinplayground
 
 import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
+import org.gonza.kotlinplayground.domain.car.RacingCars
 import org.gonza.kotlinplayground.presentation.ui.OutputView
 import org.gonza.kotlinplayground.service.Round
 import org.gonza.kotlinplayground.service.dto.GameResult
 import org.gonza.kotlinplayground.service.dto.toRound
 import org.gonza.kotlinplayground.service.vo.CarName
+import org.gonza.kotlinplayground.util.CarNameParser
 
 class RacingCarGameRunner(
     private val output: OutputView,
@@ -17,7 +19,12 @@ class RacingCarGameRunner(
     }
 
     private fun startGame(config: GameConfig) {
-        var round = Round(carName = config.carName)
+        val carNameList =
+            org.gonza.kotlinplayground.util.CarNameParser
+                .parse(config.carName)
+        val carList = CarNameConverter.toCarList(carNameList)
+        val racingCars = RacingCars(carList)
+        var round = Round(racingCars)
         output.printResultMessage()
 
         while (!round.isFinished(config.tryCount)) {
@@ -53,5 +60,9 @@ class RacingCarGameRunner(
         private const val SPLIT_KEYWORD = ","
 
         fun toCarNameString(carNameList: List<CarName>): String = carNameList.joinToString(SPLIT_KEYWORD) { it.value }
+    }
+
+    private object CarNameConverter {
+        fun toCarList(carNameList: List<CarName>): List<Car> = carNameList.map { Car(it.value, 0) }
     }
 }

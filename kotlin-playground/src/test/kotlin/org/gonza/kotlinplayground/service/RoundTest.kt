@@ -3,18 +3,25 @@ package org.gonza.kotlinplayground.service
 import org.assertj.core.api.Assertions.*
 import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.domain.car.MoveStrategy
+import org.gonza.kotlinplayground.domain.car.RacingCars
 import org.gonza.kotlinplayground.service.dto.toRound
-import org.gonza.kotlinplayground.service.vo.CarName
 import org.gonza.kotlinplayground.service.vo.TryCount
 import org.junit.jupiter.api.Test
 
 class RoundTest {
     @Test
     fun `라운드를 시작하면 게임 횟수가 증가한다`() {
-        val carNameList = CarName("이,명,규")
         val initTryCount = TryCount(0)
         val moveStrategy = MoveStrategy { true }
-        val round = Round(carNameList, initTryCount)
+        val racingCars =
+            RacingCars(
+                listOf(
+                    Car("이", 0),
+                    Car("명", 0),
+                    Car("규", 0),
+                ),
+            )
+        val round = Round(racingCars, initTryCount)
 
         val result = round.start(moveStrategy)
         val resultTryCount = result.tryCount
@@ -24,10 +31,17 @@ class RoundTest {
 
     @Test
     fun `라운드를 시작하면 차량이 움직인다`() {
-        val carNameList = CarName("이,명,규")
+        val racingCars =
+            RacingCars(
+                listOf(
+                    Car("이", 0),
+                    Car("명", 0),
+                    Car("규", 0),
+                ),
+            )
         val initTryCount = TryCount(0)
         val moveStrategy = MoveStrategy { true }
-        val round1 = Round(carNameList, initTryCount)
+        val round1 = Round(racingCars, initTryCount)
 
         val result1 = round1.start(moveStrategy)
         val movedCarList1 = result1.movedCarList
@@ -44,9 +58,17 @@ class RoundTest {
     fun `라운드가 끝났다면 게임이 끝났다는 결과는 참이다`() {
         val endTryCount = TryCount(5)
         val initTryCount = TryCount(0)
+        val racingCars =
+            RacingCars(
+                listOf(
+                    Car("이", 0),
+                    Car("명", 0),
+                    Car("규", 0),
+                ),
+            )
         val round =
             Round(
-                carList = emptyList(),
+                racingCars = racingCars,
                 currentTryCount = initTryCount,
             )
         val testMoveStrategy = MoveStrategy { true }
@@ -65,9 +87,17 @@ class RoundTest {
     fun `라운드가 끝났다면 게임이 끝났다는 결과는 거짓이다`() {
         val endTryCount = TryCount(5)
         val initTryCount = TryCount(0)
+        val racingCars =
+            RacingCars(
+                listOf(
+                    Car("이", 0),
+                    Car("명", 0),
+                    Car("규", 0),
+                ),
+            )
         val round =
             Round(
-                carList = emptyList(),
+                racingCars = racingCars,
                 currentTryCount = initTryCount,
             )
         val testMoveStrategy = MoveStrategy { true }
@@ -98,9 +128,17 @@ class RoundTest {
                 name = "win",
                 position = 100,
             )
+        val racingCars =
+            RacingCars(
+                listOf(
+                    car1,
+                    car2,
+                    winner,
+                ),
+            )
         val round =
             Round(
-                carList = listOf(car1, car2, winner),
+                racingCars = racingCars,
                 currentTryCount = TryCount(1),
             )
 
@@ -126,9 +164,17 @@ class RoundTest {
                 name = "win2",
                 position = 100,
             )
+        val racingCars =
+            RacingCars(
+                listOf(
+                    car1,
+                    winner1,
+                    winner2,
+                ),
+            )
         val round =
             Round(
-                carList = listOf(car1, winner1, winner2),
+                racingCars = racingCars,
                 currentTryCount = TryCount(1),
             )
         val result = round.findWinner()

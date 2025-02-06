@@ -1,7 +1,6 @@
 package org.gonza.kotlinplayground.util
 
 import org.assertj.core.api.Assertions.assertThat
-import org.gonza.kotlinplayground.service.Round
 import org.gonza.kotlinplayground.service.vo.CarName
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -13,10 +12,10 @@ class CarNameParserTest {
         val carNameListWithSpace = CarName("이,  명,  규")
         val expectedCount = 3
 
-        val round1 = Round(carNameList)
-        val round2 = Round(carNameListWithSpace)
+        val result1 = CarNameParser.parse(carNameList)
+        val result2 = CarNameParser.parse(carNameListWithSpace)
 
-        assertThat(round1.getCarList()).hasSize(expectedCount)
-        assertThat(round2.getCarList()).hasSize(expectedCount)
+        assertThat(result1).hasSize(expectedCount)
+        assertThat(result2).hasSize(expectedCount)
     }
 }
