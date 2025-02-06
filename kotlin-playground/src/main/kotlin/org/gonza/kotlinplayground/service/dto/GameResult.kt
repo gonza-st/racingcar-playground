@@ -1,0 +1,17 @@
+package org.gonza.kotlinplayground.service.dto
+
+import org.gonza.kotlinplayground.domain.car.Car
+import org.gonza.kotlinplayground.domain.car.RacingCars
+import org.gonza.kotlinplayground.service.Round
+import org.gonza.kotlinplayground.service.vo.TryCount
+
+data class GameResult(
+    val tryCount: TryCount,
+    val movedCarList: List<Car>,
+)
+
+fun GameResult.toRound(): Round =
+    Round(
+        racingCars = RacingCars(this.movedCarList),
+        currentTryCount = this.tryCount,
+    )
