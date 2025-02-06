@@ -26,6 +26,7 @@ public class JavaPlaygroundApplication {
 		int playCount = getPlayCount();
 		List<RaceResult> resultList = getRaceResults(playCount, racing);
 		reportWinner(resultList);
+		scanner.close();
 	}
 
 	private static List<RaceResult> getRaceResults(int playCount, Racing racing) throws InterruptedException {
