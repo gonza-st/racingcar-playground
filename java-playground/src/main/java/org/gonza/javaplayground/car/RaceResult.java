@@ -10,7 +10,7 @@ public class RaceResult {
 		this.carList = carList;
 	}
 
-	private int getHighestPosition() {
+	private int findHighestPosition() {
 		return this.carList.stream()
 				.map(Car::getPosition)
 				.sorted()
@@ -18,8 +18,8 @@ public class RaceResult {
 				.getLast();
 	}
 
-	public List<Car> getHighestCar() {
-		int highestPosition = getHighestPosition();
+	public List<Car> foundHighestCar() {
+		int highestPosition = findHighestPosition();
 
 		return this.carList.stream()
 				.filter(car -> car.getPosition() == highestPosition)
