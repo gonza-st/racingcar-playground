@@ -7,7 +7,6 @@ import org.gonza.kotlinplayground.presentation.ui.OutputView
 import org.gonza.kotlinplayground.service.Round
 import org.gonza.kotlinplayground.service.dto.GameResult
 import org.gonza.kotlinplayground.service.dto.toRound
-import org.gonza.kotlinplayground.service.vo.CarName
 import org.gonza.kotlinplayground.util.CarNameParser
 
 class RacingCarGameRunner(
@@ -19,9 +18,7 @@ class RacingCarGameRunner(
     }
 
     private fun startGame(config: GameConfig) {
-        val carNameList = CarNameParser.parse(config.carName)
-        val carList = CarNameConverter.toCarList(carNameList)
-        val racingCars = RacingCars(carList)
+        val racingCars = RacingCars(config.carList)
         var round = Round(racingCars)
         output.printResultMessage()
 
@@ -52,9 +49,5 @@ class RacingCarGameRunner(
 
     private fun printWinner(winner: String) {
         output.printWinnerMessage(winner)
-    }
-
-    private object CarNameConverter {
-        fun toCarList(carNameList: List<CarName>): List<Car> = carNameList.map { Car(it.value, 0) }
     }
 }

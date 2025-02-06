@@ -1,5 +1,6 @@
 package org.gonza.kotlinplayground
 
+import org.gonza.kotlinplayground.domain.car.Car
 import org.gonza.kotlinplayground.presentation.exception.EmptyOrNullableCarNameException
 import org.gonza.kotlinplayground.presentation.exception.InvalidTryCountException
 import org.gonza.kotlinplayground.presentation.ui.InputView
@@ -9,6 +10,7 @@ import org.gonza.kotlinplayground.presentation.ui.OutputViewImpl
 import org.gonza.kotlinplayground.service.RandomMoveStrategy
 import org.gonza.kotlinplayground.service.vo.CarName
 import org.gonza.kotlinplayground.service.vo.TryCount
+import org.gonza.kotlinplayground.util.CarNameParser
 
 fun main() {
     val output = OutputViewImpl()
@@ -31,7 +33,9 @@ private fun createGameConfig(
 ): GameConfig {
     val carName = getValidCarName(output, input)
     val tryCount = getValidTryCount(output, input)
-    return GameConfig(carName, tryCount)
+    val carNameList = CarNameParser.parse(carName)
+    val carList = carNameList.map { Car(it.value, 0) }
+    return GameConfig(carList, tryCount)
 }
 
 private fun getValidCarName(
