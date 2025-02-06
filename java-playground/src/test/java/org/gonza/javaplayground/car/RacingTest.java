@@ -30,8 +30,8 @@ class RacingTest {
 
         RaceResult result = racing.race(List.of(3, 4));
 
-        assertEquals(1, result.foundHighestCar().getFirst().getPosition());
-        assertEquals("test2", result.foundHighestCar().getFirst().getName());
+        assertEquals(1, result.findWinner().getFirst().getPosition());
+        assertEquals("test2", result.findWinner().getFirst().getName());
     }
 
     @Test
@@ -40,7 +40,7 @@ class RacingTest {
 
         RaceResult result = racing.race(List.of(4));
 
-        assertEquals(1, result.foundHighestCar().getFirst().getPosition());
+        assertEquals(1, result.findWinner().getFirst().getPosition());
     }
 
     @Test
@@ -49,7 +49,7 @@ class RacingTest {
 
         RaceResult result = racing.race(List.of(3));
 
-        assertEquals(0, result.foundHighestCar().getFirst().getPosition());
+        assertEquals(0, result.findWinner().getFirst().getPosition());
     }
 
     @Test

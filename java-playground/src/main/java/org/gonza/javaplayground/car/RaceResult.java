@@ -18,7 +18,7 @@ public class RaceResult {
 				.getLast();
 	}
 
-	public List<Car> foundHighestCar() {
+	public List<Car> findWinner() {
 		int highestPosition = findHighestPosition();
 
 		return this.carList.stream()

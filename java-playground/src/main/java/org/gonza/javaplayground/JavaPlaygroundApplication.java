@@ -47,7 +47,7 @@ public class JavaPlaygroundApplication {
 
 	private static void reportWinner(List<RaceResult> resultList) {
 		List<String> highestCarNames = resultList.getLast()
-			.foundHighestCar()
+			.findWinner()
 			.stream()
 			.map(Car::getName)
 			.toList();
