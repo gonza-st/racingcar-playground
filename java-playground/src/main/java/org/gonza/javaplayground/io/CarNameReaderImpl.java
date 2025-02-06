@@ -2,6 +2,7 @@ package org.gonza.javaplayground.io;
 
 import org.gonza.javaplayground.game.car.CarNameReader;
 import org.gonza.javaplayground.io.handler.InputHandler;
+import org.gonza.javaplayground.io.handler.OutputHandler;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,14 +17,17 @@ public class CarNameReaderImpl implements CarNameReader {
     private static final String NAME_GUIDE_MSG =
             "경주할 자동차 이름을 입력하세요(이름은 쉼표(" + SEPARATOR + ")를 기준으로 구분).";
 
+    private final OutputHandler outputHandler;
     private final InputHandler inputHandler;
 
-    public CarNameReaderImpl(InputHandler inputHandler) {
+    public CarNameReaderImpl(OutputHandler outputHandler, InputHandler inputHandler) {
+        this.outputHandler = outputHandler;
         this.inputHandler = inputHandler;
     }
 
     @Override
     public List<String> getCarNames() {
+        outputHandler.println(NAME_GUIDE_MSG);
         String carNameInput = inputHandler.getStringInput(NAME_GUIDE_MSG);
 
         if (Objects.isNull(carNameInput) || carNameInput.isBlank()) {

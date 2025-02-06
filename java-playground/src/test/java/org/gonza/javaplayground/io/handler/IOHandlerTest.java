@@ -52,17 +52,9 @@ public class IOHandlerTest {
                     .thenThrow(new IllegalArgumentException("wrong input"))
                     .thenReturn(count);
 
-            Integer result = sut.getIntegerInput(INT_GUIDE_MSG);
+            Integer result = sut.getIntegerInput();
 
-            verify(printStream, times(2)).println(INT_GUIDE_MSG);
             assertEquals(count, result);
-        }
-
-        @Test
-        public void 정수를_입력_전에_안내_문구를_보여준다() {
-            sut.getIntegerInput(INT_GUIDE_MSG);
-
-            verify(printStream).println(INT_GUIDE_MSG);
         }
 
         @Test
@@ -70,7 +62,7 @@ public class IOHandlerTest {
             Integer count = 1;
             when(scanner.nextInt()).thenReturn(count);
 
-            Integer result = sut.getIntegerInput(INT_GUIDE_MSG);
+            Integer result = sut.getIntegerInput();
             assertEquals(count, result);
         }
     }

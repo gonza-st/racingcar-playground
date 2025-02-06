@@ -2,6 +2,7 @@ package org.gonza.javaplayground.io;
 
 import org.gonza.javaplayground.game.car.CarNameReader;
 import org.gonza.javaplayground.io.handler.InputHandler;
+import org.gonza.javaplayground.io.handler.OutputHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,13 +20,16 @@ import static org.mockito.Mockito.when;
 public class CarNameReaderImplTest {
 
     @Mock
+    private OutputHandler outputHandler;
+
+    @Mock
     private InputHandler inputHandler;
 
     private CarNameReader sut;
 
     @BeforeEach
     public void setUp() {
-        this.sut = new CarNameReaderImpl(inputHandler);
+        this.sut = new CarNameReaderImpl(outputHandler, inputHandler);
     }
 
     @Test

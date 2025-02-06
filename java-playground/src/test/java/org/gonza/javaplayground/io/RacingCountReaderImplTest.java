@@ -9,7 +9,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,7 +30,7 @@ public class RacingCountReaderImplTest {
 
     @Test
     public void 입력된_횟수가_null인_경우_예외를_던진다() {
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(null);
+        when(inputHandler.getIntegerInput()).thenReturn(null);
         assertThrows(IllegalArgumentException.class, () -> {
             sut.getRacingCount();
         });
@@ -39,7 +38,7 @@ public class RacingCountReaderImplTest {
 
     @Test
     public void 입력된_횟수가_0인_경우_예외를_던진다() {
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(0);
+        when(inputHandler.getIntegerInput()).thenReturn(0);
         assertThrows(IllegalArgumentException.class, () -> {
             sut.getRacingCount();
         });
@@ -47,7 +46,7 @@ public class RacingCountReaderImplTest {
 
     @Test
     public void 입력된_횟수가_음수인_경우_예외를_던진다() {
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(-1);
+        when(inputHandler.getIntegerInput()).thenReturn(-1);
         assertThrows(IllegalArgumentException.class, () -> {
             sut.getRacingCount();
         });

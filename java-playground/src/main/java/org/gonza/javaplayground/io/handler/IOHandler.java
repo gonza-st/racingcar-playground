@@ -23,12 +23,11 @@ public class IOHandler implements InputHandler, OutputHandler {
     }
 
     @Override
-    public Integer getIntegerInput(String guideMessage) {
+    public Integer getIntegerInput() {
         try {
-            printStream.println(guideMessage);
             return scanner.nextInt();
         } catch (Exception e) {
-            return this.getIntegerInput(guideMessage);
+            return this.getIntegerInput();
         }
     }
 

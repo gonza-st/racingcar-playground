@@ -46,7 +46,7 @@ public class Main {
 		final Integer MAX_DISTANCE = 5;
 
 
-		CarNameReader carNameReader = new CarNameReaderImpl(ioHandler);
+		CarNameReader carNameReader = new CarNameReaderImpl(ioHandler, ioHandler);
 		CarSpec carSpec = new CarSpec(MAX_NAME_LENGTH, MAX_DISTANCE);
 		CarService carService = new CarService(carNameReader, carSpec);
 
