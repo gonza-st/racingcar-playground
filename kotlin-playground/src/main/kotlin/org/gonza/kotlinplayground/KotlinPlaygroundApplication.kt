@@ -41,7 +41,7 @@ fun main() {
     val rapInput = inputView.input()
     validator.validateDigit(digitString = rapInput)
 
-    val rap = Rap(round = 5)
+    val rap = Rap(round = rapInput.toInt())
     val track = Track(rap = rap)
     val ranking = Ranking()
     track.setup(cars = cars, ranking = ranking)
