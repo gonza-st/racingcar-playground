@@ -30,8 +30,8 @@ class RacingCarGameRunner(
         printWinner(winnerCarNameList)
     }
 
-    private fun playRound(game: Round): GameResult {
-        val result = game.start(moveStrategy)
+    private fun playRound(round: Round): GameResult {
+        val result = round.start(moveStrategy)
         printRoundInfo(result.movedCarList)
         return result
     }
