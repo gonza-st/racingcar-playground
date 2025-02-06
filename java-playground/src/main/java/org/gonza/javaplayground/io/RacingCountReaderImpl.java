@@ -17,7 +17,7 @@ public class RacingCountReaderImpl implements RacingCountReader {
 
     @Override
     public Integer getRacingCount() {
-        Integer count = inputHandler.getIntegerInput(INT_GUIDE_MSG);
+        Integer count = inputHandler.getIntegerInputWithGuideMsg(INT_GUIDE_MSG);
 
         if (Objects.isNull(count)) {
             throw new IllegalArgumentException("count can not be null");

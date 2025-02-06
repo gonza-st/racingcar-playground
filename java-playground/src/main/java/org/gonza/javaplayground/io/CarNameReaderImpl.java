@@ -24,7 +24,7 @@ public class CarNameReaderImpl implements CarNameReader {
 
     @Override
     public List<String> getCarNames() {
-        String carNameInput = inputHandler.getStringInput(NAME_GUIDE_MSG);
+        String carNameInput = inputHandler.getStringInputWithGuideMsg(NAME_GUIDE_MSG);
 
         if (Objects.isNull(carNameInput) || carNameInput.isBlank()) {
             throw new IllegalArgumentException("Wrong car names");

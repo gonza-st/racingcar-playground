@@ -27,7 +27,6 @@ public class Main {
 		Game game = new Game(carService, racingCountService, gamePrinter);
 
 		game.race();
-
 	}
 
 	private static GamePrinter createGamePrinter(IOHandler ioHandler) {

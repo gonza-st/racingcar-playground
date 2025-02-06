@@ -1,6 +1,5 @@
 package org.gonza.javaplayground.io.handler;
 
-import org.gonza.javaplayground.io.handler.IOHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -52,7 +51,7 @@ public class IOHandlerTest {
                     .thenThrow(new IllegalArgumentException("wrong input"))
                     .thenReturn(count);
 
-            Integer result = sut.getIntegerInput(INT_GUIDE_MSG);
+            Integer result = sut.getIntegerInputWithGuideMsg(INT_GUIDE_MSG);
 
             verify(printStream, times(2)).println(INT_GUIDE_MSG);
             assertEquals(count, result);
@@ -60,7 +59,7 @@ public class IOHandlerTest {
 
         @Test
         public void 정수를_입력_전에_안내_문구를_보여준다() {
-            sut.getIntegerInput(INT_GUIDE_MSG);
+            sut.getIntegerInputWithGuideMsg(INT_GUIDE_MSG);
 
             verify(printStream).println(INT_GUIDE_MSG);
         }
@@ -70,7 +69,7 @@ public class IOHandlerTest {
             Integer count = 1;
             when(scanner.nextInt()).thenReturn(count);
 
-            Integer result = sut.getIntegerInput(INT_GUIDE_MSG);
+            Integer result = sut.getIntegerInputWithGuideMsg(INT_GUIDE_MSG);
             assertEquals(count, result);
         }
     }
@@ -88,7 +87,7 @@ public class IOHandlerTest {
                     .thenThrow(new IllegalArgumentException("wrong input"))
                     .thenReturn(carName);
 
-            String result = sut.getStringInput(NAME_GUIDE_MSG);
+            String result = sut.getStringInputWithGuideMsg(NAME_GUIDE_MSG);
 
             verify(printStream, times(2)).println(NAME_GUIDE_MSG);
             assertEquals(carName, result);
@@ -96,7 +95,7 @@ public class IOHandlerTest {
 
         @Test
         public void 문자열을_입력_전에_안내_문구를_보여준다() {
-            sut.getStringInput(NAME_GUIDE_MSG);
+            sut.getStringInputWithGuideMsg(NAME_GUIDE_MSG);
 
             verify(printStream).println(NAME_GUIDE_MSG);
         }
@@ -106,7 +105,7 @@ public class IOHandlerTest {
             String input = "car1";
             when(scanner.nextLine()).thenReturn(input);
 
-            String carName = sut.getStringInput(NAME_GUIDE_MSG);
+            String carName = sut.getStringInputWithGuideMsg(NAME_GUIDE_MSG);
             assertEquals(input, carName);
         }
     }

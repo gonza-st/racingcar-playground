@@ -33,7 +33,7 @@ public class CarNameReaderImplTest {
 
     @Test
     public void 입력된_차량이름이_null인_경우_예외를_던진다() {
-        when(inputHandler.getStringInput(anyString())).thenReturn(null);
+        when(inputHandler.getStringInputWithGuideMsg(anyString())).thenReturn(null);
         assertThrows(IllegalArgumentException.class, () -> {
             sut.getCarNames();
         });
@@ -41,7 +41,7 @@ public class CarNameReaderImplTest {
 
     @Test
     public void 입력된_차량이름이_공백인_경우_예외를_던진다() {
-        when(inputHandler.getStringInput(anyString())).thenReturn(" ");
+        when(inputHandler.getStringInputWithGuideMsg(anyString())).thenReturn(" ");
         assertThrows(IllegalArgumentException.class, () -> {
             sut.getCarNames();
         });
@@ -49,7 +49,7 @@ public class CarNameReaderImplTest {
 
     @Test
     public void 입력된_차량이름은_trim_처리하여_반환한다() {
-        when(inputHandler.getStringInput(anyString())).thenReturn("car1 ");
+        when(inputHandler.getStringInputWithGuideMsg(anyString())).thenReturn("car1 ");
         List<String> carName = sut.getCarNames();
 
         assertEquals("car1", carName.get(0));

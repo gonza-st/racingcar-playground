@@ -31,7 +31,7 @@ public class RacingCountReaderImplTest {
 
     @Test
     public void 입력된_횟수가_null인_경우_예외를_던진다() {
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(null);
+        when(inputHandler.getIntegerInputWithGuideMsg(anyString())).thenReturn(null);
         assertThrows(IllegalArgumentException.class, () -> {
             sut.getRacingCount();
         });
@@ -39,7 +39,7 @@ public class RacingCountReaderImplTest {
 
     @Test
     public void 입력된_횟수가_0인_경우_예외를_던진다() {
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(0);
+        when(inputHandler.getIntegerInputWithGuideMsg(anyString())).thenReturn(0);
         assertThrows(IllegalArgumentException.class, () -> {
             sut.getRacingCount();
         });
@@ -47,7 +47,7 @@ public class RacingCountReaderImplTest {
 
     @Test
     public void 입력된_횟수가_음수인_경우_예외를_던진다() {
-        when(inputHandler.getIntegerInput(anyString())).thenReturn(-1);
+        when(inputHandler.getIntegerInputWithGuideMsg(anyString())).thenReturn(-1);
         assertThrows(IllegalArgumentException.class, () -> {
             sut.getRacingCount();
         });
