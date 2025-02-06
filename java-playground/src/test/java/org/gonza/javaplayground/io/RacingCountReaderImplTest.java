@@ -2,6 +2,7 @@ package org.gonza.javaplayground.io;
 
 import org.gonza.javaplayground.game.count.RacingCountReader;
 import org.gonza.javaplayground.io.handler.InputHandler;
+import org.gonza.javaplayground.io.handler.OutputHandler;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,13 +16,16 @@ import static org.mockito.Mockito.when;
 public class RacingCountReaderImplTest {
 
     @Mock
+    private OutputHandler outputHandler;
+
+    @Mock
     private InputHandler inputHandler;
 
     private RacingCountReader sut;
 
     @BeforeEach
     public void setUp() {
-        this.sut = new RacingCountReaderImpl(inputHandler);
+        this.sut = new RacingCountReaderImpl(inputHandler, outputHandler);
     }
 
     @Test

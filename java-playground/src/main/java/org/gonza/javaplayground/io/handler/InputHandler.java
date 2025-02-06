@@ -1,7 +1,7 @@
 package org.gonza.javaplayground.io.handler;
 
 public interface InputHandler {
-    String getStringInput(String guideMessage);
+    String getStringInput();
 
     Integer getIntegerInput();
 }

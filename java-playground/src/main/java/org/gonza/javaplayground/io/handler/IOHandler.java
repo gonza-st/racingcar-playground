@@ -13,12 +13,11 @@ public class IOHandler implements InputHandler, OutputHandler {
     }
 
     @Override
-    public String getStringInput(String guideMessage) {
+    public String getStringInput() {
         try {
-            printStream.println(guideMessage);
             return scanner.nextLine();
         } catch (Exception e) {
-            return this.getStringInput(guideMessage);
+            return this.getStringInput();
         }
     }
 

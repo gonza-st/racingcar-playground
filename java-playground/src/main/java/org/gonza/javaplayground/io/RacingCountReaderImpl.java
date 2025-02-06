@@ -2,6 +2,7 @@ package org.gonza.javaplayground.io;
 
 import org.gonza.javaplayground.game.count.RacingCountReader;
 import org.gonza.javaplayground.io.handler.InputHandler;
+import org.gonza.javaplayground.io.handler.OutputHandler;
 
 import java.util.Objects;
 
@@ -10,13 +11,16 @@ public class RacingCountReaderImpl implements RacingCountReader {
     private static final Integer MIN_COUNT = 1;
 
     private final InputHandler inputHandler;
+    private final OutputHandler outputHandler;
 
-    public RacingCountReaderImpl(InputHandler inputHandler) {
+    public RacingCountReaderImpl(InputHandler inputHandler, OutputHandler outputHandler) {
         this.inputHandler = inputHandler;
+        this.outputHandler = outputHandler;
     }
 
     @Override
     public Integer getRacingCount() {
+        outputHandler.println(INT_GUIDE_MSG);
         Integer count = inputHandler.getIntegerInput();
 
         if (Objects.isNull(count)) {

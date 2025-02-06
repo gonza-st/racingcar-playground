@@ -36,7 +36,7 @@ public class Main {
 	}
 
 	private static RacingCountService createRacingCountService(IOHandler ioHandler) {
-		RacingCountReader racingCountReader = new RacingCountReaderImpl(ioHandler);
+		RacingCountReader racingCountReader = new RacingCountReaderImpl(ioHandler, ioHandler);
 		RacingCountService service = new RacingCountService(racingCountReader);
 		return service;
 	}
