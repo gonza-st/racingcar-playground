@@ -6,7 +6,7 @@ class Cars private constructor(val carList: List<Car>) {
             require(carNames.isNotEmpty()) { "경주에 참여할 차가 최소 1대 이상이어야 한다" }
 
             val carNameList: List<String> = carNames.split(",").map { it.replace(" ", "") }.filter { it.isNotEmpty() }
-            val carList: List<Car> = carNameList.map { name -> Car(name = name) }
+            val carList: List<Car> = carNameList.map { name -> Car.create(name = name) }
             return Cars(carList)
         }
 
@@ -21,11 +21,15 @@ class Cars private constructor(val carList: List<Car>) {
     }
 
     fun getMaxPosition(): Int {
-        return carList.maxOf { it.position }
+        return carList.maxOf { car1 ->
+            carList.fold(0) { maxPos, car2 ->
+                if (car2.comparePositionWith(car1) > 0) car2.comparePositionWith(car1) else maxPos
+            }
+        }
     }
 
     fun findWinners(maxPosition: Int): List<Car> {
-        return carList.filter { it.position == maxPosition }
+        return carList.filter { it.isSamePosition(maxPosition) }
     }
 
     fun size(): Int {
@@ -33,11 +37,12 @@ class Cars private constructor(val carList: List<Car>) {
     }
 
     fun contains(name: String): Boolean {
-        return carList.any { it.name == name }
+        return carList.any { it.isSameName(name) }
     }
 
     fun printCars() {
-        carList.forEach { car -> car.printCar() }
+        val printer = Printer()
+        carList.forEach { car -> printer.printCar(car) }
         println()
     }
 }

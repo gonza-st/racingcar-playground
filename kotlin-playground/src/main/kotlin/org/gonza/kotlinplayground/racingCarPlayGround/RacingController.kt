@@ -11,7 +11,7 @@ class RacingController(private var cars: Cars, val round: Int) {
     }
 
     fun printCars() {
-        val carNames = cars.carList.joinToString(", ") { it.name }
+        val carNames = cars.carList.joinToString(", ") { it.displayName() }
         println(carNames)
     }
 
@@ -30,7 +30,7 @@ class RacingController(private var cars: Cars, val round: Int) {
     }
 
     fun printWinners(winners: List<Car>) {
-        val winnerNames = winners.joinToString(", ") { winner -> winner.name }
+        val winnerNames = winners.joinToString(", ") { winner -> winner.displayName() }
         println("$winnerNames 가 최종 우승했습니다.")
     }
 

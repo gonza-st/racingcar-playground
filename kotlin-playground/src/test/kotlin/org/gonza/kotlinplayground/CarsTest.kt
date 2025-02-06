@@ -9,7 +9,7 @@ import kotlin.test.assertTrue
 
 class CarsTest {
     @Test
-    @DisplayName("경주에 참여할 차가 1대 이상이어야 한다")
+    @DisplayName("경주에 참여하는 차가 없으면 예외가 발생한다")
     fun emptyCarsTest() {
         val carNames = ""
 

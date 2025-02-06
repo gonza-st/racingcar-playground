@@ -1,8 +1,15 @@
 package org.gonza.kotlinplayground.racingCarPlayGround
 
-class Car(val name: String, val position: Int = 0) {
+class Car private constructor(
+        private val name: String,
+        private val position: Int = 0
+) {
     companion object {
         const val MOVING_POSITION = 1
+
+        fun create(name: String, position: Int = 0): Car {
+            return Car(name, position)
+        }
     }
 
     init {
@@ -13,8 +20,24 @@ class Car(val name: String, val position: Int = 0) {
 
     fun move(): Car = Car(name, position + MOVING_POSITION)
 
-    fun printCar() {
-        println("$name : ${"-".repeat(position)}")
+    fun isSamePosition(position: Int): Boolean {
+        return this.position == position
+    }
+
+    fun comparePositionWith(other: Car): Int {
+        return this.position.compareTo(other.position)
+    }
+
+    fun isSameName(name: String): Boolean {
+        return this.name == name
+    }
+
+    fun displayName(): String {
+        return name
+    }
+
+    fun displayPosition(): Int {
+        return position
     }
 }
 

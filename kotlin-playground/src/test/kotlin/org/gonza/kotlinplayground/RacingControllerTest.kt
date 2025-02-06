@@ -54,9 +54,9 @@ class RacingControllerTest {
     @Test
     @DisplayName("가장 멀리 이동한 차가 우승자이다")
     fun findWinnerTest() {
-        val bus = Car(name = "bus", position = 1)
-        val taxi = Car(name = "taxi", position = 2)
-        val bike = Car(name = "bike", position = 3)
+        val bus = Car.create(name = "bus", position = 1)
+        val taxi = Car.create(name = "taxi", position = 2)
+        val bike = Car.create(name = "bike", position = 3)
 
         val racing = RacingController(cars = Cars.fromList(listOf(bus, taxi, bike)), round = 1)
         val winners = racing.findWinners()
@@ -68,9 +68,9 @@ class RacingControllerTest {
     @Test
     @DisplayName("우승자는 한 명 이상일 수 있다")
     fun findMultipleWinnersTest() {
-        val bus = Car(name = "bus", position = 1)
-        val taxi = Car(name = "taxi", position = 2)
-        val bike = Car(name = "bike", position = 2)
+        val bus = Car.create(name = "bus", position = 1)
+        val taxi = Car.create(name = "taxi", position = 2)
+        val bike = Car.create(name = "bike", position = 2)
 
         val racing = RacingController(cars = Cars.fromList(listOf(bus, taxi, bike)), round = 3)
 
