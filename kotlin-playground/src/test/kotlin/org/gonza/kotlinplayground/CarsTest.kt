@@ -19,7 +19,7 @@ class CarsTest {
         val carList = listOf(car1, car2, car3)
         val cars = Cars(carList)
 
-        assertEquals(carList.size, cars.size())
+        assertEquals(carList, cars.getCarList())
     }
 
     @Test

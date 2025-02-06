@@ -1,6 +1,8 @@
 package org.gonza.kotlinplayground.domain
 
 class Cars(private val cars: List<Car>) {
+    fun getCarList() = cars
+
     fun size() = cars.size
 
     fun moveAll(): List<Car> {
